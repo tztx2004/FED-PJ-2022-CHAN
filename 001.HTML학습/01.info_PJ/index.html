@@ -45,8 +45,10 @@
             -> 특정요소에 특정이름을 밝혀야 할 경우
             -> 클래스적용시 같은 이름으로 다른 디자인을 줄때
             예) div.on{} header.on{} -> 같은 클래스인데 다른 디자인 적용가능
-
             5. 그룹선택자 : ,(콤마)
+            예) h1,div,a {}
+            6. 자손선택자 : 띄어쓰기
+            예) div a {} -> div 하위의 모든 a요소들
              */
              /* 기본마진 패딩 없애기 */
              html,body{
@@ -58,7 +60,7 @@
              .bx{
                 /* 1 가로크기 w 
                 아무값도 안쓰면? auto인데... 블록은 부모요소 끝까지 차지*/
-                width: 750px;
+                width: 700px;
                 /* 2 세로크기 h 
                 아무값도 안쓰면 auto인데... 블록은 내용만큼 늘어남*/
                 /* height: 150px; */
@@ -71,7 +73,7 @@
                 border: 5px double #2c23b3;
                 /* 둥근 모서리 보더 brad : border-radius */
                 /* border-radius: 50%; */
-                border-radius: 20px;
+                border-radius: 10px;
 
                 /* 4 안쪽여백(패딩) p
                 padding : 1개 (4방향)
@@ -80,18 +82,40 @@
                 padding : 1개 2개 3개 4개(각 방향: 위 오른 아래 왼) 
                 ->>> 마진도 동일함*/
                 
-                padding: 20px;
+                padding: 10px;
                 /* padding: 20px 50px 80px 5px; */
                 /* 5 바깥여백(마진) m */
                 /* margin: 30px; */
+                margin : 0 auto;
                 /* 마진탑 덮어쓰기 mt */
                 margin-top: 30px;
                 /* 
                   마영오씨가 누구지?
                   - 일반적인 블록요소가 가로크기를 가질때 이를 중앙정렬하려면 양쪽 마진을 auto로 설정한다. 이때 위아래 0 양쪽 auto를 줄여서 마영오! 라고함
                 */
-
              }
+                /* 1.상단영역 */
+                .top{
+                    /* 배경색: bgc
+                    background-color */
+                    background-color: lightskyblue;
+                    /* 글자중앙정렬 */
+                    text-align: center;
+                }
+                /* 2.메인영역 */
+                .cont img {
+                    /* 메인영역 이미지 */
+                    width: 100%;
+                    /* 한족만 크기를 주면 이미지는 자동으로 비율유지를 하면서 변경된다! 100%는 부모박스를 채움! */
+                    
+                }
+                /* 3.하단영역 */
+                .info{
+                    /* 배경색 */
+                    background-color: lightskyblue;;
+                    /* 글자중앙배열 */
+                    text-align: center;
+                }
         </style>
     </head>
     <body>
@@ -119,7 +143,7 @@
         </header>
         <!-- 2.메인영역 -->
         <main class="cont bx">
-            <img src="images/main.jpg" alt="뉴스메인이미지" style="width : 400px;">
+            <img src="./images/main.jpg" alt="뉴스메인이미지">
         </main>
         <!-- 3.하단영역 -->
         <footer class="info bx">
