@@ -12,7 +12,8 @@
         <!-- title: 탭에 표시 타이틀 -->
         <title>네이버 요약 뉴스 - TV/연예</title>
         <!-- 익스터널 스타일시트 요소 -->
-        <link rel="stylesheet" href="./css/common.css">
+        <link rel="stylesheet" href="./css/common.css" />
+        <link rel="stylesheet" href="./css/sub.css" />
     </head>
     <body>
         <!-- 1.상단영역 -->
@@ -27,30 +28,116 @@
                     <img
                         src="images/logo.png"
                         alt="네이버로고"
-                        style="width: 20px;"
+                        style="width: 20px"
                     />
                 </a>
-                <a href="sub1.html">정치</a> | 
-                <a href="sub2.html">경제</a> | 
-                <a href="sub3.html">사회</a> | 
-                <a href="sub4.html">IT/과학</a> | 
+                <a href="sub1.html">정치</a> | <a href="sub2.html">경제</a> |
+                <a href="sub3.html">사회</a> | <a href="sub4.html">IT/과학</a> |
                 <a href="sub5.html">TV/연예</a>
             </nav>
         </header>
         <!-- 2.메인영역 -->
         <main class="cont bx">
+            <!-- 2-1. 언론사로고 -->
+            <div class="prlogo">
+                <a href="http://www.tvreport.co.kr/" target="_black">
+                    <img src="./images/pr5.png" alt="report" />
+                </a>
+                <!-- a요소 : anchor(닻)
+                href 속성 : 이동할 페이지주소(hyper text referen)
+                target 속성 : 새창일 경우 "_blank"셋팅 -->
+            </div>
+            <!-- 2-2. 기사제목 -->
+            <h2 class="atit">
+                이달의 소녀 하슬, '츄 퇴출' 후 "어떤 말도 할 수 없어" 의미심장
+            </h2>
+            <!-- 2-3. 기사사진(+사진설명) -->
+            <figure class="afig">
+                <img src="./images/arti5.jpg" alt="연예기사사진" />
+                <!-- 이미지설명 -->
+                <figcaption>
+                    그룹 이달의 소녀 멤버 하슬이 팬 카페에 심경을 담은 글을
+                    적었다. 츄가 퇴출된 뒤 처음으로 적은 글이어서 주목된다.
+                </figcaption>
+            </figure>
+            <!-- 
+                figure 요소 : 이미지나 표를 넣는 박스
+                -> figcaption 하위요소는 필요시 사용(필수아님)
+             -->
+            <!-- 2-4. 기사내용 -->
+            <section class="arti">
+                <p>
+                    하슬은 15일 이달의 소녀 공식 팬 카페에 '안녕하세요 이달의
+                    소녀 하슬입니다'라는 제목의 글을 올렸다.
+                </p>
+
+                <p>
+                    이 글에서 하슬은 "벌써 6년이라는 시간이 흘렀다"라면서 "항상
+                    오빛(팬덤명)들에게 큰 힘이 되었으면 좋겠는데 갈수록 저는 제
+                    부족함만 보이는 것 같다"라고 전했다.
+                </p>
+
+                <p>
+                    "이런 부족함까지 사랑으로 감싸주는 오빛들이 너무 고맙고
+                    미안하다"고 밝힌 하슬은 "더 이상 무슨 말을 해야 할지
+                    모르겠다"라고 적어 눈길을 끌었다.
+                </p>
+
+                <p>
+                    그러면서 하슬은 "지금 이 상황에 제가 오빛들에게 해줄 수 있는
+                    건 사랑한다는 말밖에 없는 것 같다"고 밝혔다.
+                </p>
+
+                <p>
+                    아울러 "지금은 어떤 말도 할 수 없는 걸 오빛은 알 거라
+                    믿는다"며 "우리 우리 언젠가는 지금 이 순간도 추억으로 남아
+                    웃는 얼굴로 마주 보고 이야기할 날이 오기 바란다"라고 전했다.
+                </p>
+
+                <p>
+                    이달의 소녀 소속사 블록베리크리에이티브는 지난달 "츄를
+                    이달의 소녀 멤버에서 제명하고 퇴출하기로 했다"고 공지했다.
+                    사유는 스태프들을 향한 폭언과 갑질이다. 이에 대해 츄는
+                    자신의 인스타그램을 통해 "팬분들에게 부끄러울 만한 일은 한
+                    적이 없다"고 블록베리 측 주장에 반박했다.
+                </p>
+
+                <p>
+                    아울러 이달의 소녀 멤버 중 9인이 소속사를 상대로 전속계약
+                    효력 정지 가처분 신청을 제기했다는 보도도 나왔다. 다만 이와
+                    관련해 블록베리크리에이티브는 "사실무근"이라고 일축했다.
+                </p>
+
+                <p>
+                    츄가 빠지고 11인조로 재정비한 이달의 소녀는 오는 1월 3일
+                    'ZERO'로 컴백한다.
+                </p>
+            </section>
+            <!-- 2-5. 기자정보 -->
+            <div class="rpt">
+                성민주(smj@tvreport.co.kr)
+            </div>
+            <!-- 2-6. 기사원문 -->
+            <h5>
+                <a
+                    href="https://entertain.naver.com/read?oid=213&aid=0001238240"
+                    target="_blank"
+                >
+                    기사원문
+                </a>
+            </h5>
         </main>
         <!-- 3.하단영역 -->
         <footer class="info bx">
             <!-- 주소블록요소 -->
             <address>
-                서울시 강남구 역삼동 119 대호B 8F <br>
-                대표: CHAN <br>
-                전화: 010-2222-3333 <br>
+                서울시 강남구 역삼동 119 대호B 8F <br />
+                대표: CHAN <br />
+                전화: 010-2222-3333 <br />
             </address>
         </footer>
 
-            <!-- 
+        <!-- 
             [첫페이지 이름이 index인 이유 : 서버에서 가장먼저 읽는 파일명이 index / default 이다]
 
             [ 요소(element) / 태그(tag) 뭐지? ]

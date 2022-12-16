@@ -12,7 +12,8 @@
         <!-- title: 탭에 표시 타이틀 -->
         <title>네이버 요약 뉴스 - 경제</title>
         <!-- 익스터널 스타일시트 요소 -->
-        <link rel="stylesheet" href="./css/common.css">
+        <link rel="stylesheet" href="./css/common.css" />
+        <link rel="stylesheet" href="./css/sub.css" />
     </head>
     <body>
         <!-- 1.상단영역 -->
@@ -27,30 +28,99 @@
                     <img
                         src="images/logo.png"
                         alt="네이버로고"
-                        style="width: 20px;"
+                        style="width: 20px"
                     />
                 </a>
-                <a href="sub1.html">정치</a> | 
-                <a href="sub2.html">경제</a> | 
-                <a href="sub3.html">사회</a> | 
-                <a href="sub4.html">IT/과학</a> | 
+                <a href="sub1.html">정치</a> | <a href="sub2.html">경제</a> |
+                <a href="sub3.html">사회</a> | <a href="sub4.html">IT/과학</a> |
                 <a href="sub5.html">TV/연예</a>
             </nav>
         </header>
         <!-- 2.메인영역 -->
         <main class="cont bx">
+            <!-- 2-1. 언론사로고 -->
+            <div class="prlogo">
+                <a href="http://www.sedaily.com/" target="_black">
+                    <img src="./images/pr2.png" alt="서울경제" />
+                </a>
+                <!-- a요소 : anchor(닻)
+                href 속성 : 이동할 페이지주소(hyper text referen)
+                target 속성 : 새창일 경우 "_blank"셋팅 -->
+            </div>
+            <!-- 2-2. 기사제목 -->
+            <h2 class="atit">이창양 "전기료 인상요인 1kWh당 50원"</h2>
+            <!-- 2-3. 기사사진(+사진설명) -->
+            <figure class="afig">
+                <img src="./images/arti2.jpg" alt="경제기사사진" />
+                <!-- 이미지설명 -->
+                <figcaption>
+                    이창양(왼쪽) 산업통상자원부 장관과 박일준 산업부 제2차관이
+                    15일 오전 서울 여의도 국회에서
+                    산업통상자원중소벤처기업위원회 전체회의가 열리기에 앞서
+                    이야기를 나누고 있다. 연합뉴스
+                </figcaption>
+            </figure>
+            <!-- 
+                figure 요소 : 이미지나 표를 넣는 박스
+                -> figcaption 하위요소는 필요시 사용(필수아님)
+             -->
+            <!-- 2-4. 기사내용 -->
+            <section class="arti">
+                <p>[서울경제]</p>
+
+                <p>
+                    이창양 산업통상자원부 장관이 “올해 기준연료비 인상 요인이
+                    1kWh당 50원 정도 형성됐다”고 밝혔다. 실적연료비와
+                    기후환경요금 등을 더할 경우 내년도 전기요금이 올해 대비 50%
+                    가량 급등할 것이라는 전망이 나온다.
+                </p>
+
+                <p>
+                    이 장관은 15일 국회 산업통상자원중소벤처기업위원회
+                    전체회의에 출석해 이 같이 밝혔다. 그는 “이 같은 인상요인을
+                    내년에 모두 반영하는 것은 아니라”며 “서민이나 소상공인,
+                    기업에 급격한 충격을 주면 안 되기 때문에 가능한 범위 안에서
+                    현실적·단계적으로 인상을 추진하겠다”고 강조했다.
+                </p>
+
+                <p>
+                    연료비 연동제 산식에 따르면 당장 내년 1월부터 기준연료비
+                    인상분을 전기요금에 반영해야 한다. 기준연료비는 최근 1년치
+                    연료 가격을 바탕으로 책정되뎌 올들어 연료비가 2배 가량
+                    뛰었다. 다만 정부는 이 같은 전기요금 인상분을 분기별로 나눠
+                    반영하는 방안을 고민중이다. 가파른 전기요금 인상이 물가
+                    상승을 자극시키고 경기 위축을 가져다 줄 수 있다는
+                    판단에서다. 정부가 이 같이 전기요금을 나눠반영할 경우
+                    한국전력의 회사채를 추가 발행하는 방식으로 전력을 구매할
+                    수밖에 없다. 결국 ‘윗돌 빼서 아랫돌 괴는’ 대책이라는 비판을
+                    피할 수 없게 될 전망이다.
+                </p>
+            </section>
+            <!-- 2-5. 기자정보 -->
+            <div class="rpt">
+                세종=양철민 기자(chopin@sedaily.com)
+            </div>
+            <!-- 2-6. 기사원문 -->
+            <h5>
+                <a
+                    href="https://n.news.naver.com/mnews/article/011/0004133986?sid=101"
+                    target="_blank"
+                >
+                    기사원문
+                </a>
+            </h5>
         </main>
         <!-- 3.하단영역 -->
         <footer class="info bx">
             <!-- 주소블록요소 -->
             <address>
-                서울시 강남구 역삼동 119 대호B 8F <br>
-                대표: CHAN <br>
-                전화: 010-2222-3333 <br>
+                서울시 강남구 역삼동 119 대호B 8F <br />
+                대표: CHAN <br />
+                전화: 010-2222-3333 <br />
             </address>
         </footer>
 
-            <!-- 
+        <!-- 
             [첫페이지 이름이 index인 이유 : 서버에서 가장먼저 읽는 파일명이 index / default 이다]
 
             [ 요소(element) / 태그(tag) 뭐지? ]

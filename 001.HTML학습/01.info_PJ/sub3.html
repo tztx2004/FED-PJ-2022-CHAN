@@ -12,7 +12,8 @@
         <!-- title: 탭에 표시 타이틀 -->
         <title>네이버 요약 뉴스 - 사회</title>
         <!-- 익스터널 스타일시트 요소 -->
-        <link rel="stylesheet" href="./css/common.css">
+        <link rel="stylesheet" href="./css/common.css" />
+        <link rel="stylesheet" href="./css/sub.css" />
     </head>
     <body>
         <!-- 1.상단영역 -->
@@ -27,30 +28,104 @@
                     <img
                         src="images/logo.png"
                         alt="네이버로고"
-                        style="width: 20px;"
+                        style="width: 20px"
                     />
                 </a>
-                <a href="sub1.html">정치</a> | 
-                <a href="sub2.html">경제</a> | 
-                <a href="sub3.html">사회</a> | 
-                <a href="sub4.html">IT/과학</a> | 
+                <a href="sub1.html">정치</a> | <a href="sub2.html">경제</a> |
+                <a href="sub3.html">사회</a> | <a href="sub4.html">IT/과학</a> |
                 <a href="sub5.html">TV/연예</a>
             </nav>
         </header>
         <!-- 2.메인영역 -->
         <main class="cont bx">
+            <!-- 2-1. 언론사로고 -->
+            <div class="prlogo">
+                <a href="http://www.imaeil.com/" target="_black">
+                    <img src="./images/pr3.png" alt="매일신문" />
+                </a>
+                <!-- a요소 : anchor(닻)
+                href 속성 : 이동할 페이지주소(hyper text referen)
+                target 속성 : 새창일 경우 "_blank"셋팅 -->
+            </div>
+            <!-- 2-2. 기사제목 -->
+            <h2 class="atit">
+                대구공무원노조 "시장과 시의회의 기 싸움에 시민과 공무원 피해"
+            </h2>
+            <!-- 2-3. 기사사진(+사진설명) -->
+            <figure class="afig">
+                <img src="./images/arti3.jpg" alt="사회기사사진" />
+                <!-- 이미지설명 -->
+                <figcaption>
+                    대구시 신청사 건립 부지인 옛 두류정수장을 상공에서 바라본
+                    모습. 매일신문 DB.
+                </figcaption>
+            </figure>
+            <!-- 
+                figure 요소 : 이미지나 표를 넣는 박스
+                -> figcaption 하위요소는 필요시 사용(필수아님)
+             -->
+            <!-- 2-4. 기사내용 -->
+            <section class="arti">
+                <p>
+                    대구시청 신청사 건립 사업이 전면 중단(매일신문 12월 15일
+                    보도)된 것과 관련, 대구공무원노동조합(이하 대공노)이 성명을
+                    내고 빠른 대책과 신청사 건립 방안 마련을 촉구했다.
+                </p>
+
+                <p>
+                    대공노는 "대구시의 부채 상환을 위해 신청사 건립을 처음부터
+                    문제 삼은 홍준표 대구시장과 시가 애써 책정한 설계비
+                    130억원을 설계 내용을 문제 삼아 별다른 논의 없이 삭감시켜
+                    버린 대구시의회 간의 무책임한 '기 싸움'에 결국 대구시민과
+                    공무원에게 고스란히 피해가 돌아가게 됐다"고 주장했다.
+                </p>
+
+                <p>
+                    그러면서 "시장과 시의회가 서로 책임전가만 할 것이 아니라
+                    다시금 추진 방안을 모색하고 빠른 시일 내 신청사 건립을 위한
+                    대안과 방법을 마련하는데 최선의 노력을 다 할 것을 강력히
+                    촉구한다"고 덧붙였다.
+                </p>
+
+                <p>
+                    한편 홍준표 대구시장은 이날 자신의 페이스북에 글을 올려
+                    "예산 대비 채무 비율이 전국 2위인 최악의 재정 상태에서 빚을
+                    내 신청사를 지으라는 것은 대구시민 누구도 찬성할 리가
+                    없다"고 주장했다.
+                </p>
+
+                <p>
+                    또한 "긴축재정으로 재정이 압박을 받는 상태에서 자산 매각없이
+                    신청사를 지을 수가 없다"면서 "아무런 재원 마련 대책도 없이
+                    자산 매각을 반대하면서 신청사를 지어 내라는 억지는 참
+                    어이없는 노릇"이라고 강조했다.
+                </p>
+            </section>
+            <!-- 2-5. 기자정보 -->
+            <div class="rpt">
+                장성현 기자 shjang@imaeil.com
+            </div>
+            <!-- 2-6. 기사원문 -->
+            <h5>
+                <a
+                    href="https://n.news.naver.com/mnews/article/088/0000789011?sid=102"
+                    target="_blank"
+                >
+                    기사원문
+                </a>
+            </h5>
         </main>
         <!-- 3.하단영역 -->
         <footer class="info bx">
             <!-- 주소블록요소 -->
             <address>
-                서울시 강남구 역삼동 119 대호B 8F <br>
-                대표: CHAN <br>
-                전화: 010-2222-3333 <br>
+                서울시 강남구 역삼동 119 대호B 8F <br />
+                대표: CHAN <br />
+                전화: 010-2222-3333 <br />
             </address>
         </footer>
 
-            <!-- 
+        <!-- 
             [첫페이지 이름이 index인 이유 : 서버에서 가장먼저 읽는 파일명이 index / default 이다]
 
             [ 요소(element) / 태그(tag) 뭐지? ]

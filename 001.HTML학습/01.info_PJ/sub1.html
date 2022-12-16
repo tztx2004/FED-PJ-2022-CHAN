@@ -12,7 +12,8 @@
         <!-- title: 탭에 표시 타이틀 -->
         <title>네이버 요약 뉴스 - 정치</title>
         <!-- 익스터널 스타일시트 요소 -->
-        <link rel="stylesheet" href="./css/common.css">
+        <link rel="stylesheet" href="./css/common.css" />
+        <link rel="stylesheet" href="./css/sub.css" />
     </head>
     <body>
         <!-- 1.상단영역 -->
@@ -27,30 +28,97 @@
                     <img
                         src="images/logo.png"
                         alt="네이버로고"
-                        style="width: 20px;"
+                        style="width: 20px"
                     />
                 </a>
-                <a href="sub1.html">정치</a> | 
-                <a href="sub2.html">경제</a> | 
-                <a href="sub3.html">사회</a> | 
-                <a href="sub4.html">IT/과학</a> | 
+                <a href="sub1.html">정치</a> | <a href="sub2.html">경제</a> |
+                <a href="sub3.html">사회</a> | <a href="sub4.html">IT/과학</a> |
                 <a href="sub5.html">TV/연예</a>
             </nav>
         </header>
         <!-- 2.메인영역 -->
         <main class="cont bx">
+            <!-- 2-1. 언론사로고 -->
+            <div class="prlogo">
+                <a href="http://www.kmib.co.kr/" target="_black">
+                    <img src="./images/pr1.png" alt="국민일보" />
+                </a>
+                <!-- a요소 : anchor(닻)
+                href 속성 : 이동할 페이지주소(hyper text referen)
+                target 속성 : 새창일 경우 "_blank"셋팅 -->
+            </div>
+            <!-- 2-2. 기사제목 -->
+            <h2 class="atit">北, 로켓엔진 분출 성공…김정은 “신형전략무기 기대”</h2>
+            <!-- 2-3. 기사사진(+사진설명) -->
+            <figure class="afig">
+                <img src="./images/arti1.jpg" alt="정치기사사진" />
+                <!-- 이미지설명 -->
+                <figcaption>김정은 북한 국무위원장이 지난 3월 북한 평안북도 동창리 서해위성발사장을 현지 지도하는 모습. 사진은 기사와 직접적 관련이 없습니다. AP뉴시스</figcaption>
+            </figure>
+            <!-- 
+                figure 요소 : 이미지나 표를 넣는 박스
+                -> figcaption 하위요소는 필요시 사용(필수아님)
+             -->
+            <!-- 2-4. 기사내용 -->
+            <section class="arti">
+                <p>
+                    북한이 대출력 고체연료 발동기(로켓엔진) 지상분출시험에
+                    성공했다고 밝혔다.
+                </p>
+
+                <p>
+                    국방과학원의 중요연구소는 “지난 15일 오전 평안북도 철산군
+                    동창리 서해 위성발사장에서 140tf(톤포스) 추진력 대출력
+                    고체연료 발동기의 첫 지상분출시험 성공적으로 진행했다”고
+                    밝혔다고 16일 조선중앙통신이 보도했다.
+                </p>
+
+                <p>
+                    김정은 국무위원장이 현지에서 중대시험을 지도했으며, 조용원
+                    조선로동당 중앙위원회 비서와 김정식 조선로동당 중앙위원회
+                    부부장이 수행했다.
+                </p>
+
+                <p>
+                    김정은 위원장은 당 제8차대회가 제시한 국방과학발전 및
+                    무기체계개발 5개년 계획의 전략무기부문 최우선 5대 과업실현을
+                    위한 또 하나의 중대문제를 해결한 것을 높이 평가하면서
+                    “최단기간 내에 또 다른 신형 전략무기의 출현을 기대한다”며
+                    그들을 따뜻이 고무 격려했다고 통신은 전했다.
+                </p>
+
+                <p>
+                    통신은 “이번 시험은 추진력벡토르조종기술을 도입한
+                    대출력고체연료발동기의 모든 기술적특성들을 확증하는데 목적을
+                    두고 진행됐다”며 “시험결과 발동기의 추진력과 비력적,
+                    연소특성, 작업시간, 추진력벡토르조종특성을 비롯한 모든
+                    기술적지표들이 설계상값과 일치되고 그 믿음성과 안전성이
+                    과학적으로 엄격히 확증됐다”고 설명했다.
+                </p>
+            </section>
+            <!-- 2-5. 기자정보 -->
+            <div class="rpt">권남영 기자(kwonny@kmib.co.kr)</div>
+            <!-- 2-6. 기사원문 -->
+            <h5>
+                <a
+                    href="https://n.news.naver.com/mnews/article/005/0001573736?sid=100"
+                    target="_blank"
+                >
+                    기사원문
+                </a>
+            </h5>
         </main>
         <!-- 3.하단영역 -->
         <footer class="info bx">
             <!-- 주소블록요소 -->
             <address>
-                서울시 강남구 역삼동 119 대호B 8F <br>
-                대표: CHAN <br>
-                전화: 010-2222-3333 <br>
+                서울시 강남구 역삼동 119 대호B 8F <br />
+                대표: CHAN <br />
+                전화: 010-2222-3333 <br />
             </address>
         </footer>
 
-            <!-- 
+        <!-- 
             [첫페이지 이름이 index인 이유 : 서버에서 가장먼저 읽는 파일명이 index / default 이다]
 
             [ 요소(element) / 태그(tag) 뭐지? ]
