@@ -17,6 +17,8 @@
   -> 단축키 지정하기
   -> 자동줄맞춤 추가 플러그인 : prettier
     (단축키설정: ctrl+alt+p)
+    -> prettier pring width : 수치를 기본값ㅇ 80~120정도로 늘리면 과도 줄 바꿈이 해결준다
+    - prettier-> 4기본값에서 15까지
  5) CSS PEEK : CSS 미리보기/연결하기
  6) HTML to CSS autocompletion
  : html의 아이디, 클래스명을 읽어서 제시해줌
