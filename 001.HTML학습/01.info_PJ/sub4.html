@@ -165,9 +165,16 @@
             <!-- 
                 [순서없는 리스트 : ul]
                 unorderd list
+                (참고: 블릿옵션
+                https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_ul_type_css)
+
                 [순서있는 리스트 : ol]
                 ordered list
-
+                (참고: 순서표시옵션
+                https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_ol_type_all_css)
+                - start 속성 : 시작번호
+                - reverse 속성 : 일련번호를 거꾸로 진행
+                
                 [ul/ol 공통사항]
                 - 하위필수요소: li (개별리스트)
                 - 주의 : 하위에 li이외의 블록요소나 그 어떤요소도 쓸 수 없다!!
@@ -240,6 +247,69 @@
                     </dd>
                 </dl>
              </article>
+             <!-- dl 에밋코딩 참고
+             dl>(dt+dd*2a[target=_blank])*3 -->
+
+            <!-- 
+                [테이블 요소 : table]
+                table > tr > td
+                ____________________
+                table : 테이블 박스 부모요소
+                tr : 테이블 행요소(table row)
+                td : 테이블 데이터요소(table data)
+             -->
+             <!-- 사진뉴스 : table -->
+             <article class="pnews">
+                <h3>사진뉴스</h3>
+                <table border="1">
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <a href="https://n.news.naver.com/mnews/article/003/0011600319" target="_blank">
+                                與, 노조회계 투명성 위한 법률 개정… <br>
+                                "깜깜한 어둠 속에서 나와야"
+                            </a>
+                        </td>
+                        <td>
+                            <a href="https://n.news.naver.com/mnews/article/003/0011600319" target="_blank">
+                                <img src="./images/pn1.jpg" alt="사진뉴스1이미지">
+
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            <a href="https://n.news.naver.com/mnews/article/003/0011600269" target="_blank">
+                                중·장년층 소득 115만원 '찔끔' <br>
+                                 늘 때 대출 604만원 불었다
+                            </a>
+                        </td>
+                        <td>
+                            <a href="https://n.news.naver.com/mnews/article/003/0011600269" target="_blank">
+                                <img src="./images/pn2.jpg" alt="사진뉴스2이미지">
+
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>
+                            <a href="https://n.news.naver.com/mnews/article/003/0011600772" target="_blank">
+                                美 F-22 전투기·B-52H 전략폭격기 <br>
+                                한반도 전개…한미연합공중훈련
+                            </a>
+                        </td>
+                        <td>
+                            <a href="https://n.news.naver.com/mnews/article/003/0011600772" target="_blank">
+                                <img src="./images/pn3.jpg" alt="사진뉴스3이미지">
+
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+             </article>
+
         </main>
         <!-- 3.하단영역 -->
         <footer class="info bx">
