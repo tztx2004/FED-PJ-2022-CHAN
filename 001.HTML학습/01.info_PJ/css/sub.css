@@ -448,7 +448,9 @@
     border-top: 2px solid #ccc;
 }
 
-/* 말줄임 표시 셋팅*/
+/************** 
+말줄임 표시 셋팅
+***************/
 ul a, ol a, dl a{
     /* 1. 디자인 적용위해 block */
     display: block;
