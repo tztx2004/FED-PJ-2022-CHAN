@@ -447,3 +447,18 @@
     /* 보더탑 bdt */
     border-top: 2px solid #ccc;
 }
+
+/* 말줄임 표시 셋팅*/
+ul a, ol a, dl a{
+    /* 1. 디자인 적용위해 block */
+    display: block;
+    /* 2. 가로크기 한계주기 */
+    width: 315px;
+    /* 3. 줄바꿈 방지(한줄짜리) */
+    white-space: nowrap;
+    /* 4. 넘치는 자식 숨기기 */
+    overflow: hidden;
+    /* 5. 넘치는텍스트 말줄임표 설정 */
+    text-overflow: ellipsis;
+    /* border: 1px solid red; */
+}
