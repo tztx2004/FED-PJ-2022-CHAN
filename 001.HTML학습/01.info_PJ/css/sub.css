@@ -120,7 +120,7 @@
     /* 배경색 */
     background-color: #eee;
     /* 마진 */
-    margin: 15px 0;
+    margin: 15px 20px;
 }
 /* 2-6. 기사원문 */
 /* 
@@ -379,7 +379,15 @@
     /* 왼쪽마진 ml */
     margin-left: 100px;
 }
-
+/* 사진뉴스 타이틀 */
+.pnews h3{
+    text-align: center;
+}
+/* 사진뉴스 타이틀 가상요소 아이콘 넣기 */
+/* 맨 앞 가상요소 ::before */
+.pnews h3::before{
+    content: '📷';
+}
 /* 사진뉴스 테이블 박스  */
 .pnews table{
     /* 가로중앙이동 : 마영오씨 
@@ -389,6 +397,14 @@
     /* 테이블 기본 사이간격 없애기 */
     border-collapse: collapse;
     /* seperate(기본값) */
+}
+/* 테이블 a요소 */
+/* 기존 .cont article a 로 셋팅된것이 더 쎄기 때문에 여기서 윗 부모를 같은 레벨로 넣어서 선택하면 하위에 클래스가 요소(타입)보다 더 높기 때문에 우선적용된다 */
+.cont .pnews a {
+    /* 글자크기 */
+    font-size: 14px;
+    /* 줄간격 */
+    line-height: 1.5;
 }
 
 /* 
