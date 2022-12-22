@@ -5,9 +5,12 @@
 /* 웹폰트 CDN */
 @import url("https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gugi&family=Single+Day&display=swap");
 /* 
-내용:font-family: 'Gowun Batang', serif;
-타이틀:font-family: 'Gugi', cursive;
-메뉴:font-family: 'Single Day', cursive; */
+내용:
+font-family: 'Gowun Batang', serif;
+타이틀:
+font-family: 'Gugi', cursive;
+메뉴:font-family:
+'Single Day', cursive; */
 
 /* 
 [스타일시트 문법 영역! 기본문법]
