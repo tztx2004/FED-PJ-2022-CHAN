@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+.cont{
+    border: 3px dotted red;
+    background-color: rgb(66, 64, 64);
+    color: white;
+    ts
+
+}
+
+.head_wrap{
+    border: 3px dotted green;
+    text-align: center;
+    word-spacing: 50px;
+
+}
+.side_bar{
+    margin: 0;
+    text-align: center;
+    border: 2px dotted lightblue;
+}
+
+.wrap{
+    border: 3px dotted blue;
+}
+
+.chap_list{
+    border: 3px dotted violet;
+}
+
+.chap_list_wrap_title{
+    border: 2px dotted orange;
+}
+
+a{
+    color: white;
+}
