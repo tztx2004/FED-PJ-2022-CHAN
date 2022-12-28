@@ -1,8 +1,17 @@
 @charset "utf-8";
 
+#myVideo {
+    position: fixed;
+    right: 0%;
+    bottom: 0%;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
 .cont{
+    position: relative;
+    bottom: 0;
     border: 3px dotted red;
-    background-color: rgb(66, 64, 64);
     color: white;
     height: auto;
 }
@@ -12,7 +21,7 @@
     text-align: center;
     word-spacing: 50px;
     height: 50px;
-    
+    background: rgba(0, 0, 0, 0.493);
     
 
 }
@@ -22,6 +31,7 @@
     line-height: 30px;
     margin-left: auto;
     margin-top: 300px;
+    background: rgba(0, 0, 0, 0.486);
 }
 
 .wrap{
@@ -37,7 +47,8 @@
     border: 2px dotted orange;
     text-align: center;
     width: 100px;
-    /* line-height: 30px; */
+    line-height: 30px;
+    background: rgba(0, 0, 0, 0.493);
 }
 
 a{
@@ -55,6 +66,7 @@ body {
     padding: 0px;
     margin: 0px;
 }
+
 
 /* .jb-box {
 width: 100%;
