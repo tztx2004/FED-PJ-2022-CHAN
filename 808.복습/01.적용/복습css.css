@@ -60,6 +60,7 @@ ul{
     list-style: none;
     text-align: center;
     overflow: hidden;
+    padding: 0;
 }
 
 body {
