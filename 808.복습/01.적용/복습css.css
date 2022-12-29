@@ -1,4 +1,7 @@
 @charset "utf-8";
+body {
+    margin: 0px;
+}
 
 #myVideo {
     position: fixed;
@@ -13,24 +16,34 @@
     bottom: 0;
     border: 3px dotted red;
     color: white;
-    height: auto;
+    height: 3000px;
 }
 
 .head_wrap{
     border: 3px dotted green;
     text-align: center;
-    word-spacing: 50px;
-    height: 50px;
+    word-spacing: 80px;
+    height: 114px;
     background: rgba(0, 0, 0, 0.493);
-    
-
 }
+
+.head_wrap a{
+    line-height: 104px;
+    font-size: 25px;
+}
+
+
 .side_bar{
+    position: fixed;
+    right: 0;
+    top: 60%;
+    font-size: 20px;
+    
     border: 2px dotted lightblue;
     width: 200px;
-    line-height: 30px;
+    line-height: 50px;
     margin-left: auto;
-    margin-top: 300px;
+    /* margin-top: 300px; */
     background: rgba(0, 0, 0, 0.486);
 }
 
@@ -39,21 +52,27 @@
 }
 
 .chap_list{
+    position: fixed;
+    left: 0;
+    bottom: 0%;
+    font-size: 20px;
     border: 3px dotted violet;
-    margin-top: 243px;
+}
+.chap_list ul{
+    text-align: center;
+    border: 2px dotted orange;
 }
 
 .chap_list_wrap_title{
-    border: 2px dotted orange;
-    text-align: center;
-    width: 100px;
-    line-height: 30px;
+    
+    width: 168px;
+    line-height: 50px;
     background: rgba(0, 0, 0, 0.493);
+    
 }
 
 a{
     color: white;
-    line-height: 50px;
 }
 
 ul{
@@ -63,10 +82,6 @@ ul{
     padding: 0;
 }
 
-body {
-    padding: 0px;
-    margin: 0px;
-}
 
 
 /* .jb-box {
