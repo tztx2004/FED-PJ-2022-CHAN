@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <title>04. fixed 포지션</title>
     <style>
-
+        body{
+            height: 3000px;
+        }
         /* fixed 박스 공통 */
         .fxd{
             position: fixed;/* pof */
@@ -200,6 +202,43 @@
         /* 부모박스 오버시 닥스 보이기 */
         .absimg:hover img:last-child{
             opacity: 1;
+        }
+
+        /* 최하위 요소일지라도 fixed되면 보이는 화면으로 기준하여 변경됨!! */
+        .f3{
+            position: fixed;
+            top: 25%;
+            right: -140px;
+            z-index: 99999;
+            /* 트랜지션: trs */
+            transition: 0.3s;
+        }
+        /* 마우스 오버시 나오기 */
+        .f3:hover{
+            right: 0;
+        }
+
+        .f3 span{
+            position: absolute;
+            top: 0;
+            right: 100%;
+            /* 부모는? .f3 */
+            width: 50px;
+            height: 100%;
+            /* 글자세로모드 */
+            writing-mode: vertical-lr;
+            background-color: lightblue;
+            padding-left: 20px;
+            /* 둥근모서리 : 왼쪽위, 왼쪽아래
+            boder-radius : 왼위 오른위 오른아래 왼아래
+            왼쪽 위부터 시계방향! */
+            border-radius: 20px 0 0 20px;
+        }
+
+        .f3 img{
+            height: 200px;
+            /* 하단간극없앰 */
+            vertical-align: middle;
         }
 
     </style>
