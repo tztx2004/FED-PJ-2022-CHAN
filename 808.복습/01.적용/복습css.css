@@ -1,6 +1,7 @@
 @charset "utf-8";
 body {
     margin: 0px;
+    height: auto;
 }
 
 #myVideo {
@@ -16,7 +17,6 @@ body {
     bottom: 0;
     border: 3px dotted red;
     color: white;
-    height: 3000px;
 }
 
 .head_wrap{
@@ -80,6 +80,7 @@ ul{
     text-align: center;
     overflow: hidden;
     padding: 0;
+    margin: 0;
 }
 
 
