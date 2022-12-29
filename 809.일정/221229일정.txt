@@ -5,7 +5,7 @@
 -> 빙그레 모사하기
 
 2.CSS학습
-- 포지션 : absolute + rixed +sticky
+- 포지션 : absolute + fixed +sticky
 - 트랜지션
 
 3. 쉐도잉 프로젝트 : 도깨비 PJ
