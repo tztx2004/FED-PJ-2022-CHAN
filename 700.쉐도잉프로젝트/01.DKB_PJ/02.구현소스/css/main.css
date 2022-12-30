@@ -8,9 +8,9 @@
 @import url(common.css);
 
 /* 공사중 표시 */
-body *{
+/* body *{
     outline: 1px dotted red;
-}
+} */
 
 /* 컨텐츠파트 최상위부모 */
 body{
@@ -112,6 +112,12 @@ body{
     /* 배경넣기 */
     background: url(../images/eachBG.jpg) no-repeat bottom/cover;
 
+    /* 둥근모서리 : 왼쪽위부터 시계방향 */
+    border-radius: 20px 5px 5px 20px;
+    
+    /* 윗쪽여백 */
+    margin-top: 2%;
+
     /* 트랜지션 - 두가지변환상태를 애니메이션해주는 속성
     transition: 속성 시간 이징 지연 */
     transition: height .4s;
@@ -131,6 +137,18 @@ body{
     letter-spacing: -1px;
 }
 
+/* 캐릭터 타이틀 앞 아이콘 가상요소로 넣기 */
+.cd h3::before{
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 35px;
+    vertical-align: -6px;
+    margin-right: 5px;
+    background: url(../images/bg_logo_a_01.png) no-repeat -144px -181px;
+    /* 배경이미지위치값은 본 이미지를 그림판으로 열어서 마우스 커서 위치에 따라 표시되는 x,y축 좌표값을 마이너스 기호를 붙여서 가로, 세로 순으로 써주면 정확한 위치가된다! */
+}
+
 /* 캐릭터 설명문단 */
 .cd p{
     font-family: 'Single Day', 'ZCOOL KuaiLe', cursive;
@@ -139,4 +157,55 @@ body{
     padding: 10px;
     /* 양쪽정렬 justify - taj */
     text-align: justify;
+}
+
+/* 캐릭터 첫번째 문단 첫글자 가상요소로 디자인 변경하기! */
+.cd p:first-child:first-letter{
+    font-size: 50px;
+    font-weight: bold;
+    color: cyan;
+    /* 그림자로 글자 테두리주기
+    블러없는 그림자 4개 사용 */
+    text-shadow: 
+     1px 0 #000,
+    -1px 0 #000,
+    0 1px #000,
+    0 -1px #000
+    ;
+    /* 글자크기로 인해 줄간격조정 */
+    line-height: 1;
+}
+/* 각 캐릭터 박스별 첫글자 색 변경 - 3개 */
+.cat:nth-child(2) .cd p:first-child:first-letter{
+    color: lightgreen;
+    /* 그림자로 글자 테두리주기
+    블러없는 그림자 4개 사용 */
+    text-shadow: 
+     1px 0 #000,
+    -1px 0 #000,
+    0 1px #000,
+    0 -1px #000
+    ;
+}
+.cat:nth-child(3) .cd p:first-child:first-letter{
+    color: lightcoral;
+    /* 그림자로 글자 테두리주기
+    블러없는 그림자 4개 사용 */
+    text-shadow: 
+     1px 0 #000,
+    -1px 0 #000,
+    0 1px #000,
+    0 -1px #000
+    ;
+}
+.cat:nth-child(4) .cd p:first-child:first-letter{
+    color: lightpink;
+    /* 그림자로 글자 테두리주기
+    블러없는 그림자 4개 사용 */
+    text-shadow: 
+     1px 0 #000,
+    -1px 0 #000,
+    0 1px #000,
+    0 -1px #000
+    ;
 }
