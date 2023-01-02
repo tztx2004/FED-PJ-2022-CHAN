@@ -5,6 +5,7 @@ body {
     outline: gray;
 }
 
+
 #myVideo {
     position: fixed;
     right: 0%;
@@ -18,6 +19,7 @@ body {
     bottom: 0;
     border: 3px dotted red;
     color: white;
+    height: 100%;
 }
 
 .head_wrap{
