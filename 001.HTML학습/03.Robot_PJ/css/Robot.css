@@ -64,7 +64,7 @@ body * {
     background: url(../images/hair.png) no-repeat 0/100% 100%;
     z-index: 1;
 }
-/* .head::{
+/* .head:hover::before{
     content: '';
     display: block;
     position: absolute;
@@ -77,7 +77,7 @@ body * {
 } */
 
 /* 머리박스에 오버시 가상요소 가발변경하기 */
-.head:hover::before{
+/* .head:hover::before{
     content: '';
     display: block;
     position: absolute;
@@ -86,7 +86,7 @@ body * {
     width: 300px;
     height: 200px;
     background: url(../images/hair2.png) no-repeat 0/100% 100%;
-}
+} */
 /* 머리박스 가상요소로 턱만들기 */
 .head::after{
     content: '';

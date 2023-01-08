@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로봇연습</title>
+    <style>
+        html,body,h1,h2,ol,ul{
+            margin: 0;
+            padding: 0;
+        }
+    /* 공통클래스 */
+    body{
+        background: url(./images/bg.jpg) no-repeat fixed center/cover;
+    }
+    /* 공사중표시 */
+    body *{
+        outline: 2px dashed red;
+    }
+    /* 1. 상단영역 */
+    /* 2. 메인영역 */
+    /* 2-1. 로봇박스 */
+    .robx{
+        padding: 200px 0 400px;
+    }
+    .head{
+        position: relative;
+        width: 250px;
+        height: 150px;
+        margin: 0 auto;
+        background: #c9c9c9;
+    }
+    .head>div{
+        position: absolute;
+    }
+    .eye{
+        width: 50px;
+        height: 50px;
+
+        /* 배경공통 */
+        background-color: #fff;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+        border-radius: 50%;
+        border: 4px double #000;
+    }
+    .e1{
+        top: 50px;
+        left: 50px;
+        background-image: url(./images/e1.jpg);
+    }
+    .e2{
+        top: 50px;
+        right: 50px;
+        background-image: url(./images/e2.jpg);
+    }
+    .nose{
+        top: 100px;
+        left: 100px;
+        width: 50px;
+        height: 70px;
+        background: url(./images/nose.jpg) no-repeat 0/110% 100%;
+        border-radius: 30px;
+    }
+    .head::before{
+        content: '';
+        display: block;
+        position: absolute;
+        top: -132px;
+        left: -140px;
+        width: 511px;
+        height: 420px;
+        background: url(./images/hair.png) no-repeat 0/100% 100%;
+        z-index: 1;
+    }
+    .head::after{
+        content: '';
+        display: block;
+        position: absolute;
+        top: 100%;
+        width: 250px;
+        height: 100px;
+        background-color: #c9c9c9;
+        clip-path: polygon(0 0, 100% 0, 60% 100%, 40% 100%);
+        z-index: -1;
+    }
+    .mouth{
+        top: 180px;
+        left: 78px;
+        width: 100px;
+        height: 30px;
+        background: url(./images/mouth.png) no-repeat 0/100% 100%;
+    }
+    </style>
+</head>
+<body>
+    <!-- 1. 상단영역 -->
+    <div class="top">
+        <header id="top">
+            <!-- 1-1. 로고 -->
+            <!-- 1-2. 로고 -->
+            <!-- 1-3. 로고 -->
+        </header>
+    </div>
+    <!-- 2. 메인영역 -->
+    <div id="cont">
+        <main class="cont">
+            <!-- 2-1.로봇박스 -->
+            <section class="robx">
+                <!-- 로봇머리 -->
+                <div class="head">
+                    <!-- 왼눈 -->
+                    <div class="eye e1"></div>
+                    <!-- 오른눈 -->
+                    <div class="eye e2"></div>
+                    <!-- 코 -->
+                    <div class="nose"></div>
+                    <!-- 입 -->
+                    <div class="mouth"></div>
+                    <!-- 왼귀 -->
+                    <div class="ear er1"></div>
+                    <!-- 오른귀 -->
+                    <div class="ear er2"></div>
+                </div>
+                <!-- 로봇몸통 -->
+                <div class="body">
+                    <!-- 목 -->
+                    <div class="neck"></div>
+                    <!-- 왼팔 -->
+                    <div class="arm a1"></div>
+                    <!-- 오른팔 -->
+                    <div class="arm a2"></div>
+                    <!-- 왼다리 -->
+                    <div class="leg l1"></div>
+                    <!-- 오른다리 -->
+                    <div class="leg l2"></div>
+                    <!-- 왼어깨 -->
+                    <div class="shd s1"></div>
+                    <!-- 오른어깨 -->
+                    <div class="shd s2"></div>
+                </div>
+                <!--  -->
+            </section>
+        </main>
+    </div>
+    <!-- 3. 하단영역 -->
+</body>
+</html>
