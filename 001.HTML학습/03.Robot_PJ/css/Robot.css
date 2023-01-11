@@ -11,6 +11,14 @@
     font-family: 'Chakra Petch', sans-serif;
     font-family: 'Orbitron', sans-serif;
 */
+/* 전체 부드러운 스크롤 */
+html {
+    scroll-behavior: smooth;
+}
+/* 전체 가로스크롤 방지 */
+body {
+    overflow-x: hidden;
+}
 
 html,
 body,
@@ -47,12 +55,27 @@ body * {
 }
 /*********************** 1. 상단영역 ***********************/
 /* 1-1.로고 */
-.logo{
+.logo {
     /* 픽스드 포지션 */
     position: fixed;
-    top: 50px;
-    left: 50px;
+    top: calc(50% - 102px);
+    left: calc(50% - 102px);
+    /********************************************************
+        [  앱솔루트/픽스드 포지션 정중앙보이기  ]
+        1. calc() 로 계산하기
+        ->  top: calc(50% - 중앙갈박스높이값절반);
+            left: calc(50% - 중앙갈박스가로값절반);
+            (주의: 마이너스 기호 앞뒤 반드시 띄어쓰기)
+        2. 위치값 50% 이동 후 트랜스폼 사용하기
+        ->  top: 50%;
+            left: 50%
+            transform: translate(-50%,-50%)
+    ********************************************************/
+    z-index: 1;
 
+    /* 크기확대하기 */
+    transform: scale(2);
+    
     /* 박스셋팅 */
     width: 200px;
     height: 200px;
@@ -65,34 +88,31 @@ body * {
     /* background-size: 160px auto; */
 
     /* 박스그림자 */
-    box-shadow: 
-    inset 0 0 20px 5px #000,
-    0 0 20px 5px aquamarine;
+    box-shadow: inset 0 0 20px 5px #000, 0 0 20px 5px aquamarine;
     /* 글자셋팅 */
     color: aquamarine;
-    font: 45px/200px 'Orbitron';
+    font: 45px/200px "Orbitron";
     /* font: 스두크/줄체; */
     text-shadow: 2px 2px 5px #000;
-
 }
 /* 1-2.링크타이틀 */
-.link{
+.link {
     position: absolute;
     top: 100px;
     right: 50px;
 }
 /* 링크 a */
-.link a{
+.link a {
     /* a요소 필수셋팅: 글자색+밑줄없앰 */
     color: lawngreen;
     text-decoration: none;
     /* 글자: 스두크/줄체 */
-    font: 50px 'Black Ops One';
+    font: 50px "Black Ops One";
     /* 글자그림자 */
     text-shadow: 2px 2px 2px #000;
 }
 /* 마우스 오버시 */
-.link a:hover{
+.link a:hover {
     /* 글자색 */
     color: orangered;
     /* 글자데코 */
@@ -101,7 +121,7 @@ body * {
     text-decoration-style: wavy;
 }
 /* 1-3.탑이동버튼 */
-.btnTop{
+.btnTop {
     /* 픽스드 포지션 */
     position: fixed;
     bottom: 50px;
@@ -115,14 +135,14 @@ body * {
     background-color: #ccc;
 }
 /* 버튼 a요소 */
-.btnTop a{
+.btnTop a {
     display: block;
     width: 100%;
     height: 100%;
-    
+
     /* 글자셋팅 */
     color: blue;
-    font: 30px/90px 'Black Ops One';
+    font: 30px/90px "Black Ops One";
     /* 
         line-height가 높이값인 100px이므로 중앙정렬을 위해 100px이 아닌이유
 
@@ -134,12 +154,12 @@ body * {
     text-decoration: none;
 }
 /* 버튼 마우스 오버시 */
-.btnTop:hover{
+.btnTop:hover {
     background-color: #ff0;
     border-style: inset;
 }
 /* a요소 글자색 */
-.btnTop:hover a{
+.btnTop:hover a {
     color: red;
 }
 /*********************** 2. 메인영역 ***********************/
@@ -695,3 +715,29 @@ body * {
 }
 
 /*********************** 3. 하단영역 ***********************/
+#info {
+    /* 글자셋팅 */
+    color: #fff;
+    font: 30px "Black Ops One";
+    text-shadow: 2px 2px 2px #000;
+
+    /* 박스셋팅 */
+    background-color: rgba(0, 0, 0, 0.486);
+    text-align: center;
+    padding: 50px;
+}
+
+/* 속박스 가상요소로 아이콘 모양 넣기 */
+.info::before {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    background: pink url(../images/robot_03.png) no-repeat;
+    background-position: -7px 1px;
+    background-size: 50px;
+    /* 인라인요소간 세로정렬 */
+    vertical-align: top;
+}
