@@ -27,6 +27,7 @@ h1.logo {
     width: 100px;
     margin: 0 auto;
     padding-top: 20px;
+    outline: 1px solid red;
 }
 /* 로고 이미지 */
 .logo img {
@@ -41,18 +42,23 @@ nav.gnb ul {
     /* 마진탑은 부모인 nav.gnb 바깥으로 나가서 위의 박스를 밀고 있다! */
     margin-top: 27px;
 }
+
+.gnb > ul > li {
+     /* a요소의 패딩을 li로 이동함! */
+    margin: 0 10px;
+}
 /* GNB a요소 */
 .gnb > ul > li > a {
     position: relative;
-    /* li가상요소 서브배경 보다 위 순서대로 나중에 그려진 static아닌 요소가 위 */
+    /* li가상요소 서브배경 보다 위
+    순서대로 나중에 그려진 static아닌 요소가 위 */
     color: #222;
     text-decoration: none;
     font-size: 1.7rem;
     line-height: 2rem;
-    margin: 0 10px;
 }
-
-/* GNB 서브메뉴 배경 상위메뉴 li에 가상요소로 만들기
+/* GNB 서브메뉴 배경
+상위메뉴 li에 가상요소로 만들기
 서브메뉴가 있는 li에 sm이름의 클래스를 준다! */
 .gnb > ul > li.sm:before {
     content: "";
@@ -69,31 +75,31 @@ nav.gnb ul {
 /* 상위메뉴 오버시 서브배경보이기 */
 .gnb > ul > li.sm:hover::before {
     border-bottom: 2px solid red;
-    transition: 0.3s;
+    transition-duration: 0.3s;
 }
 
 /* 상위메뉴 li오버시 서브메뉴 보이기 */
 
 /* 프로그램소개 */
-.gnb > ul > li:first-child.hover::before {
+.gnb > ul > li:first-child:hover::before {
     height: 120px;
 }
-.gnb > ul > li:first-child.hover .smenu {
+.gnb > ul > li:first-child:hover .smenu {
     height: 100px;
 }
 /* 동영상 */
-.gnb > ul > li:nth-child(3).hover::before {
+.gnb > ul > li:nth-child(3):hover::before {
     height: 150px;
 }
-.gnb > ul > li:nth-child(3).hover .smenu {
+.gnb > ul > li:nth-child(3):hover .smenu {
     height: 130px;
 }
 /* 사진첩 */
-.gnb > ul > li:nth-child(4).hover::before {
+.gnb > ul > li:nth-child(4):hover::before {
     height: 90px;
 }
-.gnb > ul > li:nth-child(4).hover .smenu {
-    height: 70px;
+.gnb > ul > li:nth-child(4):hover .smenu {
+   height: 70px;
 }
 
 /* 가상요소로 밑줄 애니만들기 
@@ -108,18 +114,17 @@ nav.gnb ul {
     width: 0%;
     margin-left: 50%;
 
-    height: 2px;
-    margin-top: 5px;
+    height: 3px;
+
+    margin-top: 15px;
     background-color: #f00;
     /* 트랜지션:속시이지 trs */
     transition: all 0.3s;
 }
 /* 오버시 바 보이기 - 중앙에서 펼쳐짐! */
-.gnb > ul > li:hover > a::after,
-.tmenu > ul > li:hover > a::after {
+.gnb > ul > li:hover > a::after {
     width: 100%;
     margin-left: 0%;
-    /* 마진left값은 트랜지션 안되고 width만 되어야한다! */
 }
 
 /* GNB 서브메뉴 */
@@ -142,7 +147,7 @@ nav.gnb ul {
     /* 상단 위치이동 */
     margin-top: 15px;
 
-    background-color: #fff;
+    /* background-color: #fff; */
     /* 숨기기 */
     height: 0;
     overflow: hidden;
