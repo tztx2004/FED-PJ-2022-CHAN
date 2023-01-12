@@ -12,3 +12,9 @@ ul,ol{
     list-style: none;
     /* 불릿, 숫자없앰 */
 }
+
+/* 3.root -html 글자크기셋팅 */
+html{
+    font-size: 10px;
+    /* rem단위 계산  */
+}

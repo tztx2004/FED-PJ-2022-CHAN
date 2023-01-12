@@ -74,14 +74,14 @@
             대상선택:
             1. gnb메뉴의 상위메뉴 a요소
             2. 사이드메뉴의 1,2번 li하위 a요소*/
-            .gnb a::after,
+            .gnb>ul>li>a::after,
             .tmenu>ul>li>a::after {
                 content: '';
                 display: block;
 
-                /* 변경속성 */
+                /* 변경속성 - 바가 중앙에 있음 */
                 width: 0%;
-                margin-left: 100%;
+                margin-left: 50%;
 
                 height: 2px;
                 margin-top: 5px;
@@ -89,14 +89,12 @@
                 /* 트랜지션:속시이지 trs */
                 transition: all .3s;
             }
-            /* 오버시 바 보이기 */
+            /* 오버시 바 보이기 - 중앙에서 펼쳐짐! */
             .gnb>ul>li:hover>a::after,
             .tmenu>ul>li:hover>a::after{
                 width: 100%;
                 margin-left: 0%;
                 /* 마진left값은 트랜지션 안되고 width만 되어야한다! */
-                transition-property: width;
-                /* 오버시 트랜지션 속성을 width만 적용! */
             }
 
             /* 마지막 사이드메뉴 li 바 제외하기 */
@@ -161,7 +159,11 @@
                 flex-direction: column;
                 justify-content: center;
             }
-
+            /* 서브메뉴 a오버시 확대 */
+            .smenu a:hover{
+                transform: scale(1.1);
+                color: orange;
+            }
             /* 컨텐츠박스 */
             .cont {
                 position: relative;
