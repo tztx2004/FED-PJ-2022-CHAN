@@ -109,7 +109,7 @@ animation: 이시이지반방마
 }
 @keyframes leftArm3 {/* 왼손 */
     to{
-        transform: rotate(77deg);
+        transform: rotate(-30deg);
     }
 }
 /* 2-2. 왼팔애니 호출하기 */
@@ -142,7 +142,8 @@ animation: 이시이지반방마
         transform: rotate(-102deg);
     }
 }
-@keyframes rightArm2 {/* 팔하단 계속흔들기*/
+@keyframes rightArm2 {
+    /* 팔하단 계속흔들기*/
     from{
         transform: rotate(10deg);
     }
