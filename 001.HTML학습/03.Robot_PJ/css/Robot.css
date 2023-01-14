@@ -14,7 +14,7 @@
 /* 전체 부드러운 스크롤 */
 html {
     scroll-behavior: smooth;
-}
+  }
 /* 전체 가로스크롤 방지 */
 body {
     overflow-x: hidden;
@@ -433,7 +433,6 @@ body * {
     left: 0px;
     width: 60px;
     height: 90px;
-    outline: 2px dashed lime;
     transform-origin: top;
 }
 /* 왼쪽손 배경이미지 */
