@@ -11,17 +11,64 @@ html,body, h1{
 
 body{
     background-color: #9c0;
+    /* 배경색 애니메이션 : 이시이지 반방마 */
+    animation: bgAni 10s linear infinite;
+}
+
+/* 배경색 키프레임 */
+@keyframes bgAni {
+    0%{
+    background-color: #9c0;
+    }
+    20%{
+    background-color: rgb(218, 159, 159);
+    }
+    40%{
+    background-color: rgb(215, 236, 94);
+    }
+    60%{
+    background-color: rgb(48, 243, 152);
+    }
+    80%{
+    background-color: rgb(51, 211, 211);
+    }
+    100%{
+    background-color: #9c0;
+    }
 }
 
 /* 전체 타이틀 */
 .tit{
+    /* height: 50px;
+    -> auto로 유동적인 글자크기만큼만 사이즈 주지말자! */
     font-family: 'Comfortaa', cursive;
     /* 최대글자크기 지정 */
     font-size: min(5vw,42px);
-    padding: 5vh 0;
+    margin: 5vh 0;
     text-align: center;
     color: #fff;
     text-shadow: 2px 2px 2px #222;
+    overflow: hidden;
+}
+/* 글자만 싸고 있는 span */
+.tit span{
+    display: block;
+    transform: translateY(100%);
+    /* 애니메이션 : 이시이지반방마 */
+    animation: upAni .5s cubic-bezier(0.18, 0.89, 0.32, 1.28) 1s forwards;
+}
+/* 글자등장 키프레임 */
+@keyframes upAni {
+    to{
+        transform: translateY(0);
+    }
+}
+
+/* 전체래핑박스 */
+.wrap{
+    overflow: hidden;
+    /* 3D문이 잘려보이지 않게 위아래 패딩줌! */
+    padding: 50px 0;
 }
 
 /* 전체문부모 */
@@ -30,7 +77,13 @@ body{
     height: 300px;
     margin: 0 auto;
     background-color: #900;
+    /* 트랜스폼 y축 이동 : 패딩을 고려하여
+    내크기보다 좀 더 많이 아랫쪽으로 이동함!*/
+    transform: translateY(120%);
+    /* 애니메이션 : 이시이지반방마 */
+    animation: upAni .6s cubic-bezier(0.18, 0.89, 0.32, 1.28) 1s forwards;
 }
+
 /* 문프레임 */
 .frame{
     position: relative;
@@ -59,11 +112,23 @@ body{
         2가지를 같이 셋팅함!
     ***********************************************/
     /* perspective-origin: bottom; */
+
+    animation: waveAni 3s ease-in-out infinite alternate ;
 }
+
+/* 배경이미지 크기변경으로 파도치는 애니 */
+@keyframes waveAni {
+    to{
+        background-size: auto 120%;
+    }
+} /* waveAni 키프레임 */
+
 /* 문짝 */
 .door{
     position: relative;
     /* 부모자격 : .handle */
+    z-index: 1;
+    /* 엘사보다 위! */
     width: 150px;
     height: 280px;
     background-color: #c90;
@@ -127,3 +192,33 @@ body{
     border-radius: 50%;
     background-color: blue;
 }
+
+/* 엘사박스 */
+#elsa{
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 280px;
+    /* 엘사이미지 숨기기 */
+    overflow: hidden;
+}
+
+/* 엘사 이미지 */
+#elsa img{
+    margin-left: 133px;
+    transform-origin: bottom;
+    /* 애니메이션 */
+    animation: elsaAni 1s ease-in-out infinite alternate;
+    /* 처음에 멈춰있기 */
+    animation-play-state: paused;
+}
+/* 마우스 오버 시 엘사애니 작동 */
+.cont:hover #elsa img{
+    animation-play-state: running;
+}
+/* 엘사 애니 키프레임 */
+@keyframes elsaAni {
+    to{
+        transform: rotate(-10deg);
+    }
+}/* elsa애니 */
