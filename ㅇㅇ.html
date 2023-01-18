@@ -1,66 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <style>
-        html {
-  background: #f2f2f2;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function move(yes){
+      // 1.함수호출
+      console.log("나야나!"+yes);
+      // 2.대상지정
+      let goal = 
+      document.querySelector(".box .hi");
+      
+      goal.style.transform = "scale(2)";
+      goal.style.transition = "10s ease,backgroundColor 2s 5s";
+      goal.style.backgroundColor = "gray";
 
-.scroll-container,
-.scroll-area {
-  max-width: 850px;
-  height: 600px;
-  font-size: 60px;
-}
+    }
+  </script>
+  <style>
+    .box .hi{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
 
-.scroll-container {
-  overflow: auto;
-  scroll-snap-type: y mandatory;
-}
+      width: 100px;
+      height: 100px;
+      outline: 5px dashed red;
+      border-radius: 50%;
 
-.scroll-area {
-  scroll-snap-align: start;
-}
-
-.scroll-container,
-.scroll-area {
-  margin: 0 auto;
-}
-
-.scroll-area {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
-
-.scroll-area:nth-of-type(1) {
-  background: #49b293;
-}
-
-.scroll-area:nth-of-type(2) {
-  background: #c94e4b;
-}
-
-.scroll-area:nth-of-type(3) {
-  background: #4cc1be;
-}
-
-.scroll-area:nth-of-type(4) {
-  background: #8360A6;
-}
-    </style>
+    }
+  </style>
 </head>
 <body>
-    <div class="support-scrollsnap"></div>
+  <div class="box">
+    <div class="hi" onclick="move(5)">
 
-        <div class="scroll-container">
-        <div class="scroll-area">1</div>
-        <div class="scroll-area">2</div>
-        <div class="scroll-area">3</div>
-        <div class="scroll-area">4</div>
     </div>
+  </div>
 </body>
 </html>
