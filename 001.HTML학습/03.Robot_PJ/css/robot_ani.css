@@ -154,13 +154,12 @@ animation: 이시이지반방마
 @keyframes rightArm3 {/* 오른손 */
     from{
         transform: 
-        rotate(-20deg)
-        rotateY(180deg);
+        rotate(-20deg);
     }
     to{
         transform: 
-        rotate(20deg)
-        ;
+        rotate(20deg);
+        
     }
 }
 
