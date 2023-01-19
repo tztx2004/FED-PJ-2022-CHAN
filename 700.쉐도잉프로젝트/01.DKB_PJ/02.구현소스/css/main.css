@@ -209,3 +209,11 @@ body{
     0 -1px #000
     ;
 }
+
+/* 등장글자 이미지 */
+#mvtxt{
+    position: absolute;
+    top: 30vh;
+    right: 5vw;
+    width: min(20vw,327px);
+}
