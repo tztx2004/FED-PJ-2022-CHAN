@@ -228,7 +228,7 @@ body * {
     content: "";
     display: block;
     position: absolute;
-    top: 100%;
+    top: 99%;
     /* 부모박스 높이만큼 밀어준다! */
     z-index: -1;
     width: 250px;
