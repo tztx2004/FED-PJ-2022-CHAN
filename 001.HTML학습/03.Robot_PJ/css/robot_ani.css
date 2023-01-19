@@ -139,7 +139,7 @@ animation: 이시이지반방마
         transform: rotate(-122deg);
     }
     to{
-        transform: rotate(-102deg);
+        transform: rotate(-112deg);
     }
 }
 @keyframes rightArm2 {

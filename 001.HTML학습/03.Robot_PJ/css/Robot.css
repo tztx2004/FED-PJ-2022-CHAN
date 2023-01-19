@@ -100,6 +100,7 @@ body * {
     position: absolute;
     top: 100px;
     right: 50px;
+    z-index: 10;
 }
 /* 링크 a */
 .link a {
@@ -341,6 +342,7 @@ body * {
 /* 몸통 하위 직계 div 모두 앱솔루트! */
 .body > div {
     position: absolute;
+    box-shadow: 0 0 10px 5px cyan;
 }
 /* 몸통 가상요소로 상단만들기 */
 .body::before {
@@ -378,7 +380,7 @@ body * {
     height: 20px;
     border-radius: 0 0 10px 10px;
     /* 하단보더 */
-    border-bottom: 20px ridge goldenrod;
+    border-bottom: 20px ridge goldenrod;;
 }
 /* 팔공통 */
 .arm {
@@ -423,6 +425,7 @@ body * {
     border-radius: 25px;
     /* 회전축변경 : 세로방향 top */
     transform-origin: top;
+    box-shadow: 0 0 10px 5px cyan;
 }
 /* 팔하단 가상요소로 손박스 만들기 */
 .arm > span::after {
@@ -522,6 +525,7 @@ body * {
     border-radius: 25px;
     /* 회전축변경 : 세로방향 top */
     transform-origin: top;
+    box-shadow: 0 0 10px 5px cyan;
 }
 /* 다리하단 가상요소로 발만들기 */
 .leg span::after {
