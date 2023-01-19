@@ -134,6 +134,7 @@ body * {
     border-radius: 50%;
     border: 5px outset #fff;
     background-color: #ccc;
+    z-index: 1;
 }
 /* 버튼 a요소 */
 .btnTop a {
