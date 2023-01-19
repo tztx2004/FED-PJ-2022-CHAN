@@ -16,9 +16,8 @@ html {
     scroll-behavior: smooth;
   }
 /* 전체 가로스크롤 방지 */
-html,body {
+body {
     overflow-x: hidden;
-    overflow-y: auto;
 }
 
 html,
