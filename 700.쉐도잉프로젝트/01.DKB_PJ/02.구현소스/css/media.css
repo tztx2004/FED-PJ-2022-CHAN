@@ -60,6 +60,7 @@
 /* 780px 사이즈 이하 미디어쿼리 시작 */
 @media screen and (max-width: 780px) {
     html,body{
+        position: relative;
         width: 100vw;
         overflow-x: hidden;
     }
