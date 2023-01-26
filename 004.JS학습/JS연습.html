@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습JS</title>
+    <script>
+        function jumsu(){
+            // 1. 호출확인
+            console.log("hi!")
+            // 2. 대상선정
+            // 2-1. 점수입력요소 : input#jumsu
+            let jumsu = document.getElementById("jumsu");
+            // 2-2. 출력요소 : #jexp
+            let jexp = document.querySelector("#jexp");
+
+            // 3. 입력값 읽어오기
+            let score = jumsu.value;
+            console.log("입력된 값:",score);
+            console.log("데이터형:",typeof score);
+            
+            // 초기화 및 메시지 출력
+            let initFn = function (txt){
+                // 0. 함수호출
+                console.log("초기화해야지!");
+            }
+
+        }//////////////////// jumsu 함수/////////////////////////
+    </script>
+</head>
+<body>
+    <div class="head">
+        <h1>JS 제어문</h1>
+        <hr>
+    </div>
+    <div class="if_pj">
+        <h2>IF문 연습</h2>
+        <h3>평가출력</h3>
+        <label for="jumsu">점수입력 : </label>
+        <input type="text" id="jumsu" placeholder="점수를 입력하세요!" maxlength="3" onkeypress="if(event.keyCode===13){jumsu()}">
+        <button onclick="jumsu()">평가하기</button>
+        <br><br>
+        <hr>
+    </div>
+    <div class="switch_pj">
+        <h2>switch case문 연습</h2>
+        <h3>국번안내</h3>
+        <label for="">지역명 입력 : </label>
+        <input type="text" placeholder="지역명을 '도'를 빼고 쓰세요">
+        <button>국번문의</button>
+        
+    </div>
+</body>
+</html>
