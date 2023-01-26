@@ -164,17 +164,18 @@ body{
 .cont{
     position: relative;
     /* 부모자격 - .screen */
-    height: 788px;
+    /* height: 788px; */
+    aspect-ratio: 1200 / 788;
     /* 극장배경넣기 */
     background: url(../images/bg.jpg) no-repeat center top/100%;
 }
 /* 2-1스크린 */
 .screen {
     position: absolute;
-    top: 130px;
-    left: 254px;
-    width: 706px;
-    height: 409px;
+    top: 17%;
+    left: 21%;
+    width: 59%;
+    height: 51%;
     background-color: #000;
 }
 /* 유튜브 아이프레임 */
@@ -186,9 +187,9 @@ body{
 /* 2-2.예고편 선택메뉴 */
 .mlist{
     position: absolute;
-    bottom: 61px;
+    bottom: 5.4%;
     left: 50%;
-    width: 702px;
+    width: 60%;
     transform: translateX(-49%);
 
     /* 앱솔루트 부모자격이 있는 요소의 overflow가 적용됨! */
@@ -201,14 +202,22 @@ body{
     /* 진행방향정렬 : 양쪽 끝 맞춘 후 사이간격 일정 */
     justify-content: space-between;
 }
+/* 상위 li 두번째 부터 끝까지 왼쪽마진 */
+.mlist ul>li+li {
+    margin-left: 1.5%;
+}
 /* 선택메뉴 상위 li */
 .mlist ul>li{
-
+    position: relative;
+    /* 부모자격: .movtxt */
+    flex: 1;
+    /* 등분할설정 */
+    overflow: hidden;
 }
 /* 포스터 이미지 */
 .mlist img{
-    width: 99px;
-    height: 140px;
+    width: 100%;
+    /* height: 140px; */
 }
 /* 영화정보박스 */
 .movtxt{
@@ -222,8 +231,9 @@ body{
     /* 앱솔루트 포지션 */
     position: absolute;
     top: 100%;
-    width: 99px;
-    height: 140px;
+    width: 100%;
+    height: 100%;
+    /* 부모는? 싸고있는 li */
     text-align: center;
     background-color: rgba(0, 0, 0, 0.7);
 
@@ -240,7 +250,14 @@ body{
     top: 0;
 }
 
-/***************************** 3.하단영역 *****************************/
+/* 영화정보박스 제목만 변경 */
+.movtxt li:first-child{
+    font-size: min(14px,1.1vw);
+    color: aqua;
+    white-space: nowrap;
+}
+
+/******************** 3.하단영역 ********************/
 .info{
     display: flex;
     height: 100px;
