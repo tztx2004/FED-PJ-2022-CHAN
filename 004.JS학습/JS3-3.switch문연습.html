@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>if문 연습</title>
+        <title>switch문 연습</title>
         <!-- 웹폰트 CDN -->
         <link href="https://fonts.googleapis.com/css?family=Audiowide&amp;display=swap" rel="stylesheet" />
         <style>
@@ -136,7 +136,6 @@
                 //     chgImg("넌,누구냐?");
                 // });
 
-
                 // 버튼 4개를 모두 이벤트 셋팅하기 // ///////
                 // for문 사용 : for(시;한;증){}
                 // 버튼 개수만큼 돌아준다!
@@ -147,17 +146,15 @@
 
                 // 버튼요소는 변수에 담을때 querySelectorAll()로 가져왔으므로 html컬렉션에 담긴다
                 // 이때 첫번째 요소는 0부터 시작한다!
-                
+
                 // 시작값은 0, 4보다 작을때까지 0,1,2,3 순으로 돈다!
-                for(var i=0;i<bcnt;i++){
+                for (var i = 0; i < bcnt; i++) {
                     // 대상 : .btns -> btns
-                    btns.item(i).onclick = function(){
+                    btns.item(i).onclick = function () {
                         chgImg(this);
                         // this는 클릭이벤트가 발생한 요소자신!
-                    };//////// click 이벤트함수 ////////
-                }//////////for문/////////////
-            
-
+                    }; //////// click 이벤트함수 ////////
+                } //////////for문/////////////
             } ////////////////setEvt 함수////////////////////
 
             /************************************************ 
@@ -178,9 +175,25 @@
                 // 변경대상 : #scene
                 var scene = document.querySelector("#scene");
 
-                // 4. 할당될 src값 만들기 : if문 사용!
+                // 4. 할당될 src값 만들기 : switch문 사용!
                 var isrc; // 이미지경로변수
-                if(btxt === "포스터"){
+
+                switch (btxt) {
+                    case btxt === "포스터":
+                        isrc = "./images/ala1.jpg";
+                        break;
+                    case btxt === "장면1":
+                        isrc = "./images/ala4.jpg";
+                        break;
+                    case btxt === "장면2":
+                        isrc = "./images/ala3.jpg";
+                        break;
+                    case btxt === "장면3":
+                        isrc = "./images/ala2.jpg";
+                        break;
+                }
+
+                /* if(btxt === "포스터"){
                     isrc = "./images/ala1.jpg";
                 }// if/////
                 else if(btxt === "장면1"){
@@ -191,16 +204,15 @@
                 }// if/////
                 else if(btxt === "장면3"){
                     isrc = "./images/ala2.jpg";
-                }// if/////
+                }// if///// */
                 // [src속성 변경하기]
 
-                // 1) 속성에 할당하여 변경하기 
+                // 1) 속성에 할당하여 변경하기
                 // scene.src = isrc;
 
                 // 2) setAttribute(속성명,값) 내장함수 이용하기
-                scene.setAttribute("src",isrc);
+                scene.setAttribute("src", isrc);
                 // 참고) getAttribute(속성명) -> 속성값 읽어오기 내장함수
-
             } //////////// chgIng /////////////////
         </script>
     </head>
