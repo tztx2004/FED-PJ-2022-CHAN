@@ -12,6 +12,7 @@
             outline: 1px dotted yellow;
             background-color: #000;
             color: #fff;
+            font-size: 10px;
         }
 
         /*********************** header부분 ***********************/
@@ -48,6 +49,9 @@
         nav{
             display: flex;
             justify-content: space-around;
+        }
+        nav h2{
+            font-size: 1.7rem;
         }
 
         nav a{
@@ -102,7 +106,54 @@
             background: none;
             color: #000;
         }
-
+        /*************************** 3페이지 ***************************/
+        .pg3{
+            display: flex;
+        }
+        .pg3 .copy{
+            /* margin: 100px 10vw 0px 20vw; */
+        }
+        .pg3 h1{
+            font-size: 6.4vw;
+        }
+        .pg3 h3{
+            font-size: 2.4vw;
+        }
+        .pg3 img{
+            margin-right: 10px;
+        }
+        /*************************** 4페이지  ***************************/
+        .pg4{
+            display: flex;
+        }
+        .pg4 img{
+            margin-left: 10vw;
+        }
+        .copy4{
+            margin-top: 10vh;
+        }
+        .copy4 h2{
+            font-size: 5vw;
+        }
+        .copy4 h2:nth-child(2){
+            font-size: 4vw;
+        }
+        /*************************** 5페이지 ***************************/
+        .pg5 img{
+            text-align: center;
+            width: 100vw;
+        }
+        .copy5 h2{
+            font-size: 5vw;
+        }
+        .copy5 h3{
+            font-size: 3vw;
+        }
+        .copy5{
+            display: flex;
+            justify-content: space-around;
+            margin: 10vh 0;
+        }
     </style>
 </head>
 <body>
@@ -156,10 +207,52 @@
             </h3>
             
         </div>
-        <div class="page pg3"></div>
-        <div class="page pg4"></div>
-        <div class="page pg5"></div>
-        <div class="page pg6"></div>
+        <div class="page pg3">
+            <div class="copy copy3">
+                <h1>Your photo.
+                <h1>Your font.</h1>
+                <h1>Your widgets.</h1>
+                <h1>Your iPhone.</h1>
+                <h3>iOS 16 lets you customize your<br>
+                    Lock Screen in fun new ways. Layer<br>
+                    a photo to make it pop. Track your<br>
+                    Activity rings. And see live updates<br>
+                    from your favorite apps.</h3>
+            </div>
+            <img src="./007.프로토타이핑/Balsamiq_Mockups_3/apple/lock_screen_1.jpg" alt="아이폰이미지">
+        </div>
+        <div class="page pg4">
+            <img src="./007.프로토타이핑/Balsamiq_Mockups_3/apple/gallery_deep_purple.jpg" alt="아이폰색깔이미지">
+            <div class="copy copy4">
+                <h2>Designed for durability.</h2>
+                <h2>With Ceramic Shield, tougher than any smartphone glass. Water resistance.1 Surgical-grade stainless steel. 6.1″ and 6.7″ display sizes.2 All in four Pro colors.</h2>
+            </div>
+        </div>
+        <div class="page pg5">
+            <div class="copy copy5">
+                <div class="copy_main">
+                    <h2>Main</h2>
+                    <h3>48MP for up to<br>4x the resolution</h3>
+                </div>
+                <div class="copy_Telephoto">
+                    <h2>Telephoto</h2>
+                    <h3>Up to 2x better<br>low‑light photos</h3>
+                </div>
+                <div class="copy_wide">
+                    <h2>Ultra Wide</h2>
+                    <h3>Sharper, brighter<br>macro shots</h3>
+                </div>
+            </div>
+
+            <img src="./007.프로토타이핑/Balsamiq_Mockups_3/apple/camera bg.jpg" alt="아이폰카메라배경화면">
+        </div>
+        <div class="page pg6">
+            <h2>Which iPhone is right for you?</h2>
+            <img src="./007.프로토타이핑/Balsamiq_Mockups_3/apple/compare_iphone_14_pro.jpg" alt="아이폰14프로이미지">
+            <img src="./007.프로토타이핑/Balsamiq_Mockups_3/apple/compare_iphone_14.jpg" alt="아이폰14이미지">
+            <img src="./007.프로토타이핑/Balsamiq_Mockups_3/apple/compare_iphone_13.jpg" alt="아이폰13이미지">
+            <img src="./007.프로토타이핑/Balsamiq_Mockups_3/apple/compare_iphone_se.jpg" alt="아이폰se이미지">
+        </div>
     </div>
     <div class="footer"></div>
 </body>
