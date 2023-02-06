@@ -1,47 +1,42 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <title>연습</title>
-        <style>
-            html,body{
-                margin: 0;
-                padding: 0;
-                height: 100%;
-                width: 100%; 
-            }
-            .pg{
-                height: 100%;
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화살표함수</title>
+
+    <script>
+        /************ 
+            [ 함수 축약법 ]
+            3. 기본형 :
+                function(){}
+            4. 축약형 :
+                ()=>{}
+            5. 확장형 :
+                ()=>{코드}
+                    매개변수가 없을 때
+                x=>{코드}
+                    매개변수(여기선x)가 하나일 경우 소괄호생략
+                (x,y)=>{코드}
+                    매개변수가 여러개일 경우 소괄호 필수!
+                ________________________________
+
             
-        </style>
-    </head>
-    <body>
-        <div class="pg" id="pg1">
-            <a href="#pg4">4page here!</a>
-            <div class="co pt1">
-                안녕
-                <!-- <img src="./imgs/001.jpg" alt=""> -->
-            </div>
-        </div>
-        <div class="pg" id="pg2">
-            <div class="co pt2">
-                안녕
-                <!-- <img src="./imgs/002.jpg" alt=""> -->
-            </div>
-        </div>
-        <div class="pg" id="pg3">
-            <div class="co pt3">
-                안녕
-                <!-- <img src="./imgs/002.jpg" alt=""> -->
-            </div>
-        </div>
-        <div class="pg" id="pg4">
-            <a href="#pg1">1page here!</a>
-            <div class="co pt4">
-                안녕
-                <!-- <img src="./imgs/002.jpg" alt=""> -->
-            </div>
-        </div>
-    </body>
+        
+        ************/
+    </script>
+    <style>
+        .btn{
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn btn1">
+        너는 누구니? 클릭해봐
+    </button><br><br>
+    <button class="btn btn2">
+        너는 누구니? 클릭해봐
+    </button>
+</body>
 </html>
