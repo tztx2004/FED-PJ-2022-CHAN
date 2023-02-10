@@ -20,6 +20,10 @@
     .city li {
         flex: 1;
     }
+
+    .city li:hover{
+        transform: none !important;
+    }
     :root {
         --csz: 65vw;
     }
