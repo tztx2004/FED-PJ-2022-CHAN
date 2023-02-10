@@ -11,41 +11,34 @@ window.addEventListener("DOMContentLoaded", loadFn);
 function loadFn() {
     console.log("로딩완료");
 
+    const qs = (x) => document.querySelector(x);
+    const qsa = (x) => document.querySelectorAll(x);
+    // qs, qsa 이렇게 줄여 놓으려면 함수로 만들어놔라!!!
+
     // 1. 대상선정
     // 1-1. 이벤트대상 : .city a
-    const menu = document.querySelectorAll(".city a");
+    const menu = qsa(".city a");
 
     // 1-2. 변경대상1 : 큐브.cube
-    const cube = document.querySelector(".cube");
+    const cube = qs(".cube");
 
     // 1-3. 변경대상2 : 도시명 .cname
-    const cname = document.querySelector(".cname");
-    
+    const cname = qs(".cname");
+
     // 1-4. 변경대상3 : 도시정보 .cinfo
-    const cinfo = document.querySelector(".cinfo");
-    
+    const cinfo = qs(".cinfo");
+
     // 1-5. 변경대상4 : 도시정보박스 .cbx
-    const cbx = document.querySelector(".cbx");
+    const cbx = qs(".cbx");
 
+    // console.log(cname);
 
-    console.log(menu);
-
-    // 2. 메뉴에 클릭이벤트 설정하기
-    // for of 문
+    // 2. 메뉴 클릭이벤트
     for (let x of menu) {
         // x는 각각의 a요소
 
         // 1. 클릭 이벤트 설정
         x.onclick = () => {
-
-            // 0. 도시정보박스 숨기기(트랜지션 없애기!!!)
-            cbx.style.opacity = 0;
-            cbx.style.transition = "none";
-            
-            // 도시정보 스크롤 생길 경우 내려놓고 다른 도시가면 스크롤 위치가 내려가 있기 때문에 스크롤 위치 맨위로 셋팅하기
-            cinfo.scrollTo(0,0);
-
-
             // 1. 메뉴 텍스트 읽기
             let mtxt = x.innerText;
             // console.log(mtxt);
@@ -53,7 +46,7 @@ function loadFn() {
             // 2. 회전값 셋팅하기
             // 회전값변수
             let setval;
-            // switch case문
+
             switch (mtxt) {
                 case "출발":
                     setval = "rotateX(0deg) rotateY(0deg)";
@@ -75,43 +68,30 @@ function loadFn() {
                     break;
                 default:
                     setval = "rotateX(0deg) rotateY(0deg)";
-            } ////////////////// switch case ///////////
-            //console.log(mtxt+":"+setval);
+                    break;
+            } ///////// switch case ///////////////
 
-            // 3. 회전값 적용하기(transform에 setval변수값 할당하기)
+            // console.log(setval);
+
+            // 회전값 적용
             cube.style.transform = setval;
-            cube.style.transition = 
-            "transform 1.5s ease-in-out";
+            cube.style.transition = "1s ease-in-out";
 
-            // 만약 "출발"을 클릭한 경우 아래 코드 실행 안하기!
-            if(mtxt === "출발") return;
-            // 리턴키워드는 함수를 빠져나간다
+            if (mtxt === "출발") return;
 
             // 4. 도시정보 셋팅하기
-            // data.js에 셋팅된 객체의 속성값이 메뉴의 도시명과 같다!
-            // 따라서 이 속성명으로 속성값을 가져와서 도시정보를 아래요소에 셋팅한다
-            // 변경대상1 : .cname - 도시명 -> mtxt변수에 있음
-            // 변경대상2 : .cinfo - 도시정보 -> city[mtxt]에 있음
-            // innerText로 할당!!
-
-            // 도시명 넣기
             cname.innerText = mtxt;
-            
-            // 도시정보 넣기
             cinfo.innerText = city[mtxt];
 
-            // console.log(city[mtxt]);
-
             // 5. 도시정보박스 보이기
-            // 대상: .cbx
-            // 내용: 큐브 1.5초 회전 후 도시정보박스가 보여야한다
-            // 1.5초 후에 코드를 실행한다! -> setTimeout(함수,시간)
-            setTimeout(()=>{
+            // 대상 : .cbx
+            // 내용 : 큐브 1.5초 회전 후 도시정보박스가 보여야한다
+            // 1.5초 후에 코드를 실행한다 -> setTimeout(함수,시간)
+
+            setTimeout(() => {
                 cbx.style.opacity = 1;
                 cbx.style.transition = "opacity .8s ease-in-out";
-            },1500); //////////// 타임아웃 //////////
-
-
-        }; ///////////////////////////click///////////
-    } ////////////////////////////for of/////////////
+            }, 1500);
+        }; ////////// click event ////////////////
+    } ///////// for of /////////////
 } /////////// loadFn 함수 /////////////////
