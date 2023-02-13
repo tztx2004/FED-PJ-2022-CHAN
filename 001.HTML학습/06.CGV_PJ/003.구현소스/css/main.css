@@ -192,7 +192,7 @@ body{
     transition: .3s ease-out;
 }
 /* .gnb에 오버시 영사기회전 */
-.gnb>ul>li:hover #cam img{
+.gnb:hover #cam img{
     transform: rotate(0deg);
     /* 오버시 기다림 없음 */
     transition-delay: 0s;
@@ -253,8 +253,10 @@ body{
     
 }
 
-/* 오버시 타이틀애니박스 들춰지기 */
-.anibx:hover>span{
+/* 오버시 + 클래스 "on"적용 시
+타이틀애니박스 보이기 */
+.anibx:hover>span,
+.anibx.on>span{
     transform: translateY(-100%);
     /* top은 기본값이 auto이므로 애니메이션 하려면 top:0으로 초기값 필요 */
     outline: 1px solid aqua;
@@ -610,6 +612,7 @@ body{
 .gmap.on{
     top: 50%;
 }
+
 /* 닫기버튼 */
 .cbtn{
     position: absolute;
