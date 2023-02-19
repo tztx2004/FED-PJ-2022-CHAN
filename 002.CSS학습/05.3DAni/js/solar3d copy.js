@@ -16,30 +16,31 @@ window.addEventListener("DOMContentLoaded", () => {
   // 1. 대상선정
   const tit = qsa(".tit a");
   const scbx = qs(".scbx");
-
+  
+  let abx;
   for (let x of tit) {
     // console.log(x);
     x.onclick = () => {
-      console.log(x);
-      const abx = "";
-      switch (x) {
-        case x === `<a href="#">X 1.5</a>`:
+      const btxt = x.innerText;
+      console.log("btxt:",btxt);
+      switch (btxt) {
+        case "X 1.5":
           abx = "1.5";
           break;
-        case x === "X 1":
+        case "X 1":
           abx = "1";
           break;
-        case x === "X 0.7":
+        case "X 0.7":
           abx = "0.7";
           break;
-        case x === "X 0.5":
+        case "X 0.5":
           abx = "0.5";
           break;
-        case x === "X 0.3":
+        case "X 0.3":
           abx = "0.3";
           break;
       }
-      console.log(abx);
+      // console.log(abx);
       scbx.style.transform = `scale(${abx})`;
     }; ///////////onclick////////
   } ///////////for of///////////
