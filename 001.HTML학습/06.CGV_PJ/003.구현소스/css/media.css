@@ -63,6 +63,10 @@
 
 /************** 800px 이하 사이즈 시작 **************/
 @media screen and (max-width: 800px) {
+    /* 메인타이틀 */
+    .tit {
+        font-size: 8.7vw;
+    }
     /* 선택메뉴 ul */
     .mlist ul {
         flex-wrap: wrap;
@@ -93,6 +97,17 @@
         bottom: 0.4%;
         width: 70%;
     }
-    
+    /* 극장가는 길 애니박스 */
+    .anibx {
+        display: none;
+    }
+    /* 영화정보박스 */
+    .movtxt {
+        font-size: 3vw;
+    }
+    /* 영화정보박스 제목만 변경 */
+    .movtxt li:first-child {
+        font-size: 3.3vw;
+    }
 }
 /************** 800px 이하 사이즈 종료 **************/
