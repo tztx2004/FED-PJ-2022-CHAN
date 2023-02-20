@@ -29,6 +29,10 @@ function loadFn(){
         // paused는 멈추면 true, 재생중이면 false 리턴
         // 주의: 비디오가 loop이면 안됨
 
+        // 멈춤상태가 true이면 메인페이지로 이동!
+        if(myvid.paused){
+            location.href = "main.html";
+        };///////////// if /////////////////
 
     };////////// chkVid /////////////
     
