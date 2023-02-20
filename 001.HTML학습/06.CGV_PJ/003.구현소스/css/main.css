@@ -443,7 +443,7 @@ body{
 }
 /* 상위 li 두번째 부터 끝까지 왼쪽마진 */
 .mlist ul>li+li {
-    margin-left: 1.5%;
+    margin-left: 0%;
 }
 /* 선택메뉴 상위 li */
 .mlist ul>li{
