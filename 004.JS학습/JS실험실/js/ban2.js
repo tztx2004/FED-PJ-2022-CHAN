@@ -197,7 +197,7 @@ function loadFn() {
 
         // 2-4. 읽어온 슬라이드 순번의 블릿에 클래스 "on"넣기
         indic[cseq].classList.add("on");
-    }; ////////// goSlide함수 ///////////
+    }; //////////////////////// goSlide함수 /////////////////////////
 
     // 3. 이동버튼대상에 이벤트 설정하기
     abtn.forEach((ele, idx) => {
