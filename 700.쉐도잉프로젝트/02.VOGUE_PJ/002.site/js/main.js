@@ -17,30 +17,78 @@ window.addEventListener("DOMContentLoaded",()=>{
 
         // (3) 1개일 경우 첫번째만 선택해서 리턴함
         if(cnt === 1) rv = rv[0];
-
+        
         // (4) 결과리턴하기
         return rv;
     }; //////// q함수 ////////////////
-
+    
     // 2. 콘솔출력함수
     const cg = x=>console.log(x);
-
+    
     // 3. 등장액션 대상위치값 리턴함수 //
     const retVal = ele => ele.getBoundingClientRect().top;
-
+    
     // *****************************************
-
+    
     /************************************************** 
-        스크롤 등장액션 기능구현
-    **************************************************/
-    // 대상 : .scAct
+     스크롤 등장액션 기능구현
+     **************************************************/
+    // 스크롤 등장대상 : .scAct
     const scAct = q(".scAct");
+    
+    // 상단메뉴 대상 : #top
+    const topA = q("#top")
+    
+    // 상단이동버튼 대상 : .tbtn
+    const tbtn = q(".tbtn");
 
+    // 화면높이값의 2/3 구하기
+    const hv = window.innerHeight/3*2;
+    // console.log("2/3높이:",hv);
+
+    ////////////////////////////////
+    // 클래스 넣기 함수 만들기 ///////
+    ////////////////////////////////
+    const showIt = ele => { // x - 등장요소
+        // 대상요소의 현재스크롤 위치
+        let xval = retVal(ele);
+
+        // 구간적용여부 검사하기
+        // 0보다 크고 화면의 2/3보다 작은 구간!
+        if(xval < hv && xval > 0){
+            // console.log("작동!~~~~");
+            // 해당요소에 클래스 넣기!
+            ele.classList.add("on");
+        }
+
+        // 되돌리기(on제거)는 else문에 구현가능함
+        // else{
+        //     ele.classList.remove("on");
+        // }
+    }; //////////// showIt //////////
+
+    // 현재스크롤 위치변수
+    let scTop;
     // 스크롤 이벤트 셋팅하기 ///////////////////
     window.addEventListener("scroll",()=>{
 
+        // 현재 스크롤위치
+        scTop = window.scrollY;
+        // cg(scTop);
+
+        // 상단영역 슬림메뉴 적용
+        if(scTop >=100) topA.classList.add("on");
+        else topA.classList.remove("on");
+
+        // 위로이동하기 버튼
+        if(scTop >= 300) tbtn.classList.add("on");
+        else tbtn.classList.remove("on");
+        
         // 값확인하기
-        cg("박스1:"+retVal(scAct[0]));
+        // cg("박스1:"+retVal(scAct[0]));
+        
+        // 스크롤등장 요소 개수만큼 for문으로 돌리기
+        for(let x of scAct) showIt(x);
 
     });//////////////// scroll /////////////////////
 
