@@ -6,79 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS실험실 : 04.스크롤액션</title>
     <script>
-        ////// 로드구역 //////////
+        ////////////// 로드구역 ////////////////////
         window.addEventListener("DOMContentLoaded",()=>{
-
-            // 세로고침 시 맨위로 보내기
-            // scroll(가로,세로) -> 스크롤위치이동 내장함수
-            // 브라우저가 스크롤 위치 캐싱 적용한 후 위로 이동
+            // 새로고침 시 맨위로 보내기
             setTimeout(()=>{
                 window.scrollTo(0,0);
-            },100); // .1초 정도는 줘야 효과있음
+            },100);
 
-
-            // 등장액션 대상: .setit
+            // 대상
+            // 등장액션 대상 : .setit
             const setit = document.querySelectorAll(".setit");
-            // console.log(setit);
 
             // 화면높이값의 2/3 구하기
-            const hv = window.innerHeight/3*2;
-            // console.log("2/3높이:",hv);
+            const hv = window.innerHeight/3 * 2
 
             // 윈도우 높이값
             const winH = window.innerHeight;
 
             // 전체문서 높이값
             const docH = document.body.clientHeight;
-            console.log("문서전체높이:",docH);
-
-            // 스크롤 한계값
-            const scLimit = docH-winH;
-            console.log("스크롤한계값",scLimit);
-            // 스크롤한계값은 전체문서길이 - 윈도우높이
-            // 단, body에 기본마진 8px을 초기화해야 정확히 일치함
-
 
             
+            // 스크롤 한계값
+            const scLimit = docH-winH;
+            
+            
+            console.log();
+            // 등장액션 대상위치값 리턴함수
+            const retVal = ele =>ele.getBoundingClientRect().top;
 
-            // 등장액션 대상위치값 리턴함수 //
-            const retVal = ele => ele.getBoundingClientRect().top;
-            // const retVal = ele => {return ele.getBoundingClientRect().top};
-            // document.body.getBoundingClientRect().top;
-
-            // [ 보이는 화면을 기준한 위치값 리턴:
-            // getBoundingClientRect() ]
-            // top속성값은 y축위치값을 나타냄
-            // 보이는 화면 상단에 닿을 경우 0
-            // 통과하여 위로 올라가면 마이너스값이다!
-            // [ 메서드명 구성 ]
-            // get 값을 가져와
-            // Bounding 한계에서
-            // ClientRect 사용자브라우저 화면으로부터
-
-            /////////////////////////////////
-            ///// 클래스 넣기 함수 만들기 /////
-            /////////////////////////////////
-            const showIt = x =>{ // x는 등장 요소
+            const showIt = x =>{
                 // 대상요소의 현재스크롤 위치
                 let xval = retVal(x);
-                
-                // 구간적용 여부 검사하기
-                // 0보다크고 화면의 2/3보다 작은 구간!
-                if(xval < hv && xval > 0){
-                    // console.log("작동!");
-                    // 해당요소에 클래스 넣기
-                    x.classList.add("on");
-                } 
-            }; ///////// showIt /////////////
 
+                // 구간적용 여부 검사하기
+                // 0보다 크고 화면의 2/3보다 작은 구간!
+                if(xval < hv && xval > 0){
+                    x.classList.add("on");
+                }
+            }; //////////// showIt ////////////////
             // 스크롤 시 이동할 타이틀 대상
             // .tit
             const tit = document.querySelector(".tit");
             // 트랜지션설정
             tit.style.transition = ".8s ease-in-out";
 
-            // 떨어지는 여자 대상선정 ///////////////
+            // 떨어지는 여자 대상선정 /////
             const woman = document.querySelector("#woman");
 
             ///////////////////////////////////////////////
@@ -88,49 +61,22 @@
             window.addEventListener("scroll",()=>{
 
                 // 스크롤 이벤트 확인
-                // console.log("스크롤중~!");
+                // console.log("스크롤 중!");
 
-                // 스크롤등장 요소 개수만큼 for문으로 돌리기
                 for(let x of setit) showIt(x);
-                // 순서 :
-                // 1. 스크롤 이벤트 시 setit에 담긴 요소를 수집
-                // 2. 요소만큼 x에 하나씩 순서대로 담는다
-                // 3. showIt(x) 호출 시 x, 즉 요소자신을 보낸다!
-                // 4. showIt() 함수는 그 x의 위치값을 조사해서
-                // if문 구간에 해당하는 지 검사 후 해당요소에
-                // 클래스 "on"을 넣어준다!
-
-
-
-
 
                 // 스크롤 시 스크롤 위치값 찍기
-                // => window.scrollY
                 let scTop = window.scrollY;
-
-                // 다른방법으로 스크롤 위치값 구하기
-                // scTop = document.scrollingElement.scrollTop;
-                // scTop = document.documentElement.scrollTop;
-                // scTop = document.querySelector('html').scrollTop
-
                 // console.log(scTop);
 
-                // ★[[ 현재 스크롤바 위치값 가져오기 ]]★
-                // 1. window.scrollY (IE6~11지원안함)
-                // 2. document.scrollingElement.scrollTop
-                // 3. document.documentElement.scrollTop
-                // 4. document.querySelector('html').scrollTop
-                
-                /********************************************** 
-                    스크롤위치에 따른 타이틀 위치이동 애니하기
-                **********************************************/
-                
+                // 스크롤 위치에 다른 타이틀 위치이동 애니하기
+
                 // 1. 스크롤 바 위치 0이상 300미만일 때 원위치
-                if(scTop < 300) tit.style.top = "0";
+                if(scTop <300) tit.style.top = "0";
                 // 2. 스크롤 바 위치 300이상 500미만일 때 첫번째 위치변경
                 if(scTop >= 300 && scTop < 500) tit.style.top = "45vh";
-
-                // relVal() 함수를 이용하여 해당요소의 위치를 구함
+                
+                // retVal() 함수를 이용하여 해당요소의 위치를 구함
                 // 첫번째 포스터요소 위치
                 let obj1 = retVal(setit[0]);
                 // 두번째 포스터요소 위치
@@ -138,12 +84,9 @@
                 // 세번째 포스터요소 위치
                 let obj3 = retVal(setit[2]);
 
-                // console.log(obj1,"/",obj2,"/",obj3);
-
-                // 1. 첫번째 포스터구간일때
-                if((obj1 < winH/2 && obj1 > 0) || (obj3 < winH/2 && obj3 > 0)){
-                    tit.style.left = "5%";
-                    tit.style.transform = "translateX(0)";
+                if((obj1 < winH/2 && obj1>0) || (obj3 < winH/2 && obj3>0)){
+                    tit.style.left = "45%";
+                    tit.style.transform = "translated(0)";
                 }
                 // 2. 두번째 포스터구간일때
                 else if(obj2 < winH/2 && obj2 > 0){
@@ -155,96 +98,40 @@
                     tit.style.transform = "translateX(-50%)";
                 }
 
-                /******************************************
-                    떨어지는 여자 스크롤 시작부터 끝까지 애니
-                ******************************************/
-                // 구현 내용 : 여자 이미지가 맨위에서부터 보이는 화면에서
-                // 스크롤 맨 아래까지 동일한 비율로 떨어지게한다!
-
-                // 비례식으로 비율을 계산한다
-                // 페이지 전체길이 : 윈도우 높이 = 스크롤 이동값 : 이미지이동값
-                // 이미지이동값 = 윈도우높이 * 스크롤이동값 / 페이지전체길이
-               
-                // x = winH * scTop / docH
-                // x = winH * scTop / scLimit
-                // docH(페이지전체길이) 대신 scLimit(스크롤한계값) 사용!
-
-                // -> 페이지전체길이는 사실 스크롤 한계값으로 해야함
-
-                // 떨어지는 여자 top위치값 계산 : wtop
-                let wtop = winH * scTop / scLimit;
-                console.log("w위치",wtop);
-
-                // 떨어지는 여자의 top값에 적용
-                woman.style.top = wtop +"px";
-
-                // 맨위일때 위쪽으로 숨기기
-                if(scTop === 0) woman.style.top = "-20%";
-
-                // 현재 첫번째 박스 위치값
-                // let bxpos = retVal(setit[0]);
-                // console.log(bxpos);
 
 
+            }); ///////////// scroll //////////////
 
-            }); ////////////// scroll //////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            // 구현내용: 글자를 박스에 넣고 하나씩 날아오면서 등장
-            // 1.대상선정: .stage
+            // 구현내용 : 글자를 박스에 넣고 하나씩 날아오면서 등장
+            // 1. 대상선정 : .stage
             const stage = document.querySelector(".stage");
             // console.log(stage);
 
-            // 2.데이터 변수할당
+            // 2. 데이터 변수할당
             const mytxt = "신카이 마코토";
 
-            // 3.데이터글자 한글자씩 태그싸기
-            // for of문사용!
-
-            let hcode=""; // 코드저장변수
+            // 3. 데이터 글자 한글자씩 태그싸기
+            let hcode = ""; // 코드저장변수
             let idx = 0; // 순번변수
-           
 
             for(let x of mytxt){
                 // 띄어쓰기일 경우 특수문자처리!
-                if(x===" ") x = "&nbsp;&nbsp;&nbsp";
-                // 코드만들어 변수에 대입연산자로 넣기!
-                hcode += 
-                `<span style="transition-delay: ${idx*0.1}s">
-                    ${x}</span>`;
-
-                // 순번변수증가
+                if(x === " ") x = "&nbsp&nbsp&nbsp";
+                hcode +=
+                `<span style = "transition-delay : ${idx*.1}s">${x}</span>`;
                 idx++;
-            } //////////// for of ////////////
-
-            // console.log(hcode);
+            } //////////// for of/////////
 
             // 4. 스테이지 박스에 글자넣기
             stage.innerHTML = hcode;
 
-            // 5. 일정시간후 스테이지박스에 클래스 "on"주고 애니작동!
+            // 5. 일정시간 후 스테이지박스에 클래스 "on"주고 애니 작동
             setTimeout(()=>{
                 stage.classList.add("on");
             },2000);
 
 
-
-
-        }); ////////////// 로드구역 /////////////////////
+        });//////////// 로드구역 /////////////////
 
     </script>
 <style>
