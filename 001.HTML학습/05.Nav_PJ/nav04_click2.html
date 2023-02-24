@@ -283,10 +283,10 @@
                         initMenu(idx);
                         
                         // (0) ★[다음요소 하위 .smenu]
-                        let tg = x.nextElementSibling(".smenu");
+                        let tg = x.nextElementSibling;
 
                         // (1) 하위 .smenu ol의 높이값
-                        let hv = tg.querySelector(".smenu ol").clientHeight;
+                        let hv = tg.querySelector("ol").clientHeight;
                         // clientHeight; -> 패딩을 포함한 요소의 높이값
                         console.log("ol높이값",hv);
                         
@@ -299,7 +299,7 @@
                         // 클릭 시 내부의 ol높이값과 같은 크기로 타겟의 높이값을 주어 보이게 한다
                         // 만약 높이값이 들어간 경우라면 높이값이 0이 아니다
                         // 그러므로 0이 아니면 0으로 만들어준다
-                        // 그래서 토그기능(2가지를 번갈아적용)이 된다
+                        // 그래서 토글기능(2가지를 번갈아적용)이 된다
 
                         // (3) 대상에 적용하기 : tg
                         tg.style.height = hv+"px";
