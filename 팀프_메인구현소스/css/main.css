@@ -7,6 +7,13 @@
 @import url(core.css);
 @import url(common.css);
 
+/* 스크롤바 안보이게 하기 */
+body{
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
 
 /************* 2. 메인영역 **************/
 main.cont{

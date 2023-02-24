@@ -2,7 +2,7 @@
 <html lang="ko">
     <head>
         <meta charset="UTF-8" />
-        <title>유형4. 세로네비 서브별 드롭다운 세로형 - 클릭이벤트 JS</title>
+        <title>유형4. 세로네비 서브별 드롭다운 세로형 - 클릭이벤트 JS2</title>
         <style>
             /* 초기화 */
             html,
@@ -243,8 +243,24 @@
                 console.log("로딩완료");
                 
                 // 구현내용 : 메뉴 li클릭 시 하위메뉴 (.smenu)열기/닫기
-                // 1. 클릭이벤트 대상: .gnb>ul>li
-                const gnb = document.querySelectorAll(".gnb>ul>li:has(.smenu)");
+                // 1. 클릭이벤트 대상: .gnb>ul>li>a
+
+                // ★ 미션 : ★★★★★★★★★★★★★★★★★★★★
+                // -> 대상을 li하위 직계 상단메뉴인 a요소로 선정한 경우
+                // 코드변경하기 (기존기능과 같게한다)
+                // -> ★[...] 설명한곳이 변경된 곳
+
+                // [구현내용중 부모로 올라가는 방법!]
+                // -> 선택요소.parentElement
+                // [구현내용중 다음형제요소 선택 방법!]
+                // -> 선택요소.nextElementSibling
+                // [구현내용중 이전형제요소 선택 방법!]
+                // -> 선택요소.previousElementSibling
+                
+
+
+
+                const gnb = document.querySelectorAll(".gnb>ul>li:has(.smenu)>a");
                 /*************************************************** 
                     css선택자 중 하위요소를 포함하는 요소 선택하기
                     ((구문:))
@@ -266,8 +282,8 @@
                         // 자신의 순번을 빼고 초기화하기 위하여~!!
                         initMenu(idx);
                         
-                        // (0) 하위 .smenu
-                        let tg = x.querySelector(".smenu");
+                        // (0) ★[다음요소 하위 .smenu]
+                        let tg = x.nextElementSibling(".smenu");
 
                         // (1) 하위 .smenu ol의 높이값
                         let hv = tg.querySelector(".smenu ol").clientHeight;
@@ -289,7 +305,8 @@
                         tg.style.height = hv+"px";
                         
                         // (4) 상위베뉴에 오버시와 같은 디자인 적용 : class on 넣기/빼기
-                        x.classList.toggle("on");
+                        // ★[x는 a요소 이므로 부모인 li를 선택함!]
+                        x.parentElement.classList.toggle("on");
                     };//////////// click ////////////
                 });////////////forEach//////////////////
 
@@ -334,13 +351,15 @@
 
                     // 2. 서브메뉴있는 li의 클래스 "on"지우기
                     // 대상 : .gnb>ul>li:has(.smenu) -> gnb변수
+                    // ★[-> gnb변수의 부모요소 : ele.parentElement]
                     gnb.forEach((ele,idx)=>{
                         // 호출한 순번과 같으면 넘어가!
                         if(idx===seq) return;
                         console.log("li순번",idx);
 
                         // 클래스 on 빼기
-                        ele.classList.remove("on");
+                        // ★[gnb변수의 부모요소 : ele.parentElement]
+                        ele.parentElement.classList.remove("on");
                     }); /////////// forEach ///////////////
 
                     /**************************************** 
@@ -402,7 +421,7 @@
     </head>
 
     <body>
-        <h1>유형4. 세로네비 서브별 드롭다운 세로형 - 클릭이벤트 JS</h1>
+        <h1>유형4. 세로네비 서브별 드롭다운 세로형 - 클릭이벤트 JS2</h1>
         <div class="wrap">
             <!-- GNB 네비게이션 -->
             <nav class="gnb">
