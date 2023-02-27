@@ -10,16 +10,22 @@ body *{
     height: 2200px;
     margin: 0 auto;
 }
+/********************* 1페이지 *********************/
+/******************* 1페이지공통 *******************/
 .pg1{
     background: url(../planet/Mars/img/bg_mars.jpg);
     filter: brightness(80%);
 }
+
+
 .vd_mars{
     margin-top: 90px;
     width: 100%;
 }
+/********************* 2페이지 *********************/
+/******************* 2페이지공통 *******************/
 .pg2{
-
+    
 }
 .pg2 h2{
     display: flex;
@@ -31,3 +37,26 @@ body *{
 .pg2 h3{
     font-size: 14px;
 }
+
+/******************* 2페이지메인 *******************/
+.arti{
+    display: flex;
+    gap: 10vw;
+}
+.pg2_img1 img{
+    width: 45vw;
+    margin-left: 40px;
+}
+.arti1 h3{
+    width: 45vw;
+    margin-right: 30px;
+}
+.arti2 h3{
+    width: 45vw;
+    margin-left: 40px;
+}
+.pg2_img2 img{
+    width: 45vw;
+}
+/********************* 3페이지 *********************/
+/******************* 3페이지공통 *******************/
