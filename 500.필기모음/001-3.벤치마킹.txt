@@ -146,3 +146,8 @@ https://chainzoku.io/
 10. 블록체인 사이트
 https://www.cmcc.vc/about
 -> about패이지의 스크롤 이동 시 뒫배경 지도각 가로방향이동 애니가 볼만함
+
+11. 패션 사이트
+https://halomedia.com/studio/
+-> 마우스 이동 시 이동방향으로 컨텐츠영역 자동이동
+(제이쿼리 연습에 있음 -> JS버전으로 만들어볼까?)
