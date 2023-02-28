@@ -40,7 +40,8 @@
         // location.href로 받는다!!!
         // 페이지이동 : location.href = url주소 
         // url값 읽기 : 변수 = location.href
-        
+        let pm = location.href;
+        console.log(pm);
 
         // 만약 물음표(?)가 없이 바로 페이지가 열린경우 걸러주기!
         // 없다면 split에서 에러가 남! 
@@ -51,11 +52,16 @@
 
         // url에서 물음표로 값을 잘라오기 중 뒤엣값[1]
         // split(자를기준문자열) -> 배열에 담긴다!
-        
+        pm = pm.split("?")[1];
         // 이퀄(=)로 잘라서 뒤엣값[1] -> (키=값) 중 (값)만!
-        
+        pm = pm.split("=")[1];
         // encodeURIComponent로 변환해서 보냈으므로 
         // decodeURIComponent로 재변환!
+        pm = decodeURIComponent(pm);
+        console.log(pm);
+
+        console.log(pm);
+        
         
 
 
@@ -92,6 +98,20 @@
             // 로딩구역 확인
             console.log("로딩완료!!!");
 
+            // 샵명에 따라 페이지의 데이터 셋팅하기 //
+            // 1. 대상선정 :
+            // (1) 타이틀박스 : #title
+            const tit = document.querySelector("#title");
+            // (2) 메인박스 : #main
+            const main = document.querySelector("#main");
+
+            // 2. 데이터 적용하기
+            // (1) 타이틀 넣기
+            tit.innerText = pm;
+            // (2) 타이틀박스 배경색 넣기
+            tit.style.backgroundColor = sdata[pm]["배경색"];
+            // (3) 메인박스 배경이미지 넣기
+            main.style.backgroundImage = `url(images/${sdata[pm]["이미지"]})`;
            
             
 
