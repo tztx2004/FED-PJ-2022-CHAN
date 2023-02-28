@@ -14,13 +14,44 @@ body *{
 /******************* 1페이지공통 *******************/
 .pg1{
     background: url(../planet/Mars/img/bg_mars.jpg);
-    filter: brightness(80%);
+    height: 3000px;
 }
 
-
 .vd_mars{
+    filter: brightness(80%);
     margin-top: 90px;
     width: 100%;
+}
+
+/* 3d 모델 */
+.model{
+    width: 35vw;
+    margin: 0 auto;
+    margin-top: 300px;
+}
+.imodel{
+    width: 35vw;
+    height: 35vw;
+    border-radius: 50%;
+    margin-top: 100px;
+}
+.model h2{
+    /* 가운데정렬 */
+    display: flex;
+    justify-content: center;
+
+    font-size: 64px;
+    color: #fff;
+    line-height: 150px;
+}
+.model h3{
+    /* 윗공간 */
+    margin-top: 100px;
+    /* 줄간격 */
+    line-height: 1.7;
+    
+    font-size: 32px;
+    color: #cecece;
 }
 /********************* 2페이지 *********************/
 /******************* 2페이지공통 *******************/
@@ -31,17 +62,23 @@ body *{
     display: flex;
     justify-content: center;
     font-weight: bold;
-    font-size: 32px;
+    font-size: 64px;
     margin: 100px 0;
+
 }
+/* 기사 */
 .pg2 h3{
-    font-size: 14px;
+    font-size: 24px;
 }
 
 /******************* 2페이지메인 *******************/
 .arti{
     display: flex;
-    gap: 10vw;
+    /* gap: 10vw; */
+    height: 650px;
+}
+.pg2_img1{
+    margin-right: 120px;
 }
 .pg2_img1 img{
     width: 45vw;
@@ -50,10 +87,22 @@ body *{
 .arti1 h3{
     width: 45vw;
     margin-right: 30px;
+    line-height: 1.7;
+    padding-top: 100px;
+}
+.arti2{
+    margin-top: 100px;
 }
 .arti2 h3{
     width: 45vw;
     margin-left: 40px;
+    margin-right: 120px;
+    line-height: 1.7;
+    padding-top: 100px;
+}
+.pg2_img2{
+    width: 45vw;
+    margin-right: 30px;
 }
 .pg2_img2 img{
     width: 45vw;
