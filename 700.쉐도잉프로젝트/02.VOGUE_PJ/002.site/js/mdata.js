@@ -1,6 +1,7 @@
 
 ///// 각 서브별 데이터 셋팅하기 /////
 // sinfo -> sub page information(서브페이지 정보)
+
 const sinfo = {
     "fashion": {
         "제목": "Fashion",

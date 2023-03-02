@@ -14,7 +14,7 @@ function linkFn(){
     // (2) logo : .logo a
     const gnb = document.querySelectorAll(".gnb a");
     const logo = document.querySelector(".logo a");
-    console.log(logo);
+    // console.log(logo);
 
     // 2. 클릭 이벤트 설정하기
     // (1) GNB 클릭설정////////////
@@ -31,8 +31,9 @@ function linkFn(){
             console.log(atxt);
 
             // (2) 서브페이지 이동하기
-            if(atxt !== search) // search가 아니면 서브이동!
-            location.href = "category.html?cat=" + encodeURIComponent(atxt);
+            if(atxt !== "search") // search가 아니면 서브이동!
+            location.href = "category.html?cat=" 
+            + encodeURIComponent(atxt);
             
 
         };///////////////// onclick //////////////////
