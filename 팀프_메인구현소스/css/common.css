@@ -49,6 +49,11 @@ nav.gnb ul{
   font-size: 1.8rem;
   font-family: 'Kanit', sans-serif;
 }
+/* 우측 상단영역에 아이콘 */
+.gnb img{
+  width: 40px;
+  height: 40px;
+}
 /* 찾기버튼 */
 .gnb .sbx{
   position: relative;
@@ -83,11 +88,6 @@ nav.gnb ul{
   font-size: 1.8rem;
   cursor: pointer;
   background-color: #575a5ecb;
-}
-/* 우측 상단영역에 아이콘 */
-.gnb img{
-  width: 40px;
-  height: 40px;
 }
 /* 클릭시 .on 활성화 */
 .sbx.on{

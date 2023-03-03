@@ -2,7 +2,7 @@
 
 /* body공통 */
 body *{
-    outline: 2px dashed red;
+    /* outline: 2px dashed red; */
 }
 /* Mars 페이지공통 */
 .pg{
@@ -109,8 +109,29 @@ body *{
 }
 /********************* 3페이지 *********************/
 /******************* 3페이지공통 *******************/
-.pg3 iframe{
-    width: 100px;
-    height: 100px;
-    display: flex;
+.pg3{
+    background-color: #ebebeb;
+}
+.mars_item{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 800px;
+}
+.M_items{
+    margin: 0 auto;
+}
+.Mars3d{
+    width: 30vw;
+    height: 400px;
+    border: none;
+}
+.mars_copy3{
+    border-bottom: 1px solid #333;
+    padding: 0 15vw;
+}
+.mars_copy3 h2{
+    margin: 0 auto;
+    display: block;
+    line-height: 2;
+    font-size: 60px;
 }
