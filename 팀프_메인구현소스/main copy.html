@@ -8,8 +8,6 @@
     <link href='./img/favicon-32x32.png' rel='icon' sizes='32x32' type='image/png'>
     <!-- 폰트어썸 CDN CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <!-- 서브페이지css_mars -->
-    <link rel="stylesheet" href="./css/sub_Mars.css">
     <!-- 외부CSS 불러오기 -->
     <link rel="stylesheet" href="./css/main.css" />
     <!-- 외부 미디어쿼리 CSS 불러오기 -->
@@ -36,7 +34,7 @@
                     <li><a href="#">Mercury</a></li>
                     <li><a href="#">Sun</a></li>
                     <li><a href="#">Earth</a></li>
-                    <li><a href="#">Mars</a></li>
+                    <li><a href="./sub_Mars.html">Mars</a></li>
                     <li><a href="#">Saturn</a></li>
                     <li>
                         <div class="sbx">
@@ -54,70 +52,80 @@
     </div>
 
     <!-- 2. 메인영역 -->
-    <!-- 2-1. mars 1page -->
-    <div class="pg pg1">
-        <video class="vd_mars" src="./planet/Mars/img/Mars_video.mp4" autoplay muted></video>
+    <div id="cont">
+        <main class="cont">
+            <!-- 슬라이드 -->
+            <ul id="slide">
+                <li>
+                    <img src="./img/bg01.jpg" alt="배너이미지01">
+                    <div class="tbx">
+                        <h2>What's UP: February 2023</h2>
+                        <p>Venus and Jupiter cozy up, the constellation Auriga makes a worthy target, and two star clusters you can find using Sirius and a pair of binoculars. </p>
+                        <div class="btn">
+                            <a href="#">READ MORE</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <img src="./img/bg02.jpg" alt="배너이미지02">
+                    <div class="tbx tbg1">
+                        <h2>A Voice Among the Stars</h2>
+                        <p>U.S Poet Laureate Ada Limon, known for work that explores the human connection to the natural world, is crafting a new poem dedicated to the Europa Clipper Mission.</p>
+                        <div class="btn">
+                            <a href="#">READ MORE</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <img src="./img/bg03.jpg" alt="배너이미지03">
+                    <div class="tbx">
+                        <h2>From Deep Space, With Love</h2>
+                        <p>Thirty-three years ago, scientists and engineers created the famous Earth as a "Pale Blue Dot" image as a love letter to planet Earth.</p>
+                        <div class="btn">
+                            <a href="#">READ MORE</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <img src="./img/bg04.jpg" alt="배너이미지04">
+                    <div class="tbx tbg2">
+                        <h2>Magnetic Field of the Psyche Spacecraft</h2>
+                        <p>Understanding the spacecraft's magnetic field will lead to better measurements of metal-rich asteroid Psyche.</p>
+                        <div class="btn">
+                            <a href="#">READ MORE</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
 
-        <div class="model">
-            <h2>Interoduce Mars!</h2>
-            <iframe class="imodel" src="https://solarsystem.nasa.gov/gltf_embed/2372" frameborder="0" autoplay muted></iframe>
-            <h3>
-                Mars is the fourth planet from the Sun – a dusty, cold, desert world with a very thin atmosphere. Mars is also a dynamic planet with seasons, polar ice caps, canyons, extinct volcanoes, and evidence that it was even more active in the past.
-            </h3>
-        </div>
+            <!--이동버튼-->
+            <a href="#" class="abtn ab1"><img src="./img/arrow_left_slim.png" alt="왼쪽이동버튼"></a>
+            <a href="#" class="abtn ab2"><img src="./img/arrow_right_slim.png" alt="오른쪽이동버튼"></a>
+
+            <!--블릿버튼-->
+            <ul class="indic">
+                <li class="on">
+                    <img src="./img/dot1.png" alt="흰색">
+                    <img src="./img/dot2.png" alt="회색">
+                </li>
+                <li>
+                    <img src="./img/dot1.png" alt="흰색">
+                    <img src="./img/dot2.png" alt="회색">
+                </li>
+                <li>
+                    <img src="./img/dot1.png" alt="흰색">
+                    <img src="./img/dot2.png" alt="회색">
+                </li>
+                <li>
+                    <img src="./img/dot1.png" alt="흰색">
+                    <img src="./img/dot2.png" alt="회색">
+                </li>
+            </ul>
+
+        </main>
     </div>
 
-    <!-- 2-2. mars 2page -->
-    <div class="pg pg2">
-        <h2>Moon to Mars</h2>
-        <div class="arti arti1">
-            <div class="pg2_img1">
-                <img src="./planet/Mars/img/2pg_img1.jpg" alt="화성탐사사진1">
-            </div>
-            <h3>
-                After completing the first sample depot on another world, the rover continues its hunt for Mars rocks worthy of study on Earth.<br><br>
-                NASA’s Perseverance rover will celebrate its second anniversary on the surface of Mars Saturday, Feb. 18. Since arriving at Jezero Crater in 2021, the six-wheeled, nuclear-powered rover has been examining geologic features and collecting samples of the Red Planet that are central to the first step of the NASA-ESA (European Space Agency) Mars Sample Return campaign. Scientists want to study Martian samples with powerful lab equipment on Earth to search for signs of ancient microbial life and to better understand the processes that have shaped the surface of Mars.
-            </h3>
-        </div>
-        <div class="arti arti2">
-            <h3>
-                “Anniversaries are a time of reflection and celebration, and the Perseverance team is doing a lot of both,” said Perseverance project scientist Ken Farley of Caltech in Pasadena. “Perseverance has inspected and performed data collection on hundreds of intriguing geologic features, collected 15 rock cores, and created the first sample depot on another world. With the start of the next science campaign, known as ‘Upper Fan,’ on Feb. 15, we expect to be adding to that tally very soon.”
-            </h3>
-            <div class="pg2_img2">
-                <img src="./planet/Mars/img/2pg_img2.jpg" alt="화성탐사사진1">
-            </div>
-        </div>
-    </div>
 
-    <!-- 2-3.mars 3page -->
-    <div class="pg pg3">
-        <div class="mars_item">
-            <div class="M_items mars_item1">
-                <iframe class="Mars3d Mars3d1" src="https://solarsystem.nasa.gov/gltf_embed/2398"></iframe>
-                <div class="mars_copy3">
-                    <h2>test</h2>
-                </div>
-            </div>
-            <div class="M_items mars_item2">
-                <iframe class="Mars3d Mars3d2" src="https://solarsystem.nasa.gov/gltf_embed/2371"></iframe>
-                <div class="mars_copy3">
-                    <h2>test</h2>
-                </div>
-            </div>
-            <div class="M_items mars_item3">
-                <iframe class="Mars3d Mars3d3" src="https://solarsystem.nasa.gov/gltf_embed/2370"></iframe>
-                <div class="mars_copy3">
-                    <h2>test</h2>
-                </div>
-            </div>
-            <div class="M_items mars_item4">
-                <iframe class="Mars3d Mars3d4" src="https://solarsystem.nasa.gov/gltf_embed/2361"></iframe>
-                <div class="mars_copy3">
-                    <h2>test</h2>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- 3. 하단영역 -->
     <div id="info">
         <footer class="info ibx">
@@ -146,7 +154,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="./sub_Mars.html">
                                 <img src="./img/mars.png" alt="Mars">
                                 <span>Mars</span>
                             </a>

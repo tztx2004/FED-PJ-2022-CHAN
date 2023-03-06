@@ -89,6 +89,7 @@ body *{
     margin-right: 30px;
     line-height: 1.7;
     padding-top: 100px;
+    font-size: 1.2vw;
 }
 .arti2{
     margin-top: 100px;
@@ -99,6 +100,7 @@ body *{
     margin-right: 120px;
     line-height: 1.7;
     padding-top: 100px;
+    font-size: 1.2vw;
 }
 .pg2_img2{
     width: 45vw;
@@ -119,18 +121,18 @@ body *{
 }
 .M_items{
     margin: 0 auto;
+    width: 40vw;
 }
 .Mars3d{
-    width: 30vw;
+    width: 100%;
     height: 400px;
     border: none;
 }
 .mars_copy3{
     border-bottom: 1px solid #333;
-    padding: 0 15vw;
+    padding: 0 17vw;
 }
 .mars_copy3 h2{
-    margin: 0 auto;
     display: block;
     line-height: 2;
     font-size: 60px;
