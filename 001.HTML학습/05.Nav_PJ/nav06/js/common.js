@@ -34,10 +34,12 @@ function loadFn(){
             <li>
                 <a href="#">${tm}</a>
                 <div class="smenu">
-                    <h2>
-                        <div class = "stit">${tm}</div>
-                        <a href="#">전체보기 ＞</a>
-                    </h2>
+                <!-- 하위메뉴 구조 래핑박스 .smbx -->
+                    <aside class ="smbx">
+                        <h2>
+                            <div class = "stit">${tm}</div>
+                            <a href="#">전체보기 ＞</a>
+                        </h2>
                     <div class="swrap">
             `;
         
@@ -63,16 +65,9 @@ function loadFn(){
             hcode += `</dl>`;
         }///////////// for in /////////////////
 
-        hcode +=
-                            `
-                    </div>
-                    <dl>
-                        <dt></dt>
-                        <dd></dd>
-                        <dd></dd>
-                        <dd></dd>
-                        <dd></dd>
-                    </dl>
+        hcode += `
+                        </div>
+                    </aside>
                 </div>
             </li>
             `;
@@ -81,6 +76,55 @@ function loadFn(){
 
         // 4. GNB 박스에 출력하기
         gnb.innerHTML = hcode;
+
+        /*************************************** 
+            GNB 메뉴 오버 시 서브메뉴 보이기
+            ______________________________
+
+            [기능정의]
+            상위메뉴 li에 오버 시 하위메뉴 .smenu
+            박스의 내부 데이터만큼 height값이 생기며
+            opacity 투명도가 1로 변경되는 트랜지션 수행
+            아웃 시 원상복귀함!
+        ***************************************/
+
+        // 1. 대상선정
+        // 이벤트 대상 : .gnb>ul>li
+        const list = document.querySelectorAll(".gnb>ul>li");
+        // 이벤트 종류 : mouseenter / mouseleave
+        // 변경 대상 : .smenu
+        // 변경 내용 : height값, opacity값
+
+        // console.log(list);
+        
+        // 2. 상위메뉴 li에 이벤트 설정하기 
+        for(let x of list){
+            /////// 마우스 오버 시 ///////
+            x.onmouseenter = ()=>{
+                // (1) 하위메뉴 박스 .smenu 선택하기
+                let tg = x.querySelector(".smenu");
+                
+                // (2) 하위메뉴 박스 내부박스 높이값 구하기
+                let hv = tg.querySelector(".smbx").clientHeight;
+                // console.log("내부높이:",hv)
+
+                // (3) 하위메뉴 style변경하기
+                tg.style.height = hv + "px";
+                tg.style.opacity = 1;
+
+            }; /////////// onmouseenter ///////////
+
+            /////// 마우스 아웃 시 ///////
+            x.onmouseleave = ()=>{
+                // (1) 하위메뉴 박스 .smenu 선택하기
+                let tg = x.querySelector(".smenu");
+                
+                // (2) 하위메뉴 style변경하기
+                tg.style.height = "0";
+                tg.style.opacity = 0;
+
+            }; /////////// onmouseleave ///////////
+        } ///////////// for of /////////////////
 
         
 } ///////////////////// loadFn /////////////////////////
