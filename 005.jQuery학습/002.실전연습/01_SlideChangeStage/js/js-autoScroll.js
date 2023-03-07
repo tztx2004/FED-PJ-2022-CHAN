@@ -21,18 +21,26 @@ function loadFn(){
     console.log("로딩완료");
 
     ///// 이벤트 연결 대상 선정하기 /////
-    // GNB메뉴
+    // (1) GNB메뉴 ///
     const gnb = document.querySelectorAll(".gnb a");
-    console.log(gnb);
+    // (2) 인디케이터메뉴 ///
+    const indic = document.querySelectorAll(".indic a");
+    // console.log(indic);
 
-    //////// 이벤트 연결 함수등록하기 //////////
-    // GNB메뉴 이벤트 연결
+    //////// [이벤트 연결 함수등록하기] //////////
+    // (1) GNB메뉴 이벤트 연결
     gnb.forEach((ele,idx,obj)=>{ // ele - 요소, idx - 순번, obj - 전체객체
         ele.addEventListener("click",()=>movePg(idx,obj));
         // 전체 객체(obj)를 함수에 전달하는 이유는?
         // -> 인디케이터도 GNB와 같은 기능을 수행하기 때문에
         // 호출 시 자기자신 전체를 보내야 각각에 맞게 기능을 수행할 수 있음
 
+    }); //////////// forEach //////////////
+    
+    // (2) 인디케이터 메뉴 이벤트 연결
+    indic.forEach((ele,idx,obj)=>{
+        // ele - 요소, idx - 순번, obj - 전체객체
+        ele.addEventListener("click",()=>movePg(idx,obj));
     }); //////////// forEach //////////////
     
 
@@ -107,7 +115,7 @@ function loadFn(){
     let pgnum = 0; // 현재 페이지번호(첫페이지 0)
     // (2) 전체 페이지 수
     const pgcnt = document.querySelectorAll(".page").length;
-    console.log("전체 페이지수",pgcnt);
+    // console.log("전체 페이지수",pgcnt);
     // (3) 광스크롤 금지변수
     let prot_sc = 0; // (0 - 허용, 1 - 불허용)
 
@@ -155,6 +163,7 @@ function loadFn(){
 
         // (4) 페이지이동 + 메뉴변경 -> updatedPg 함수호출
         updatePg(gnb);
+        updatePg(indic);
 
     } ////////////////// wheelFn /////////////////////
 
@@ -171,7 +180,11 @@ function loadFn(){
         pgnum = seq;
         console.log("메뉴클릭 페이지번호 : ",pgnum)
         // 4. 업데이트 페이지 호출 -> 페이지이동,메뉴변경
-        updatePg(obj);
+        // 개별객체를 업데이트 할 때는 obj가 필요했으나
+        // GNB메뉴와 인디케이터가 모두 업데이트 돼야하므로
+        // 개별 obj가 필요없게됨
+        updatePg(gnb);
+        updatePg(indic);
 
     }/////////////// movePg //////////////////
 
@@ -181,7 +194,7 @@ function loadFn(){
     ******************************************/
     function updatePg(obj){ // obj - 변경할 메뉴전체 객체
         // 1. 함수호출확인
-        console.log("업데이트");
+        // console.log("업데이트");
         
         // 2. 페이지 이동하기
         // scrollTo(가로,세로)
@@ -193,8 +206,130 @@ function loadFn(){
         
         // 4. 해당메뉴에 클래스 넣기
         obj[pgnum].parentElement.classList.add("on");
+
+        // 5. 페이지 이동 후 해당페이지 액션
+        // pageAction함수 호출! (페이지이동 시차를 1초설정!)
+        setTimeout(()=>pageAction(pgnum),1000); 
     }///////////// updatePg ////////////////
 
 
+    /************************************************ 
+        함수명 : initCSS
+        기능 : 등장할 요소들의 초기값 셋팅
+    ************************************************/
+    // 1. 대상 : .minfo
+    const minfo = document.querySelectorAll(".minfo");
+    // console.log(minfo);
+    // 2. 이벤트 설정
+    minfo.forEach((ele,idx)=>{
+        initCSS(ele, idx);
+    }); ///////////// forEach //////////////////
+    // 3. 함수만들기
+    function initCSS(ele, seq){ // ele - 요소, seq - 순번
+        // 1. 호출확인
+        console.log("초기화!",seq);
+
+        // 2. 해당요소 스타일속성 선택
+        let sty = ele.style;
+
+        // 3. 각 요소별 초기화하기
+
+        // 트랜지션 공통초기화
+        sty.transition = "none";
+
+        // 페이지별 초기화
+        if(seq === 0){ // 1번페이지
+            sty.left = "150%"
+        }////////// if ///////////
+        else if(seq === 1){ // 2번페이지
+            // 투명하게!
+            sty.opacity = 0;
+            
+        }////////// else if ////////
+        else if(seq === 2){ // 3번페이지
+            // 위에 숨겨져있음
+            sty.top = "-109px";
+            
+        }////////// else if ////////
+        else if(seq === 3){ // 4번페이지
+            
+        }////////// else if ////////
+        else if(seq === 4){ // 5번페이지
+            sty.opacity ="0";
+            sty.transform = "translate(-50%, -50%) rotateY(0)"
+        }////////// else if ////////
+        else if(seq === 5){ // 6번페이지
+            sty.opacity ="0";
+            sty.transform = "translate(-50%, -50%)"
+            
+        }////////// else if ////////
+        else if(seq === 6){ // 7번페이지
+            sty.opacity ="0";
+            sty.transform = "translate(-50%, -50%) scaleX(2)"
+            
+        }////////// else if ////////
+        
+    } ////////////////// initCSS /////////////////
+
+    /****************************************** 
+        함수명 : pageAction
+        기능 : 페이지별 액션주기
+    ******************************************/
+    function pageAction(seq){ // seq - 변경순번
+        // 1. 호출확인
+        console.log("액션");
+
+        // 2. 변경대상 스타일 속성선택
+        let sty = minfo[seq].style;
+
+        // 3. 전체초기화
+        minfo.forEach((ele,idx)=>{initCSS(ele, idx)});
+
+        // 4. 해당페이지 액션주기
+        if(seq === 0){ // 1번페이지
+            // 들어옴
+            sty.left = "50%";
+            sty.transition = "1.5s ease-in";
+        }////////// if ///////////
+        else if(seq === 1){ // 2번페이지
+            // 투명도 복원
+            sty.opacity = 1;
+            // 트랜지션
+            sty.transition = "1.5s ease-in";
+            
+        }////////// else if ////////
+        else if(seq === 2){ // 2번페이지
+            // 위에서 내려옴
+            sty.top = "50%";
+            // 트랜지션
+            sty.transition = "1s ease-in";
+            
+        }////////// else if ////////
+        else if(seq === 3){ // 2번페이지
+            
+            sty.transform = "translate(-50%, -50%) rotateY(360deg) scale(1.2)";
+            sty.transition = "2s ease-in";
+        }////////// else if ////////
+        else if(seq === 4){ // 5번페이지
+            sty.opacity = 1;
+            sty.transform = "translate(-50%, -50%) rotateX(360deg)";
+            sty.transition = "2s ease-in";
+        }////////// else if ////////
+        else if(seq === 5){ // 6번페이지
+            sty.opacity = 1;
+            sty.transform = "translate(-50%, -50%) scale(1.2) rotateY(360deg)";
+            sty.transition = "2s ease-in";
+            
+        }////////// else if ////////
+        else if(seq === 6){ // 7번페이지
+            sty.opacity = 1;
+            sty.transform = "translate(-50%, -50%) scaleX(1)";
+            sty.transition = "1s ease-in";
+            
+        }////////// else if ////////
+    } ///////////// pageAction //////////////
+
+    // 첫페이지 페이지 액션 적용위해 최초호출하기
+    setTimeout(()=>pageAction(0),100);
 
 };/////////////////////////////// loadFn /////////////////////////
