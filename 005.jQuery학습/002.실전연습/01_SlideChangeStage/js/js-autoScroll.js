@@ -298,15 +298,14 @@ function loadFn(){
             sty.transition = "1.5s ease-in";
             
         }////////// else if ////////
-        else if(seq === 2){ // 2번페이지
+        else if(seq === 2){ // 3번페이지
             // 위에서 내려옴
             sty.top = "50%";
             // 트랜지션
             sty.transition = "1s ease-in";
             
         }////////// else if ////////
-        else if(seq === 3){ // 2번페이지
-            
+        else if(seq === 3){ // 4번페이지
             sty.transform = "translate(-50%, -50%) rotateY(360deg) scale(1.2)";
             sty.transition = "2s ease-in";
         }////////// else if ////////
@@ -319,7 +318,6 @@ function loadFn(){
             sty.opacity = 1;
             sty.transform = "translate(-50%, -50%) scale(1.2) rotateY(360deg)";
             sty.transition = "2s ease-in";
-            
         }////////// else if ////////
         else if(seq === 6){ // 7번페이지
             sty.opacity = 1;
