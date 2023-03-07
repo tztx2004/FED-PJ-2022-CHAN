@@ -63,9 +63,10 @@ body *{
 .model h3{
     /* 처음에 안보이기 */
     opacity: 0;
-    position: absolute;
-    transition: .4s ease-in;
+
     /* 글씨효과를 주기위해 앱솔루트 */
+    position: absolute;
+    transition: .8s ease-in;
     top: 30px;
     /* 줄간격 */
     line-height: 1.7;
