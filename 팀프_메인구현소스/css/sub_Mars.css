@@ -39,14 +39,34 @@ body *{
     /* 가운데정렬 */
     display: flex;
     justify-content: center;
-
+    
     font-size: 64px;
     color: #fff;
     line-height: 150px;
 }
-.model h3{
+.mars_copy1{
+    position: relative;
+    /* h3의 부모자격 */
+    width: 35vw;
+    height: 390px;
+    
+    /* top: 900px; */
     /* 윗공간 */
     margin-top: 100px;
+    
+    
+    outline: 1px dashed red;
+}
+.on_mars {
+    opacity: 1;
+}
+.model h3{
+    /* 처음에 안보이기 */
+    opacity: 0;
+    position: absolute;
+    transition: .4s ease-in;
+    /* 글씨효과를 주기위해 앱솔루트 */
+    top: 30px;
     /* 줄간격 */
     line-height: 1.7;
     
@@ -135,5 +155,17 @@ body *{
 .mars_copy3 h2{
     display: block;
     line-height: 2;
-    font-size: 60px;
+    font-size: 4vw;
+    font-weight: bold;
+}
+.m_dis{
+    width: 100%;
+    height: 200px;
+    outline: 1px dashed red;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.m_dis h3{
+    font-size: 2vw;
+    line-height: 1.7;
 }
