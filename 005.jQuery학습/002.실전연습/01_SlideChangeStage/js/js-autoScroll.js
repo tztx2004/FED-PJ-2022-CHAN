@@ -6,13 +6,36 @@ setTimeout(()=>{
     window.scrollTo(0,0);
 },100);
 
-/////////////////////////////// 로딩구역 //////////////////////////
+/////////////// 로딩함수호출 ///////////////
 window.addEventListener("DOMContentLoaded",loadFn);
+
+
+/******************************************* 
+    함수명 : loadFn
+    기능 : 페이지 로딩 시 실행기능
+*******************************************/
 
 function loadFn(){
     
     // 호출확인
     console.log("로딩완료");
+
+    ///// 이벤트 연결 대상 선정하기 /////
+    // GNB메뉴
+    const gnb = document.querySelectorAll(".gnb a");
+    console.log(gnb);
+
+    //////// 이벤트 연결 함수등록하기 //////////
+    // GNB메뉴 이벤트 연결
+    gnb.forEach((ele,idx,obj)=>{ // ele - 요소, idx - 순번, obj - 전체객체
+        ele.addEventListener("click",()=>movePg(idx,obj));
+        // 전체 객체(obj)를 함수에 전달하는 이유는?
+        // -> 인디케이터도 GNB와 같은 기능을 수행하기 때문에
+        // 호출 시 자기자신 전체를 보내야 각각에 맞게 기능을 수행할 수 있음
+
+    }); //////////// forEach //////////////
+    
+
 
     /*********************************************************** 
         [ 휠 이벤트를 이용한 페이지 이동 컨트롤 하기! ]
@@ -80,10 +103,15 @@ function loadFn(){
     ***********************************************************/
     
     // 0. 변수 설정하기
-    // 전체 페이지변수
+    // (1) 전체 페이지변수
     let pgnum = 0; // 현재 페이지번호(첫페이지 0)
+    // (2) 전체 페이지 수
+    const pgcnt = document.querySelectorAll(".page").length;
+    console.log("전체 페이지수",pgcnt);
+    // (3) 광스크롤 금지변수
+    let prot_sc = 0; // (0 - 허용, 1 - 불허용)
 
-
+    
     // 1. 전체 휠 이벤트 설정하기 //
     window.addEventListener("wheel",wheelFn,{passive:false});
     
@@ -92,6 +120,12 @@ function loadFn(){
         // (0) 기본기능 멈추기
         // addEventListener 옵션 passive:false 필수!
         e.preventDefault();
+
+        // 광스크롤막기! //
+        if(prot_sc) return;
+        prot_sc = 1; // 신호 1개만 허용!!
+        setTimeout(()=>prot_sc=0,800);
+        // .8초의 시간 후 다시 허용 상태전환 //
 
         // (1) 호출확인
         // console.log("휠~");
@@ -105,14 +139,18 @@ function loadFn(){
         // (3) 방향에 따른 페이지 번호 증감
         // 스크롤 아랫방향 : 페이지번호 증가
         if(dir<0) {
+            //페이지번호 1씩증가
             pgnum++;
-            if(pgnum>6) pgnum = 6;
-        }
+            // 한계수 : 페이지 끝번호(페이지 수 - 1)
+            if(pgnum> pgcnt -1) pgnum = pgcnt -1;
+        } ////// if //////
         // 스크롤 윗방향 : 페이지번호 감소
         else {
+            // 페이지번호 1씩 감소
             pgnum--;
+            // 한게수 : 페이지 첫번호 -> 0
             if(pgnum<0) pgnum = 0;
-        }
+        } ////// else //////
         // console.log("페이지번호",pgnum);
 
         // (4) 페이지이동
@@ -122,6 +160,26 @@ function loadFn(){
 
     } ////////////////// wheelFn /////////////////////
 
+    /******************************************* 
+        함수명 : movePg
+        기능 : 메뉴 클릭 시 해당위치로 이동하기
+    *******************************************/
+   function movePg(seq,obj){ // seq - 순번, obj - 요소전체객체
+        // 1. 기본기능 막기
+        event.preventDefault();
+        // 2. 호출확인
+        console.log("이동~", seq, obj);
+        // 3. 페이지번호(pgnum) 업데이트하기!
+        pgnum = seq;
+        console.log("메뉴클릭 페이지번호 : ",pgnum)
+        // 4. 페이지 이동하기
+        window.scrollTo(0,window.innerHeight * pgnum);
+        // 5. 메뉴초기화하기(class on 제거하기)
+        for(let x of obj) x.parentElement.classList.remove("on");
+        // 6. 해당메뉴에 클래스 넣기
+        obj[seq].parentElement.classList.add("on");
+
+    }/////////////// movePg //////////////////
 
 
 };/////////////////////////////// loadFn /////////////////////////
