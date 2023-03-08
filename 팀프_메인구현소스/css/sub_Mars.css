@@ -67,7 +67,7 @@ body *{
     /* 글씨효과를 주기위해 앱솔루트 */
     position: absolute;
     transition: .8s ease-in;
-    top: 30px;
+    top: 50px;
     /* 줄간격 */
     line-height: 1.7;
     

@@ -5,7 +5,73 @@ window.addEventListener("DOMContentLoaded",setMars);
 
 // 화성 로딩 - setMars ///
 function setMars(){
-    console.log("화성 로딩완료");
+    console.log("로딩완료!");
+
+
+    // header 영역 스크롤시 배경색, 찾기버튼 색변경 변수
+    const searchbx = document.querySelector(".searchbx");
+    const sbx = document.querySelector(".sbx");
+    const sicon = document.querySelector(".sicon");
+
+
+    /****************************************************
+     [ GNB메뉴 스크롤 시 색변경 ]
+     ******************************************************/
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 80) {
+            document.querySelector('.top').classList.add("on");
+            // document.querySelector('.active').classList.remove("on");
+            searchbx.style=('background-color: #506a7e;');
+            sicon.style=('background-color: #506a7e');
+        } else {
+            document.querySelector('.top').classList.remove("on");
+            searchbx.style=('background-color: #575a5ecb;');
+            sicon.style=('background-color: #575a5ecb;');
+        }
+    });
+    
+    
+    
+    
+    /****************************************************
+     [ 검색창 클릭시 열고 닫기 ]
+     ******************************************************/
+    sicon.onclick = ()=>{
+        sbx.classList.toggle("on");
+    };
+    
+    
+    /************************************************* 
+     함수명: chgMenu
+     기능: 전체메뉴 보이기/숨기기
+     *************************************************/
+    // 햄버거버튼요소
+    const ham = document.querySelector(".ham");
+    // console.log("햄버거있니?",ham);
+
+    // 햄버거요소에 이벤트 설정하기 //////
+    ham.onclick = chgMenu;
+    function chgMenu(){
+        // 1. 호출확인
+        // console.log("나야나!");
+        
+        // 2. 대상선정 : .top 요소
+        var tg = document.querySelector(".top");
+        
+        // 3. 변경내용 : 대상에 클래스 "on"넣기
+        tg.classList.toggle("active");
+        
+    } /////////////////// chgMenu 함수 ///////////////
+    ////////////////////////////////////////////////// 
+
+    //____________________________________________________
+
+    // console.log("화성 로딩완료");
+
+    setTimeout(()=>{
+        window.scrollTo(0,0);
+    },100); // .1초 정도는 줘야 효과있음
+
     
     /************************************* 
      함수명 : appr()
@@ -16,7 +82,7 @@ function setMars(){
     
     // 2. 이벤트설정 (스크롤)
     // window.scrollTo()
-    const retVal = x => x.getBoundingClientRect().top;
+    const retVal = ele => ele.getBoundingClientRect().top;
     
 
     function appr(ele){
