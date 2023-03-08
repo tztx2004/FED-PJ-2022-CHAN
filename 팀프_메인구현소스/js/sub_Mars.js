@@ -58,7 +58,7 @@ function setMars() {
     } /////////////////// chgMenu 함수 ///////////////
     //////////////////////////////////////////////////
 
-    //____________________________________________________
+    //______________________________________________________________
 
     // console.log("화성 로딩완료");
 
@@ -74,6 +74,8 @@ function setMars() {
     const md_h3 = document.querySelector(".model h3");
     const copyFt = document.querySelectorAll(".copyFt");
     
+    
+
     function scFn(scVal,ftC) {
     // 2. 이벤트설정 (스크롤)
     // window.scrollTo()
