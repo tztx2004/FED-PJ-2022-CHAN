@@ -43,6 +43,15 @@ body *{
     font-size: 64px;
     color: #fff;
     line-height: 150px;
+    animation: fontAni 3s infinite alternate;
+}
+@keyframes fontAni {
+    0% {
+        color: rgba(238, 231, 231, 0.144);
+    }
+    100% {
+        color: #fff;
+    }
 }
 .mars_copy1{
     position: relative;
@@ -85,7 +94,17 @@ body *{
     font-weight: bold;
     font-size: 64px;
     margin: 100px 0;
-
+}
+/* h2 글자 뒤 강조 */
+.pg2 h2::after{
+    position: absolute;
+    content: '';
+    display: block;
+    width: 500px;
+    height: 90px;
+    background-color: rgba(28, 177, 236, 0.37);
+    border-radius: 50px;
+    z-index: -1;
 }
 /* 기사 */
 .pg2 h3{
