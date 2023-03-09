@@ -52,6 +52,8 @@ body *{
     white-space: nowrap;
     color: #fff;
     line-height: 150px;
+
+    text-shadow: 0 0 5px aqua;
     animation: fontAni 3s infinite alternate;
 }
 @keyframes fontAni {
@@ -79,12 +81,12 @@ body *{
 }
 .model h3{
     /* 처음에 안보이기 */
-    opacity: 0;
+    /* opacity: 0; */
 
     /* 글씨효과를 주기위해 앱솔루트 */
-    position: absolute;
+    /* position: absolute;
     transition: 1s ease-in;
-    top: 100px;
+    top: 100px; */
 
     /* 줄간격 */
     line-height: 1.7;
@@ -92,6 +94,8 @@ body *{
     font-size: 2vw;
     color: #cecece;
     text-align: justify;
+
+    text-shadow: 0 0 3px aqua;
 }
 /********************* 2페이지 *********************/
 /******************* 2페이지공통 *******************/
@@ -102,6 +106,9 @@ body *{
     font-weight: bold;
     font-size: min(5vw,64px);
     margin: 100px 0;
+    color: #222;
+
+    text-shadow: 2px 2px 1px #5a686c;
 }
 /* 타이틀 글자 뒤 강조 */
 .pg2 h2::after{
@@ -132,10 +139,17 @@ body *{
 }
 /* 기사 */
 .pg2 h3{
+    /* 효과 주기위해 설정 */
+    position: relative;
+    top: 0px;
+    
+    /* 기본설정 */
     font-size: max(1.2vw,14px);
     line-height: 1.7;
     /* 글 양쪽정렬 */
     text-align: justify;
+
+    text-shadow: 1px 1px 1px #5f5f5f;
 }
 
 /******************* 2페이지메인 *******************/
@@ -220,4 +234,23 @@ body *{
     opacity: 0;
     color: rgba(34, 34, 34, 0.158);
     transition: 2s ease-in-out;
+}
+.copyFtA{
+    position: relative;
+    top: 0;
+    opacity: 1;
+    color: fff;;
+    transition: 2s ease-in-out;
+}
+
+/* iframe 효과 */
+.iEffect{
+    position: relative;
+    top: 100px;
+    opacity: 0;
+}
+.iEffectA{
+    position: relative;
+    top: 0;
+    opacity: 1;
 }
