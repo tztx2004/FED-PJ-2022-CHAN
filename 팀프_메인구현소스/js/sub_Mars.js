@@ -87,7 +87,7 @@ function setMars() {
             // 스크롤 위치값이 1600넘어가면 효과줌
             if (scHere >= scVal) appr(imodel);
             // else if 주면 아래 조건 안먹음
-            if (scHere >= scVal + 200) appr(md_h3);
+            if (scHere >= scVal + 400) appr(md_h3);
             
             // 3. 함수설정(appr)
         function appr(ele) {
@@ -103,10 +103,14 @@ function setMars() {
     }); /////////// scroll ///////////////
     } //////////////// scFn //////////////////
     
-    // 미디어 쿼리
+    // 미디어 쿼리 (1페이지 효과)
     const wW_mars = window.innerWidth;
-    if(wW_mars <= 1400 && wW_mars > 600) scFn(1400,"#fff");
-    else if (wW_mars <= 600) scFn(300,"#fff");
+    console.log("hi",wW_mars);
+    if(wW_mars <= 1600 && wW_mars > 1400) scFn(1000,"#fff");
+    else if(wW_mars <= 1400 && wW_mars > 1200) scFn(800,"#fff");
+    else if(wW_mars <= 1200 && wW_mars > 800) scFn(600,"#fff");
+    else if(wW_mars <= 800 && wW_mars > 600) scFn(400,"#fff");
+    else if(wW_mars <= 600) scFn(200,"#fff");
 
 
 

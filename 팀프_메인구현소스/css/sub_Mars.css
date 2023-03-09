@@ -40,7 +40,8 @@ body *{
     border-radius: 50%;
 
     margin-top: 80px;
-    transition: 1.5s ease-in-out;
+    transition: 2s ease-in-out;
+    transition-delay: .8s;
 }
 .model h2{
     /* 가운데정렬 */
