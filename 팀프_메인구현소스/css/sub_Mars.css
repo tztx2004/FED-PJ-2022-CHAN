@@ -211,3 +211,13 @@ body *{
     font-size: 2vw;
     line-height: 1.7;
 }
+
+/******************** JS효과 변수 ********************/
+/* 글자효과 */
+.copyFt{
+    position: relative;
+    top: 100px;
+    opacity: 0;
+    color: rgba(34, 34, 34, 0.158);
+    transition: 2s ease-in-out;
+}

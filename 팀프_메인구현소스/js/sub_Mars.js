@@ -75,42 +75,80 @@ function setMars() {
     const imodel = document.querySelector(".imodel");
     const copyFt = document.querySelectorAll(".copyFt");
     
-    
+    // 2. 함수호출
+    // copyFt.forEach((ele)=>scFn(ele));
+    for(let x of copyFt){
+        console.log(x);
 
-    function scFn(scVal,ftC) {
-    // 2. 이벤트설정 (스크롤)
-    // window.scrollTo()
-    window.addEventListener("scroll", () => {
-            // 스크롤 위치값 변수
-            let scHere = window.scrollY;
-            console.log(scHere);
-            // 스크롤 위치값이 1600넘어가면 효과줌
-            if (scHere >= scVal) appr(imodel);
-            // else if 주면 아래 조건 안먹음
-            if (scHere >= scVal + 400) appr(md_h3);
+        // 글씨 나타남
+        x.style.opacity = 1;
+        // 글씨 위로 올라옴
+        x.style.top = 0 + "px";
+        // 약간의 시간 후 색상 변경
+        setTimeout(() => {
+            x.style.color = "#fff";
+        }, 800);
+        
+    }
+    
+    // function scFn(ele){
+    //     window.addEventListener("scroll",(ele)=>{
+    //         function appr(ele) {
+    //             // 글씨 나타남
+    //             ele.style.opacity = 1;
+    //             // 글씨 위로 올라옴
+    //             ele.style.top = 0 + "px";
+    //             // 약간의 시간 후 색상 변경
+    //             setTimeout(() => {
+    //                 ele.style.color = ftC;
+    //             }, 800);
+    //         } ////////////// appr ///////////////
+
+    //         let scHere = window.scrollY;
+    //         console.log(scHere);
+    //         if(scHere > scVal)
             
-            // 3. 함수설정(appr)
-        function appr(ele) {
-            // 글씨 나타남
-            ele.style.opacity = 1;
-            // 글씨 위로 올라옴
-            ele.style.top = 0 + "px";
-            // 약간의 시간 후 색상 변경
-            setTimeout(() => {
-                ele.style.color = ftC;
-            }, 800);
-        } ////////////// appr ///////////////
-    }); /////////// scroll ///////////////
-    } //////////////// scFn //////////////////
+    //     });
+    // }
+
+    // function scFn(scVal,ftC) {
+    // // 2. 이벤트설정 (스크롤)
+    // // window.scrollTo()
+    // window.addEventListener("scroll", () => {
+    //         // 스크롤 위치값 변수
+    //         let scHere = window.scrollY;
+    //         console.log(scHere);
+    //         // 스크롤 위치값이 1600넘어가면 효과줌
+    //         if (scHere >= scVal) {
+    //             appr(imodel);
+    //             appr()
+    //         }
+    //         // else if 주면 아래 조건 안먹음
+    //         if (scHere >= scVal + 300) appr(md_h3);
+            
+    //         // 3. 함수설정(appr)
+    //     function appr(ele) {
+    //         // 글씨 나타남
+    //         ele.style.opacity = 1;
+    //         // 글씨 위로 올라옴
+    //         ele.style.top = 0 + "px";
+    //         // 약간의 시간 후 색상 변경
+    //         setTimeout(() => {
+    //             ele.style.color = ftC;
+    //         }, 800);
+    //     } ////////////// appr ///////////////
+    // }); /////////// scroll ///////////////
+    // } //////////////// scFn //////////////////
     
     // 미디어 쿼리 (1페이지 효과)
-    const wW_mars = window.innerWidth;
-    console.log("hi",wW_mars);
-    if(wW_mars <= 1600 && wW_mars > 1400) scFn(1000,"#fff");
-    else if(wW_mars <= 1400 && wW_mars > 1200) scFn(800,"#fff");
-    else if(wW_mars <= 1200 && wW_mars > 800) scFn(600,"#fff");
-    else if(wW_mars <= 800 && wW_mars > 600) scFn(400,"#fff");
-    else if(wW_mars <= 600) scFn(200,"#fff");
+    // const wW_mars = window.innerWidth;
+    // console.log("hi",wW_mars);
+    // if(wW_mars > 1600) scFn(1300,"#fff");
+    // else if(wW_mars <= 1600 && wW_mars > 1400) scFn(1000,"#fff");
+    // else if(wW_mars <= 1400 && wW_mars > 1200) scFn(800,"#fff");
+    // else if(wW_mars <= 1200 && wW_mars > 800) scFn(600,"#fff");
+    // else if(wW_mars <= 800 && wW_mars > 600) scFn(400,"#fff");
+    // else if(wW_mars <= 600) scFn(200,"#fff");
 
 
 
