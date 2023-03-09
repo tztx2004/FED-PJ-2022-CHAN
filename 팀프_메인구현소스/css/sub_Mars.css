@@ -30,17 +30,25 @@ body *{
     margin-top: 300px;
 }
 .imodel{
+    /* appr효과를 주기위해 */
+    position: relative;
+    top: 100px;
+    opacity: 0;
+
     width: 35vw;
     height: 35vw;
     border-radius: 50%;
-    margin-top: 100px;
+
+    margin-top: 80px;
+    transition: 1.5s ease-in-out;
 }
 .model h2{
     /* 가운데정렬 */
     display: flex;
     justify-content: center;
     
-    font-size: 64px;
+    font-size: 5vw;
+    white-space: nowrap;
     color: #fff;
     line-height: 150px;
     animation: fontAni 3s infinite alternate;
@@ -63,8 +71,7 @@ body *{
     /* 윗공간 */
     margin-top: 100px;
     
-    
-    outline: 1px dashed red;
+    /* outline: 1px dashed red; */
 }
 .on_mars {
     opacity: 1;
@@ -75,27 +82,27 @@ body *{
 
     /* 글씨효과를 주기위해 앱솔루트 */
     position: absolute;
-    transition: .8s ease-in;
-    top: 50px;
+    transition: 1s ease-in;
+    top: 100px;
+
     /* 줄간격 */
     line-height: 1.7;
     
-    font-size: 32px;
+    font-size: 2vw;
     color: #cecece;
+    text-align: justify;
 }
 /********************* 2페이지 *********************/
 /******************* 2페이지공통 *******************/
-.pg2{
-    
-}
+/* 2페이지 타이틀 */
 .pg2 h2{
     display: flex;
     justify-content: center;
     font-weight: bold;
-    font-size: 64px;
+    font-size: min(5vw,64px);
     margin: 100px 0;
 }
-/* h2 글자 뒤 강조 */
+/* 타이틀 글자 뒤 강조 */
 .pg2 h2::after{
     position: absolute;
     content: '';
@@ -108,8 +115,9 @@ body *{
     border-radius: 50px;
     z-index: -1;
     /* transition: 3s ease-in-out; */
-    animation: fontAni2 3s ease-in-out 10s forwards;
+    /* animation: fontAni2 3s ease-in-out 10s forwards; */
 }
+/* 타이틀 효과 */
 @keyframes fontAni2 {
     0%{
         left: 40%;
@@ -117,46 +125,44 @@ body *{
     }
     100%{
         left: 50%;
-        width: 500px;
+        width: 30vw;
     }
     
 }
 /* 기사 */
 .pg2 h3{
-    font-size: 24px;
+    font-size: max(1.2vw,14px);
+    line-height: 1.7;
+    /* 글 양쪽정렬 */
+    text-align: justify;
 }
 
 /******************* 2페이지메인 *******************/
 .arti{
     display: flex;
-    /* gap: 10vw; */
-    height: 650px;
 }
 .pg2_img1{
-    margin-right: 120px;
+    margin-right: 5vw;
 }
 .pg2_img1 img{
     width: 45vw;
     margin-left: 40px;
 }
-.arti1 h3{
+.arti1_copy{
     width: 45vw;
     margin-right: 30px;
-    line-height: 1.7;
-    padding-top: 100px;
-    font-size: 1.2vw;
+}
+
+.arti2_copy{
+    width: 45vw;
+    margin-left: 40px;
+    margin-right: 5vw;
+
 }
 .arti2{
     margin-top: 100px;
 }
-.arti2 h3{
-    width: 45vw;
-    margin-left: 40px;
-    margin-right: 120px;
-    line-height: 1.7;
-    padding-top: 100px;
-    font-size: 1.2vw;
-}
+
 .pg2_img2{
     width: 45vw;
     margin-right: 30px;

@@ -58,7 +58,7 @@ function setMars() {
     } /////////////////// chgMenu 함수 ///////////////
     //////////////////////////////////////////////////
 
-    //______________________________________________________________
+    //___________________________메인________________________________
 
     // console.log("화성 로딩완료");
 
@@ -72,6 +72,7 @@ function setMars() {
      *************************************/
     // 1. 대상선정
     const md_h3 = document.querySelector(".model h3");
+    const imodel = document.querySelector(".imodel");
     const copyFt = document.querySelectorAll(".copyFt");
     
     
@@ -83,11 +84,12 @@ function setMars() {
             // 스크롤 위치값 변수
             let scHere = window.scrollY;
             console.log(scHere);
-            // 스크롤 위치값이 1600넘어가면 copyFt 글씨 효과줌
-            if (scHere >= scVal) appr(md_h3);
-        }); /////////// scroll ///////////////
-        
-        // 3. 함수설정(appr)
+            // 스크롤 위치값이 1600넘어가면 효과줌
+            if (scHere >= scVal) appr(imodel);
+            // else if 주면 아래 조건 안먹음
+            if (scHere >= scVal + 200) appr(md_h3);
+            
+            // 3. 함수설정(appr)
         function appr(ele) {
             // 글씨 나타남
             ele.style.opacity = 1;
@@ -98,14 +100,18 @@ function setMars() {
                 ele.style.color = ftC;
             }, 800);
         } ////////////// appr ///////////////
+    }); /////////// scroll ///////////////
     } //////////////// scFn //////////////////
-    scFn(1600,"#fff");
     
-    // (임시) 함수호출
+    // 미디어 쿼리
+    const wW_mars = window.innerWidth;
+    if(wW_mars <= 1400 && wW_mars > 600) scFn(1400,"#fff");
+    else if (wW_mars <= 600) scFn(300,"#fff");
 
 
 
     /* ______________________하단___________________________ */
+    
     /***************************************************
         [ 좌우뚫려있는 자유로운 행성박스 ]
     ***************************************************/

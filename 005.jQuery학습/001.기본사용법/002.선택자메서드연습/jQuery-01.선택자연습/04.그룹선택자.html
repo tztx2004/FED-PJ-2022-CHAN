@@ -4,14 +4,51 @@
 <meta charset="utf-8">
 <title> 그룹 선택자  </title>
 <!-- jQuery library -->
-<script src="jquery-1.7.2.min.js"></script>
+<script src="../jquery-3.6.3.min.js"></script>
 <script>
-$(document).ready(function(e) {
+$(()=>{
     // 미션: p태그 또는 #nav li 태그를 클릭하면
 	// 클릭된 것만 글자를 나야나~! 라고 바꾸고
 	// 글자크기를 72px 빨간색 글자로 트랜지션 주시오.
 	// transition: all .4s
-	
+
+    // JS문법
+    // const aa = document.querySelectorAll("p,#nav li");
+    // aa.forEach((ele)=>{
+    //     ele.onclick = (e)=>{
+    //         event.currentTarget.innerText = "나야나~";
+    //         event.currentTarget.style.fontSize = "72px";
+    //         event.currentTarget.style.color = "red";
+    //         event.currentTarget.style.transition = "all .4s";
+    //     }
+    // })
+
+    // 화살표함수
+	$("p, #nav li").click((e)=>{
+        // 익명함수: 나자신 -> this
+        // 화살표함수 : 나자신 -> e.currentTarget
+        $(e.currentTarget) 
+        // event.currentTarget대신 "p, #nav li"를 넣으면 전체가 바뀜
+        .text("나야나~")
+        .css({
+        fontSize : "72px",
+        color : "red",
+        transition : "all .4s"
+        })
+    });
+
+    // 익명함수
+	// $("p, #nav li").click(function(){
+    //     // 익명함수: 나자신 -> this
+    //     // 화살표함수 : 나자신 -> e.currentTarget
+    //     $(this)
+    //     .text("나야나~")
+    //     .css({
+    //     fontSize : "72px",
+    //     color : "red",
+    //     transition : "all .4s"
+    //     })
+    // });
 	
 	
 	
