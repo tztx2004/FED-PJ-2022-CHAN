@@ -31,10 +31,10 @@ function setMars() {
     /****************************************************
         [ 검색창 클릭시 열고 닫기 ]
     ******************************************************/
-    // 마지막에 주석 풀기!!!
-    // sicon.onclick = ()=>{
-    //     sbx.classList.toggle("on");
-    // };
+    
+    sicon.onclick = ()=>{
+         sbx.classList.toggle("on");
+    };
 
     /************************************************* 
      함수명: chgMenu
@@ -102,5 +102,76 @@ function setMars() {
     scFn(1600,"#fff");
     
     // (임시) 함수호출
+
+
+
+    /* ______________________하단___________________________ */
+    /***************************************************
+        [ 좌우뚫려있는 자유로운 행성박스 ]
+    ***************************************************/
+    
+    
+    // 좌우 화살표 변수 mbtn
+    const mbtn = document.querySelectorAll('.mbtn');
+    // 행성슬라이드 변수 mslide 
+    const mslide = document.querySelector('#mslide');
+    // 광클금지 변수
+    let prott = 0;
+
+    const gs = (seq)=>{
+        if(prott) return ;
+        prott = 1;
+        setTimeout(()=>{
+            prott=0;
+        },400); //timeout ////
+        
+        // li리스트 변수
+        let clist = mslide.querySelectorAll('#mslide li');
+
+        
+        // 오른쪽 버튼
+        if(seq){
+            // 한박스가아니라 박스기준1/3 만 이동해야하므로 33%
+            mslide.style.left = "-33.33%";
+            mslide.style.transition='.4s ease-in-out';
+            setTimeout(()=>{
+                mslide.appendChild(clist[0]);
+                mslide.style.left = '0'
+                mslide.style.transition='none';
+            },400);//timeout////
+
+            // 600이하 미디어쿼리
+            if(window.innerWidth<600){
+                mslide.style.left = "-83%";
+            }
+        }// if ////
+        
+        // 왼쪽버튼
+        else {
+            mslide.insertBefore(clist[clist.length-1],clist[0]);
+            // 한박스가아니라 박스기준1/3 만 이동해야하므로 33%
+            mslide.style.left = '-33.33%';
+            mslide.style.transition='none';
+            setTimeout(()=>{
+                mslide.style.left='0';
+                mslide.style.transition='.4s ease-in-out';
+            },0);//timeout////
+            
+            // 600이하 미디어쿼리
+            if(window.innerWidth<600){
+                mslide.style.left = "-83%";
+            }
+        }// else ////
+    };//gs////
+
+    // 실행코드
+    mbtn.forEach((ele,idx)=>{
+        ele.onclick=()=>{
+            gs(idx);
+        };//onclick////
+        ele.onmouseover=()=>{
+            ele.style.cursor='pointer';
+        };//onmouseover ////
+    });//forEach////
 
 } ////////// setMars ////////////
