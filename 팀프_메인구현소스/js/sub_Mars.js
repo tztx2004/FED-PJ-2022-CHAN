@@ -149,7 +149,7 @@ function setMars() {
       let scHere = window.scrollY;
       console.log(scHere);
       // 스크롤 위치값이 1300넘어가면 효과줌
-      if (scHere >= scVal) {
+      if (scHere >= scVal && ifr) {
         appr(ifr);
       }
       // else if 주면 아래 조건 안먹음
@@ -176,10 +176,15 @@ function setMars() {
     // 함수호출
     if (wW_mars > 1600) {
       scFn(1300, md_h3, imodel, "#fff");
-      mars_copy3.forEach((ele)=>{
-        // console.log("mars_copy3",ele);
-        scFn(5000,ele,false,"#000");
-      })
+      const obj = [Mars3d,mars_copy3];
+
+      for(let x of obj){
+        // console.log(x);
+        x.forEach((ele)=>{
+          // console.log("mars_copy3",ele);
+          scFn(5100,ele,false,"#333");
+        })
+      }
     }
   }); /////////// scroll ///////////////
 
@@ -188,6 +193,9 @@ function setMars() {
   // else if(wW_mars <= 1200 && wW_mars > 800) scFn(600,"#fff");
   // else if(wW_mars <= 800 && wW_mars > 600) scFn(400,"#fff");
   // else if(wW_mars <= 600) scFn(200,"#fff");
+
+  
+
 
   // ________________________ 2pg ______________________________
 
