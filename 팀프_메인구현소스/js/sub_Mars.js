@@ -132,7 +132,7 @@ function setMars() {
   const imodel = document.querySelector(".imodel");
   const copyFt = document.querySelectorAll(".copyFt");
   const mars_copy3 = document.querySelectorAll(".mars_copy3 h2")
-  const mars_copy3_2 = document.querySelectorAll(".mars_copy3 h3")
+  const m_dis = document.querySelectorAll(".m_dis h3")
   const Mars3d = document.querySelectorAll(".Mars3d")
 
   // 2. 이벤트설정 (스크롤)
@@ -174,11 +174,11 @@ function setMars() {
     const wW_mars = window.innerWidth;
     // console.log("hi",wW_mars);
 
-    // 함수호출
+    // 가로 1600 이상일 때 scFn 호출
     if (wW_mars > 1600) {
       scFn(1300, md_h3, imodel, "#fff");
-      const obj = [Mars3d,mars_copy3];
 
+      const obj = [Mars3d,mars_copy3];
       for(let x of obj){
         // console.log(x);
         x.forEach((ele)=>{
@@ -186,6 +186,9 @@ function setMars() {
           scFn(5100,ele,false,"#333");
         })
       }
+      m_dis.forEach((ele)=>{
+        scFn(5200,ele,false,"#444");
+      });
     }
   }); /////////// scroll ///////////////
 
@@ -195,11 +198,43 @@ function setMars() {
   // else if(wW_mars <= 800 && wW_mars > 600) scFn(400,"#fff");
   // else if(wW_mars <= 600) scFn(200,"#fff");
 
+  // 객체로 html 채우기 ///////////////////////////////////////////
+  const mars_data = {
+    "Curiosity" : {
+        "제목" : "Curiosity",
+        "기사" : "NASA’s Curiosity Mars rover set out to answer a big question when it landed on the Red Planet more than 10 years ago: Could Mars have supported ancient life? Scientists have discovered the answer is yes, and they have been working to learn more about the planet’s past habitable environment."
+    },
+    "Maven":{
+        "제목":"Maven",
+        "기사":"NASA’s MAVEN mission explores the atmosphere of Mars to better study a phenomenon observed at Earth, known as Sporadic-E Layers.Learn more in this comic book-style animated video."
+    },
+    "Rover":{
+        "제목":"Rover",
+        "기사":"Take a look at the view from inside Gale crater as NASA’s Curiosity Mars Rover explores a changing landscape."
+    },
+    "Odyssey":{
+        "제목":"Odyssey",
+        "기사":"2001 Mars Odyssey is a robotic spacecraft orbiting the planet Mars. The project was developed by NASA, and contracted out to Lockheed Martin, with an expected cost for the entire mission of US$297 million."
+    },
+};
+
+  ///////////////////////// 객체 ///////////////////////////////////
+  // 3pg //////////////
+  const data_Mars = mars_data;
+  const p_arr = ["Curiosity","Maven","Rover","Odyssey"];
+  console.log(mars_data["Maven"]["기사"]);
+  // 기사제목 띄우기
+    mars_copy3.forEach((ele,idx)=>{
+    ele.innerHTML = p_arr[idx];
+  });
+  // 기사내용 띄우기
+    m_dis.forEach((ele,idx)=>{
+    ele.innerText = mars_data[p_arr[idx]]["기사"];
+  });
+
+
+
   
- const data_Mars = mars_data["제목"];
- console.log("hihi",data_Mars);
-
-
   // ________________________ 2pg ______________________________
 
   // 미디어쿼리
@@ -214,6 +249,9 @@ function setMars() {
     else if (matchMedia("screen and (max-width: 1100px)").matches) {
       console.log("desktop");
     } ////////// 1100px ///////////
+    else if (matchMedia("screen and (max-width: 1600px)").matches) {
+      console.log("desktop2");
+    } ////////// 1600px ///////////
   }); /////////////// resize //////////////
 
   /* ______________________하단___________________________ */
