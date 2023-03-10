@@ -132,6 +132,7 @@ function setMars() {
   const imodel = document.querySelector(".imodel");
   const copyFt = document.querySelectorAll(".copyFt");
   const mars_copy3 = document.querySelectorAll(".mars_copy3 h2")
+  const mars_copy3_2 = document.querySelectorAll(".mars_copy3 h3")
   const Mars3d = document.querySelectorAll(".Mars3d")
 
   // 2. 이벤트설정 (스크롤)
@@ -195,6 +196,8 @@ function setMars() {
   // else if(wW_mars <= 600) scFn(200,"#fff");
 
   
+ const data_Mars = mars_data["제목"];
+ console.log("hihi",data_Mars);
 
 
   // ________________________ 2pg ______________________________
