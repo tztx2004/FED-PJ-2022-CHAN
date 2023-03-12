@@ -385,6 +385,10 @@ body *{
     }
 }
 @media screen and (max-width: 600px) {
+    .pg1{
+        height: 1450px;
+    }
+
     .pg2 h3{
         font-size: max(3vw,16px);
     }

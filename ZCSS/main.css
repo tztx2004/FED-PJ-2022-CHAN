@@ -29,6 +29,9 @@ ul,ol{
     margin: 0;
     list-style: none;
 }
+.tit img{
+    width: max(50px, 30vw);
+}
 
 /* gnb메뉴
 gnb박스 width 크기를 주고 마영오!
@@ -56,7 +59,7 @@ ul박스 가상요소로 clear처리 */
     width: 150px;
 }
 .gnb a{
-    font-size: 3rem;
+    font-size: min(30px,3vw);
     color: lightgreen;
     text-decoration: none;
     text-shadow: 
@@ -144,15 +147,17 @@ body{
     padding: 20px;
     border-radius: 20px;
     color: #fff;
-    font-size: 4rem;
+    font-size: min(40px, 4vw);
     text-align: center;
     text-shadow: 2px 2px 2px #000;
+    white-space: nowrap;
 }
 /* .part a요소 */
 .part a{
     color: #222;
     text-decoration: none;
-    font-size: 3.5rem;
+    font-size: min(3.5vw,32px);
+    white-space: nowrap;
 }
 
 /* pg1 공통 프로젝트 아이콘 */
@@ -169,3 +174,6 @@ body{
     text-align: center;
 }
 
+
+/* 미디어쿼리 */
+@media screen and (max-width: 800px) {}

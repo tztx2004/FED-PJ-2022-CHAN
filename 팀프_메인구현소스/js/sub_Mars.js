@@ -246,7 +246,7 @@ window.addEventListener("scroll", () => {
       });
     } //////////////////// 600이상 ///////////////////////
     else {
-      scFn(250, md_h3, imodel, 100, "#fff");
+      scFn(250, md_h3, imodel, 150, "#fff");
 
       const obj = [Mars3d,mars_copy3];
       for(let x of obj){
