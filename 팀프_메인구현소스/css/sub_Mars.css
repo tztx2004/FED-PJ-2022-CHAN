@@ -143,11 +143,19 @@ body *{
     display: flex;
 }
 .pg2_img1{
+    width: 45vw;
+    height: auto;
     margin-right: 5vw;
+    margin-left: 40px;
+    overflow: hidden;
 }
 .pg2_img1 img{
     width: 45vw;
-    margin-left: 40px;
+    transition: .4s;
+}
+/* 오버 시 커짐 효과 */
+.pg2_img1>img:hover{
+    transform: scale(1.2);
 }
 .arti1_copy{
     width: 45vw;
@@ -167,9 +175,15 @@ body *{
 .pg2_img2{
     width: 45vw;
     margin-right: 30px;
+    overflow: hidden;
 }
 .pg2_img2 img{
     width: 45vw;
+    transition: .4s;
+}
+/* 오버시 커짐효과 */
+.pg2_img2>img:hover{
+    transform: scale(1.2);
 }
 /********************* 3페이지 *********************/
 /******************* 3페이지공통 *******************/
@@ -329,10 +343,12 @@ body *{
         display: block;
     }
     .pg2_img1 img{
-		display: block;
+        display: block;
         margin: 0 auto;
 		width: 80vw;
     }
+    
+    
     .arti1_copy{
         width: 100%;
         margin: 0 auto;

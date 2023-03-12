@@ -170,12 +170,17 @@ window.addEventListener("scroll", () => {
       } ////////////// appr ///////////////
     } //////////////// scFn //////////////////
     // 스크롤 높이값 확인
-    console.log(scHere);
+    // console.log(scHere);
 
-    // 임시 미디어 쿼리 (1페이지 효과)
+    // const pg2_img1 = document.querySelector(".pg2_img1>img");
+    // window.addEventListener("click",()=>{
+    //   pg2_img1.style.transform = "scale(1.2)";
+    // });
+    
+    // 미디어 쿼리
     const wW_mars = window.innerWidth;
     // console.log("hi",wW_mars);
-
+    
     // 가로 1600 이상일 때 scFn 호출
     if (wW_mars > 1600) {
       // 2페이지
