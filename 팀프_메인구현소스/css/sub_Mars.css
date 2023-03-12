@@ -342,6 +342,11 @@ body *{
     .arti{
         display: block;
     }
+    .pg2_img1{
+        width: 80vw;
+        margin: 0;
+        overflow: hidden;
+    }
     .pg2_img1 img{
         display: block;
         margin: 0 auto;
@@ -357,7 +362,9 @@ body *{
     }
 
     .pg2_img2{
+        width: 80vw;
         margin: 0;
+        overflow: hidden;
     }
     .pg2_img2 img{
         width: 80vw;
@@ -371,7 +378,7 @@ body *{
 
     /************** 950px 3pg **************/
     .pg3{
-        height: 3000px;
+        height: 3100px;
     }
     .mars_item{
         display: block;

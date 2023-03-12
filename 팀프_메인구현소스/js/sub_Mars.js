@@ -196,12 +196,12 @@ window.addEventListener("scroll", () => {
       }
       // 기사내용
       m_dis.forEach((ele)=>{
-        scFn(5200,false,ele, 500, "#444");
+        scFn(5300,false,ele, 500, "#444");
       });
     }////////////////////// 1600이상 ///////////////////
 
     else if (wW_mars >= 1100 && wW_mars < 1600) {
-      scFn(800, md_h3, imodel, 40, "#fff");
+      scFn(800, md_h3, imodel, 130, "#fff");
 
       const obj = [Mars3d,mars_copy3];
       for(let x of obj){
@@ -213,12 +213,12 @@ window.addEventListener("scroll", () => {
       }
       // 기사내용
       m_dis.forEach((ele)=>{
-        scFn(5300,false,ele,50,"#444");
+        scFn(5400,false,ele,50,"#444");
       });
     } //////////////////// 1100이상 ///////////////////////
     
     else if (wW_mars >= 850 && wW_mars < 1100) {
-      scFn(350, md_h3, imodel, 150, "#fff");
+      scFn(350, md_h3, imodel, 220, "#fff");
 
       const obj = [Mars3d,mars_copy3];
       for(let x of obj){
@@ -230,12 +230,12 @@ window.addEventListener("scroll", () => {
       }
       // 기사내용
       m_dis.forEach((ele)=>{
-        scFn(4400,false,ele,50,"#444");
+        scFn(4500,false,ele,50,"#444");
       });
     } //////////////////// 850이상 ///////////////////////
 
     else if (wW_mars >= 600 && wW_mars < 850) {
-      scFn(400, md_h3, imodel, 100, "#fff");
+      scFn(400, md_h3, imodel, 170, "#fff");
 
       const obj = [Mars3d,mars_copy3];
       for(let x of obj){
@@ -247,7 +247,7 @@ window.addEventListener("scroll", () => {
       }
       // 기사내용
       m_dis.forEach((ele)=>{
-        scFn(3700,false,ele,50,"#444");
+        scFn(3800,false,ele,50,"#444");
       });
     } //////////////////// 600이상 ///////////////////////
     else {
@@ -263,7 +263,7 @@ window.addEventListener("scroll", () => {
       }
       // 기사내용
       m_dis.forEach((ele)=>{
-        scFn(3400,false,ele,50,"#444");
+        scFn(3450,false,ele,50,"#444");
       });
     } //////////////////// 600이상 ///////////////////////
 
