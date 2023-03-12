@@ -142,20 +142,21 @@ function setMars() {
   변수 : 화면높이값,글자요소,iframe,글자색상
 ************************************************/
 
-  // window.scrollTo()
-  window.addEventListener("scroll", () => {
+// window.scrollTo()
+window.addEventListener("scroll", () => {
+    // 스크롤 높이값
+    let scHere = window.scrollY;
+
     // 효과함수 ///////////////
-    function scFn(scVal, Val_mars, ifr, ftC) {
+    function scFn(scVal, Val_mars, ifr, plus, ftC) {
       // 스크롤 위치값 변수
-      let scHere = window.scrollY;
-      console.log(scHere);
       // 스크롤 위치값이 1300넘어가면 효과줌
       if (scHere >= scVal && ifr) {
         appr(ifr);
       }
       // else if 주면 아래 조건 안먹음
-      if (scHere >= scVal + 500) appr(Val_mars);
-
+      if (scHere >= scVal + plus && Val_mars) appr(Val_mars);
+      
       // 3. 함수설정(appr)
       function appr(ele) {
         // 글씨 나타남
@@ -168,7 +169,8 @@ function setMars() {
         }, 800);
       } ////////////// appr ///////////////
     } //////////////// scFn //////////////////
-    // 초기화 함수
+    // 스크롤 높이값 확인
+    console.log(scHere);
 
     // 임시 미디어 쿼리 (1페이지 효과)
     const wW_mars = window.innerWidth;
@@ -176,21 +178,108 @@ function setMars() {
 
     // 가로 1600 이상일 때 scFn 호출
     if (wW_mars > 1600) {
-      scFn(1300, md_h3, imodel, "#fff");
+      // 2페이지
+      scFn(1300, md_h3, imodel, 500, "#fff");
 
       const obj = [Mars3d,mars_copy3];
       for(let x of obj){
         // console.log(x);
         x.forEach((ele)=>{
           // console.log("mars_copy3",ele);
-          scFn(5100,ele,false,"#333");
+          scFn(5100,false,ele, 500, "#333");
         })
       }
+      // 기사내용
       m_dis.forEach((ele)=>{
-        scFn(5200,ele,false,"#444");
+        scFn(5200,false,ele, 500, "#444");
       });
-    }
+    }////////////////////// 1600이상 ///////////////////
+
+    else if (wW_mars >= 1100 && wW_mars < 1600) {
+      scFn(800, md_h3, imodel, 40, "#fff");
+
+      const obj = [Mars3d,mars_copy3];
+      for(let x of obj){
+        // console.log(x);
+        x.forEach((ele)=>{
+          // console.log("mars_copy3",ele);
+          scFn(5200,false,ele,50,"#333");
+        })
+      }
+      // 기사내용
+      m_dis.forEach((ele)=>{
+        scFn(5300,false,ele,50,"#444");
+      });
+    } //////////////////// 1100이상 ///////////////////////
+    
+    else if (wW_mars >= 850 && wW_mars < 1100) {
+      scFn(350, md_h3, imodel, 150, "#fff");
+
+      const obj = [Mars3d,mars_copy3];
+      for(let x of obj){
+        // console.log(x);
+        x.forEach((ele)=>{
+          // console.log("mars_copy3",ele);
+          scFn(4300,false,ele, 50,"#333");
+        })
+      }
+      // 기사내용
+      m_dis.forEach((ele)=>{
+        scFn(4400,false,ele,50,"#444");
+      });
+    } //////////////////// 850이상 ///////////////////////
+
+    else if (wW_mars >= 600 && wW_mars < 850) {
+      scFn(400, md_h3, imodel, 100, "#fff");
+
+      const obj = [Mars3d,mars_copy3];
+      for(let x of obj){
+        // console.log(x);
+        x.forEach((ele)=>{
+          // console.log("mars_copy3",ele);
+          scFn(3600,false,ele, 50,"#333");
+        })
+      }
+      // 기사내용
+      m_dis.forEach((ele)=>{
+        scFn(3700,false,ele,50,"#444");
+      });
+    } //////////////////// 600이상 ///////////////////////
+    else {
+      scFn(250, md_h3, imodel, 100, "#fff");
+
+      const obj = [Mars3d,mars_copy3];
+      for(let x of obj){
+        // console.log(x);
+        x.forEach((ele)=>{
+          // console.log("mars_copy3",ele);
+          scFn(3300,false,ele, 50,"#333");
+        })
+      }
+      // 기사내용
+      m_dis.forEach((ele)=>{
+        scFn(3400,false,ele,50,"#444");
+      });
+    } //////////////////// 600이상 ///////////////////////
+
+    
+    
   }); /////////// scroll ///////////////
+//   // 미디어쿼리
+// window.addEventListener("resize", () => {
+// const nWidth = window.innerWidth;
+// if (matchMedia("screen and (max-width: 600px)").matches) {
+//   console.log("mobile");
+// } ////////// 600px ///////////
+// else if (matchMedia("screen and (max-width: 900px)").matches) {
+//   console.log("tablet");
+// } ////////// 900px ///////////
+// else if (matchMedia("screen and (max-width: 1100px)").matches) {
+//   console.log("desktop");
+// } ////////// 1100px ///////////
+// else if (matchMedia("screen and (max-width: 1600px)").matches) {
+//   console.log("desktop2");
+// } /////////////// resize //////////////
 
   // else if(wW_mars <= 1600 && wW_mars > 1400) scFn(1000,"#fff");
   // else if(wW_mars <= 1400 && wW_mars > 1200) scFn(800,"#fff");
@@ -222,7 +311,7 @@ function setMars() {
   // 3pg //////////////
   const data_Mars = mars_data;
   const p_arr = ["Curiosity","Maven","Rover","Odyssey"];
-  console.log(mars_data["Maven"]["기사"]);
+  // console.log(mars_data["Maven"]["기사"]);
   // 기사제목 띄우기
     mars_copy3.forEach((ele,idx)=>{
     ele.innerHTML = p_arr[idx];
@@ -237,22 +326,7 @@ function setMars() {
   
   // ________________________ 2pg ______________________________
 
-  // 미디어쿼리
-  window.addEventListener("resize", () => {
-    const nWidth = window.innerWidth;
-    if (matchMedia("screen and (max-width: 600px)").matches) {
-      console.log("mobile");
-    } ////////// 600px ///////////
-    else if (matchMedia("screen and (max-width: 900px)").matches) {
-      console.log("tablet");
-    } ////////// 900px ///////////
-    else if (matchMedia("screen and (max-width: 1100px)").matches) {
-      console.log("desktop");
-    } ////////// 1100px ///////////
-    else if (matchMedia("screen and (max-width: 1600px)").matches) {
-      console.log("desktop2");
-    } ////////// 1600px ///////////
-  }); /////////////// resize //////////////
+
 
   /* ______________________하단___________________________ */
 

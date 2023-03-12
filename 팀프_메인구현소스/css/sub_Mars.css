@@ -32,8 +32,8 @@ body *{
 .imodel{
     /* appr효과를 주기위해 */
     position: relative;
-    top: 100px;
-    opacity: 0;
+    top: 100px;/* here */
+    opacity: 0;/* here */
 
     width: 35vw;
     height: 35vw;
@@ -75,17 +75,14 @@ body *{
     
     /* outline: 1px dashed red; */
 }
-.on_mars {
-    opacity: 1;
-}
 .model h3{
     /* 처음에 안보이기 */
-    /* opacity: 0; */
+    opacity: 0;
+    top: 100px;
 
     /* 글씨효과를 주기위해 앱솔루트 */
-    /* position: absolute;
+    position: absolute;
     transition: 1s ease-in;
-    top: 100px; */
 
     /* 줄간격 */
     line-height: 1.7;
@@ -121,20 +118,10 @@ body *{
         text-shadow: 2px 2px 5px rgba(0, 255, 255, 0.562);
     }
 }
-/* 타이틀 글자 뒤 강조 */
-/* .pg2 h2::after{
-    position: absolute;
-    content: '';
-    display: block;
-    left: 50%;
-    top: 0px;
-    transform: translateX(-50%);
-    width: 500px;
-    height: max(5vw,10px);
-    background-color: rgba(28, 177, 236, 0.37);
-    border-radius: 50px;
-    z-index: -1;
-} */ 
+.arti2{
+    display: flex;
+    flex-direction: row-reverse;
+}
 
 /* 기사 */
 .pg2 h3{
@@ -148,7 +135,7 @@ body *{
     /* 글 양쪽정렬 */
     text-align: justify;
 
-    text-shadow: 1px 1px 1px #5f5f5f;
+    /* text-shadow: 1px 1px 1px #5f5f5f; */
 }
 
 /******************* 2페이지메인 *******************/
@@ -170,7 +157,7 @@ body *{
 .arti2_copy{
     width: 45vw;
     margin-left: 40px;
-    margin-right: 5vw;
+    margin-right: 7vw;
 
 }
 .arti2{
@@ -192,7 +179,7 @@ body *{
 .mars_item{
     display: grid;
     grid-template-columns: repeat(2, 2fr);
-    column-gap: min(8vw,30px);
+    column-gap: max(8vw,30px);
     grid-template-rows: 800px;
     max-width: 1100px;
     margin: 0 auto;
@@ -209,8 +196,8 @@ body *{
 
     /* 효과주기위함 */
     position: relative;
-    top: 100px;
-    opacity: 0;
+    top: 100px;/* here */
+    opacity: 0;/* here */
     transition: 2s ease-in-out;
     transition-delay: 2s;
 
@@ -219,20 +206,20 @@ body *{
     width: 100%;
 }
 .mars_copy3 h2{
-    display: block;
+    display: inline-block;
     line-height: 2;
     font-size: max(2.5vw,24px);
     font-weight: bold;
     text-shadow: 2px 2px #626262;
 
-    width: 10vw;
+    margin: 0 auto;
     left: 50%;
     transform: translateX(-50%);
 
     /* 효과 */
     position: relative;
-    top: 100px;
-    opacity: 0;
+    top: 100px;/* here */
+    opacity: 0;/* here */
     transition: 2s ease-in-out;
 }
 .m_dis{
@@ -249,8 +236,8 @@ body *{
 
     /* 효과 */
     position: relative;
-    top: 100px;
-    opacity: 0;
+    top: 100px;/* here */
+    opacity: 0;/* here */
     transition: 2s ease-in-out;
 }
 
@@ -281,4 +268,131 @@ body *{
     position: relative;
     top: 0;
     opacity: 1;
+}
+
+/******************* 미디어쿼리 *******************/
+@media screen and (max-width: 1400px) {
+    /* 페이지 높이 수정 */
+    .model{
+        margin-top: 100px;
+    }
+    .pg1{
+        height: 2200px;
+    } 
+
+}
+@media screen and (max-width: 950px) {
+    /************** 950px 1pg **************/
+    /* 페이지 높이 수정 */
+    .pg1{
+        height: 2200px;
+    } 
+    /* 컨텐츠 크기, 공간 수정 */
+    .model{
+        width: 70vw;
+        margin-top: 100px;
+    }
+    /* 타이틀 크기 수정 */
+    .model h2{
+        font-size: 9vw;
+    }
+    /* iframe 크기 수정 */
+    .imodel{
+        width: 70vw;
+        height: 70vw;
+        margin-top: 50px;
+    }
+    .mars_copy1{
+        margin-top: 70px;
+        width: 100%;
+    }
+    /* 내용 글씨크기 수정 */
+    .model h3{
+        font-size: 3.5vw;
+
+    }
+
+    /************** 950px 2pg **************/
+    .pg2{
+        height: 2600px;
+        margin: 0 auto;
+        width: 80vw;
+    }
+    .pg2 h2{
+        margin: 80px 0;
+        font-size: 8vw;
+    }
+    .pg2 h3{
+        font-size: 2.5vw;
+    }
+    .arti{
+        display: block;
+    }
+    .pg2_img1 img{
+		display: block;
+        margin: 0 auto;
+		width: 80vw;
+    }
+    .arti1_copy{
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 50px;
+        margin-bottom: 200px;
+    }
+
+    .pg2_img2{
+        margin: 0;
+    }
+    .pg2_img2 img{
+        width: 80vw;
+    }
+    .arti2_copy{
+        margin: 0;
+        width: 100%;
+        margin-top: 50px;
+    }
+
+
+    /************** 950px 3pg **************/
+    .pg3{
+        height: 3000px;
+    }
+    .mars_item{
+        display: block;
+        width: 80vw;
+    }
+    .mars_copy3 h2{
+        font-size: 5vw;
+    }
+    .m_dis{
+        width: 60vw;
+        margin-bottom: 45px;
+    }
+    .m_dis h3{
+        font-size: 2.5vw;
+    }
+}
+
+
+
+/* 페이지높이만 수정 */
+@media screen and (max-width: 750px) {
+    .pg1{
+        height: 1700px;
+    }
+    .pg2{
+        height: 2000px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .pg2 h3{
+        font-size: max(3vw,16px);
+    }
+    
+    .mars_copy3 h2{
+        font-size: max(5vw,32px);
+    }
+    .m_dis h3{
+        font-size: max(3vw,16px);
+    }
 }
