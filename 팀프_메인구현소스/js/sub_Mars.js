@@ -58,75 +58,9 @@ function setMars() {
   } /////////////////// chgMenu 함수 ///////////////
   //////////////////////////////////////////////////
 
-  //___________________________메인________________________________
+  //___________________________화성메인________________________________
 
-  // console.log("화성 로딩완료");
 
-  setTimeout(() => {
-    window.scrollTo(0, 0);
-  }, 100); // .1초 정도는 줘야 효과있음
-
-  // 1. 대상선정
-  ///////////////////////// 여기는 보류 /////////////////////////////
-  // 2. 함수호출
-  // copyFt.forEach((ele)=>scFn(ele));
-  //   window.addEventListener("scroll", () => {
-  // let scHere = window.scrollY;
-  // console.log("scHere", scHere);
-
-  /************************************* 
-        함수 : scFn
-        기능 : 높이값에 따른 글씨 애니메이션, 색상변경
-        변수 : 높이값(scFn), 색상(ftC)
-    *************************************/
-  // function scFn(scVal, ftC) {
-  //   if (scHere >= scVal) {
-  //     for (let x of copyFt) {
-  //     //   console.log(x);
-  //       // 글씨 나타남
-  //       x.style.opacity = 1;
-  //       // 글씨 위로 올라옴
-  //       x.style.top = 0 + "px";
-  //       // 약간의 시간 후 색상 변경
-  //     } /////////// for of /////////////
-  //   } /////////// if //////////////////
-  //   if (scHere >= scVal + 1000) {
-  //     for (let x of copyFt) {
-  //       // console.log(x);
-  //       // 글씨 나타남
-  //       x.style.opacity = 1;
-  //       // 글씨 위로 올라옴
-  //       x.style.top = 0 + "px";
-  //       // 약간의 시간 후 색상 변경
-  //       setTimeout(() => {
-  //         x.style.color = ftC;
-  //       }, 800); //////// setTimeout ///
-  //     } /////////// for of /////////////
-  //   } /////////// if //////////////////
-  // } //////////// scFn //////////////////////
-
-  // if(scHere >= 1400) scFn(1400, "#fff");
-
-  // 임시호출
-  // for (let x of copyFt) {
-  //   if (scHere >= 1400 && scHere <= 2500) {
-  //       x.classList.remove("copyFt");
-  //       x.classList.add("copyFtA");
-  //   } else if (scHere > 2500) {
-  //     x.classList.remove("copyFtA");
-  //     x.classList.add("copyFt");
-  //   }
-  // }
-
-  /***************************************** 
-     함수 : scrollList
-     기능 : 스크롤높이에 따라 클래스넣어줌(.copyFt)
-     *****************************************/
-  //  function scrollList() {}
-  //}); ////////////// scroll /////////////////
-  ////////////////////// 여기까지 보류 //////////////////////////////////
-
-  //_____________________1pg_______________________________
   // 1. 대상선정
   const md_h3 = document.querySelector(".model h3");
   const imodel = document.querySelector(".imodel");
@@ -134,7 +68,14 @@ function setMars() {
   const mars_copy3 = document.querySelectorAll(".mars_copy3 h2")
   const m_dis = document.querySelectorAll(".m_dis h3")
   const Mars3d = document.querySelectorAll(".Mars3d")
+  //____________________________________________________
 
+  window.addEventListener("DOMContentLoaded",()=>{
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100); // .1초 정도는 줘야 효과있음
+  }); ////////////////// 로드구역 ///////////////////
+  
   // 2. 이벤트설정 (스크롤)
   /************************************************ 
   함수 : scFn
@@ -286,12 +227,6 @@ window.addEventListener("scroll", () => {
 //   console.log("desktop2");
 // } /////////////// resize //////////////
 
-  // else if(wW_mars <= 1600 && wW_mars > 1400) scFn(1000,"#fff");
-  // else if(wW_mars <= 1400 && wW_mars > 1200) scFn(800,"#fff");
-  // else if(wW_mars <= 1200 && wW_mars > 800) scFn(600,"#fff");
-  // else if(wW_mars <= 800 && wW_mars > 600) scFn(400,"#fff");
-  // else if(wW_mars <= 600) scFn(200,"#fff");
-
   // 객체로 html 채우기 ///////////////////////////////////////////
   const mars_data = {
     "Curiosity" : {
@@ -313,7 +248,7 @@ window.addEventListener("scroll", () => {
 };
 
   ///////////////////////// 객체 ///////////////////////////////////
-  // 3pg //////////////
+  ///////////// mars 3pg //////////////
   const data_Mars = mars_data;
   const p_arr = ["Curiosity","Maven","Rover","Odyssey"];
   // console.log(mars_data["Maven"]["기사"]);
@@ -325,7 +260,6 @@ window.addEventListener("scroll", () => {
     m_dis.forEach((ele,idx)=>{
     ele.innerText = mars_data[p_arr[idx]]["기사"];
   });
-
 
 
   
