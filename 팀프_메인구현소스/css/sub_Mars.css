@@ -17,7 +17,12 @@ html{
     background: url(../planet/Mars/img/bg_mars.jpg);
     height: 3000px;
 }
-.title h1{
+.title_m{
+    position: absolute;
+    height: 100%;
+    width: 100vw;
+}
+.title_m h1{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -30,9 +35,12 @@ html{
     font-size: 23vw;
 }
 .vd_mars{
+    /* position: relative; */
     filter: brightness(80%);
     margin-top: 90px;
     width: 100%;
+    height: auto;
+    z-index: 1;
 }
 
 /* 3d 모델 */
@@ -335,7 +343,10 @@ html{
     /* 내용 글씨크기 수정 */
     .model h3{
         font-size: 3.5vw;
-
+    }
+    /* 영상 타이틀 수정 */
+    .title_m h1{
+        top: 30%;
     }
 
     /************** 950px 2pg **************/
@@ -417,6 +428,9 @@ html{
     }
     .pg2{
         height: 2000px;
+    }
+    .title_m h1{
+        top: 20%;
     }
 }
 @media screen and (max-width: 600px) {

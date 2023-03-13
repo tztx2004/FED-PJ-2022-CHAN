@@ -6,7 +6,12 @@ window.addEventListener("DOMContentLoaded", setMars);
 // 화성 로딩 - setMars ///
 function setMars() {
   console.log("로딩완료!");
-
+  
+  // 새로고침 시 맨위로
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+  }, 100); // .1초 정도는 줘야 효과있음
+  
   // header 영역 스크롤시 배경색, 찾기버튼 색변경 변수
   const searchbx = document.querySelector(".searchbx");
   const sbx = document.querySelector(".sbx");
@@ -68,14 +73,12 @@ function setMars() {
   const mars_copy3 = document.querySelectorAll(".mars_copy3 h2")
   const m_dis = document.querySelectorAll(".m_dis h3")
   const Mars3d = document.querySelectorAll(".Mars3d")
-  const title = document.querySelector(".title h1")
+  const title = document.querySelector(".title_m h1")
   //____________________________________________________
 
-  window.addEventListener("DOMContentLoaded",()=>{
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 100); // .1초 정도는 줘야 효과있음
-  }); ////////////////// 로드구역 ///////////////////
+  
+    
+  
   
   //// 타이틀 나타냈다가 사라짐 /////////////
   setTimeout(()=>{
@@ -91,10 +94,10 @@ function setMars() {
   함수 : scFn
   기능 : 나타나는효과
   변수 : 화면높이값,글자요소,iframe,글자색상
-************************************************/
+  ************************************************/
 
-// window.scrollTo()
-window.addEventListener("scroll", () => {
+  // window.scrollTo()
+  window.addEventListener("scroll", () => {
     // 스크롤 높이값
     let scHere = window.scrollY;
 
@@ -221,21 +224,21 @@ window.addEventListener("scroll", () => {
     
     
   }); /////////// scroll ///////////////
-//   // 미디어쿼리
-// window.addEventListener("resize", () => {
-// const nWidth = window.innerWidth;
-// if (matchMedia("screen and (max-width: 600px)").matches) {
-//   console.log("mobile");
-// } ////////// 600px ///////////
-// else if (matchMedia("screen and (max-width: 900px)").matches) {
-//   console.log("tablet");
-// } ////////// 900px ///////////
-// else if (matchMedia("screen and (max-width: 1100px)").matches) {
-//   console.log("desktop");
-// } ////////// 1100px ///////////
-// else if (matchMedia("screen and (max-width: 1600px)").matches) {
-//   console.log("desktop2");
-// } /////////////// resize //////////////
+  //   // 미디어쿼리
+  // window.addEventListener("resize", () => {
+  // const nWidth = window.innerWidth;
+  // if (matchMedia("screen and (max-width: 600px)").matches) {
+  //   console.log("mobile");
+  // } ////////// 600px ///////////
+  // else if (matchMedia("screen and (max-width: 900px)").matches) {
+  //   console.log("tablet");
+  // } ////////// 900px ///////////
+  // else if (matchMedia("screen and (max-width: 1100px)").matches) {
+  //   console.log("desktop");
+  // } ////////// 1100px ///////////
+  // else if (matchMedia("screen and (max-width: 1600px)").matches) {
+  //   console.log("desktop2");
+  // } /////////////// resize //////////////
 
   // 객체로 html 채우기 ///////////////////////////////////////////
   const mars_data = {
@@ -255,7 +258,7 @@ window.addEventListener("scroll", () => {
         "제목":"Odyssey",
         "기사":"2001 Mars Odyssey is a robotic spacecraft orbiting the planet Mars. The project was developed by NASA, and contracted out to Lockheed Martin, with an expected cost for the entire mission of US$297 million."
     },
-};
+  };
 
   ///////////////////////// 객체 ///////////////////////////////////
   ///////////// mars 3pg //////////////
