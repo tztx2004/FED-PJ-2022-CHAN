@@ -68,6 +68,7 @@ function setMars() {
   const mars_copy3 = document.querySelectorAll(".mars_copy3 h2")
   const m_dis = document.querySelectorAll(".m_dis h3")
   const Mars3d = document.querySelectorAll(".Mars3d")
+  const title = document.querySelector(".title h1")
   //____________________________________________________
 
   window.addEventListener("DOMContentLoaded",()=>{
@@ -76,6 +77,15 @@ function setMars() {
     }, 100); // .1초 정도는 줘야 효과있음
   }); ////////////////// 로드구역 ///////////////////
   
+  //// 타이틀 나타냈다가 사라짐 /////////////
+  setTimeout(()=>{
+    title.style.opacity = "1";
+    title.style.fontSize = "25vw";
+  },3000);
+  setTimeout(()=>{
+    title.style.opacity = "0";
+  },6000);
+
   // 2. 이벤트설정 (스크롤)
   /************************************************ 
   함수 : scFn

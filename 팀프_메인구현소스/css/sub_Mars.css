@@ -17,7 +17,18 @@ html{
     background: url(../planet/Mars/img/bg_mars.jpg);
     height: 3000px;
 }
-
+.title h1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    opacity: 0;
+    
+    transition: 2s ease-in;
+    color: rgba(255, 255, 255);
+    font-size: 23vw;
+}
 .vd_mars{
     filter: brightness(80%);
     margin-top: 90px;
