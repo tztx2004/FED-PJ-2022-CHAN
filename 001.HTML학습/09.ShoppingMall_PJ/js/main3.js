@@ -92,7 +92,7 @@ function loadFn() {
             // 슬라이드함수 호출
             goSlide(idx);
             // 자동넘김멈춤함수
-            clearAuto();
+            // clearAuto();
         }; ///////// onclick //////////
     }); ////////// forEach ///////////
 
@@ -113,7 +113,7 @@ function loadFn() {
    } ////////////// autoSlide함수 //////////
 
    // 자동넘김 최초호출!
-   autoSlide();
+//    autoSlide();
 
    /************************************ 
         함수명: clearAuto
