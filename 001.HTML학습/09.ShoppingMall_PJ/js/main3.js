@@ -48,7 +48,7 @@ function loadFn() {
      let prot = 0;
      
      // 2. 슬라이드 변경함수 만들기
-     const goSlide = (seq) => {
+    const goSlide = (seq) => {
          console.log("슬로우!", seq);
          
          // 광클금지 설정하기 //////
