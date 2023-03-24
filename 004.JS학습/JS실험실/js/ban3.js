@@ -332,7 +332,7 @@ function loadFn() {
         // 변수만들기 //////////
         // (1) 드래그 상태변수 : true-드래그 중, false-드래그아님
         let drag = false;
-        // (2) 첫번째 위치포인트 first x, frist y
+        // (2) 첫번째 위치포인트 first x, first y
         let fx,fy;
         // (3) 마지막 위치포인트 last x, last y
         let lx=obj.offsetLeft, // -> 슬라이드 처음 left값 셋팅
@@ -342,7 +342,6 @@ function loadFn() {
         let mvx, mvy;
         // (5) 위치이동 차이 결과변수 result x, result y
         let rx,ry;
-
 
         // 함수만들기 //////////
         // (1) 드래그상태 true
@@ -355,12 +354,19 @@ function loadFn() {
 
             // 드래그 상태일때만 실행 
             if(drag){
+                console.log("드래그중~");
                 // 트랜지션 없애기
                 obj.style.transition = "none";
 
                 // 1. 드래그 상태에서 움직일 때 위치값 : mvx,mvy
-                mvx = event.pageX;
-                mvy = event.pageY;
+                mvx = event.pageX || event.changedTouches[0].clientX;
+                // 모바일때는 뒤에것이 유효하므로 할당되어 사용된다
+                // console.log(event.changedTouches[0].clientX)
+                // 모바일에서는 위치값을 changedTouches 컬렉션에 수집한다
+                // changedTouches[0] -> 첫번째 컬렉션에 pageX값이 존재
+                // changedTouches[0].pageX
+
+                // mvy = event.pageY;
 
                 // 2. 움직일 때 위치값 - 처음위치값 : rx, ry
                 // x축값은 left값, y축값은 top값 이동이다
@@ -385,8 +391,11 @@ function loadFn() {
 
         // (4) 첫번째 위치포인트 셋팅함수
         const firstPoint = ()=>{
-            fx=event.pageX;
-            fy=event.pageY;
+            fx= event.pageX || event.changedTouches[0].clientX;
+            // 변수 = 할당값1 || 할당값2;
+            // -> undefined / null 값이 아닌값으로 할당됨
+            // -> 우선순위로 DT쪽을 먼저 써준다
+            // fy=event.pageY;
         };
 
         // (5) 마지막 위치포인트 셋팅함수
@@ -397,8 +406,20 @@ function loadFn() {
         // 최종 이동결과값인 rx,ry를 항상 대입연산하여 값을 업데이트한다
 
         // 이벤트 등록하기 ///////
+        // DT용 이벤트와 Mobile 이벤트를 모두 등록해줘야 모바일에도 작동함
+        // mousedown -> touchstart
+        // mouseup -> touchend
+        // mousemove -> touchmove
         // (1) 마우스 눌렀을 때 : 드래그true + 첫번째 위치값 업데이트
         obj.addEventListener("mousedown",()=>{dTrue();firstPoint()});
+
+        // 모바일 : touchstart
+        obj.addEventListener("touchstart",()=>{
+            dTrue();
+            firstPoint();
+            console.log("터치시작");
+        });
+        
         // (2) 마우스 올라왔을 때(마우스 버튼 뗐을때) : 드래그false + 마지막 위치값 업데이트
         obj.addEventListener("mouseup",()=>{
             dFalse();
@@ -408,9 +429,22 @@ function loadFn() {
 
             // 이동판별함수 호출!
             goWhere(obj);
+            
+        });
+        // 모바일 : touchend
+        obj.addEventListener("touchend",()=>{
+            dFalse();
+            // lastPoint(); 
+            // -> 슬라이드 드래그는 마지막위치 업데이트 불필요!
+            // 왜? 슬라이드 마지막위치는 항상 일정하므로
+
+            // 이동판별함수 호출!
+            goWhere(obj);
+            console.log("터치끝",lx);
         });
         // (3) 마우스 움직일 때
         obj.addEventListener("mousemove",dMove);
+        obj.addEventListener("touchmove",dMove);
         // (4) 마우스 벗어날 때
         obj.addEventListener("mouseleave",dFalse);
 
