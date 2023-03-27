@@ -42,8 +42,25 @@
       // 클릭된 img 태그에 클래스 type1~5 넣기
       // 하나의 클래스만 남기기위해 먼저 removeClass() 해준다!
       $(this).removeClass().addClass("type"+rdm);
-      
-    });
+
+      // 만약 클래스가 "type1"이면 top값을 200px로 설정하시오
+      // 클릭된 요소의 클래스여부는 hasClass(클래스명) 사용!
+      console.log($(this).hasClass("type1"));
+
+      if($(this).hasClass("type1")) {
+        $(this).animate({top:"200px"});
+      }
+      else{
+        $(this).animate({top:"0"});
+      }
+
+    });///////////// click ///////////////
+    // 추가미션 : .my를 클릭하면 한번은 .pos를 넣고
+    // 다시한번은 .pos를 빼는 토글 기능을 구현하시오!
+
+    $(".my").click(function(){
+      $(this).toggleClass("pos");
+    })
 		
 			
 		});/////// jQB ////////////////////////////
@@ -54,6 +71,7 @@
 <style>
  
   img {
+    position: relative;
     padding: 15px;
     background: #666;
     transition: .8s ease-in-out;
@@ -89,6 +107,7 @@
     position: absolute;
     top: 30%;
     left: 0;
+    border: 2px dotted orange;
     transition: left 2s ease-in-out;
   }
 
@@ -101,10 +120,13 @@
 </head>
 
 <body>
-<img src="th1.jpg" alt="" >
-<img src="th2.jpg" alt="" >
-<img src="th3.jpg" alt="" >
+<img src="th1.jpg" alt="이미지" >
+<img src="th2.jpg" alt="이미지" >
+<img src="th3.jpg" alt="이미지" >
 
+<div class="my">
+  <img src="th1.jpg" alt="이미지">
+</div>
 <!---------- jQuery code Start ---------->
 
 <script>
