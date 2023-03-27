@@ -1,8 +1,6 @@
 // 달력 생성자함수 /////
 
-MakeDallyeok();
-
-function MakeDallyeok(){
+function MakeDallyeok(sel){ // sel - 달력넣을 요소 선택자
 
     // 선택함수 ////
     const qs = x=>document.querySelector(x);
@@ -10,55 +8,58 @@ function MakeDallyeok(){
     // 메시지 //
     const cg = x=>console.log(x);
 
+    // 0. 최초달력코드 넣기
+    qs(sel).innerHTML = insertHcode();
+
     // 1. 변수셋팅 /////////////////
     
     // (1) 변경할 현재날짜 객체
-    const curr_date = new Date();
+    this.curr_date = new Date();
     // (2) 오늘날짜 객체
-    const today = new Date();
+    this.today = new Date();
     // (3) 년도요소 : .yearTit
-    const yearTit =qs(".yearTit");
-    // (4) 월요소 : .monthTit
-    const monthTit =qs(".monthTit");
+    this.yearTit =qs(sel+" .yearTit");
+    // (4) 월요소 : .this.monthTit
+    this.monthTit =qs(sel+" .monthTit");
     // (5) 날짜요소 : .dates
-    const dates =qs(".dates");
-    cg(dates);
+    this.dates =qs(sel+" .dates");
+    // cg(dates);
 
     // 2. 함수 만들기 /////////////////////
     // (1) 달력 초기화 구성 함수
-    const initDallyeok = ()=>{
+    this.initDallyeok = ()=>{
         // getMonth() 정보는 항상 현재달 숫자보다 1작음(배열순번임)
         // 1. 전달 마지막 날짜(옵션:0) -> 달력 전달끝쪽 날짜표시
-        const prevLast = new Date(curr_date.getFullYear(),curr_date.getMonth(),0);
+        this.prevLast = new Date(this.curr_date.getFullYear(),this.curr_date.getMonth(),0);
         // cg(prevLast);
         // 2. 현재달 첫번째 날짜(옵션:1-> 전달로 셋팅)
         // -> 달력 전달셋팅을 위한 요일 구하기 위해!
-        const thisFirst = new Date(curr_date.getFullYear(),curr_date.getMonth(),1);
+        this.thisFirst = new Date(this.curr_date.getFullYear(),this.curr_date.getMonth(),1);
         // cg(thisFirst);
         // 3. 현재달 마지막 날짜(옵션:0)
         // -> 현재달려 날짜셋팅 위해!
-        const thisLast = new Date(curr_date.getFullYear(),curr_date.getMonth()+1,0);
+        this.thisLast = new Date(this.curr_date.getFullYear(),this.curr_date.getMonth()+1,0);
         // cg(thisLast);
 
         // 4. 년도표시하기
-        yearTit.innerHTML = curr_date.getFullYear();
+        this.yearTit.innerHTML = this.curr_date.getFullYear();
         // 5. 월표시하기 : 현재달은 getMonth()+1
-        monthTit.innerHTML = curr_date.getMonth()+1;
+        this.monthTit.innerHTML = this.curr_date.getMonth()+1;
         // 6. 날짜넣을 배열변수만들기
         const dset = [];
 
         // 7. 전달 날짜 앞쪽 채우기
         // 조건: 현재달 첫 날짜 요일이 0이 아니면 내용있음!
         
-        if(thisFirst.getDay() !== 0){
+        if(this.thisFirst.getDay() !== 0){
             // for문 셋팅 : 요일순번보다 작을 때까지 ++
-            for(let i =0;i<thisFirst.getDay();i++){
+            for(let i =0;i<this.thisFirst.getDay();i++){
                 // cg(i);
                 // 반복횟수만큼 배열 앞쪽에 추가한다
                 // 전달은 클래스"bm"으로 구분함!
                 // 전달 마지막 날짜부터! -> prevLast.getDate()
                 dset.unshift(`
-                <span style="color:#ccc" class = "bm">${prevLast.getDate()-i}</span>
+                <span style="color:#ccc" class = "bm">${this.prevLast.getDate()-i}</span>
                 `);
                 // 마지막날짜 - i(증가변수) = 1씩 작아지는 숫자추가됨
                 // unshift() 배열앞에 값을 추가하는 메서드
@@ -68,7 +69,7 @@ function MakeDallyeok(){
         // 2. 현재월 삽입하기 //
         // 반복문 구성 : 현재월 1일부터 마지막날짜까지 반복 배열추가
         // 현재월 마지막 날짜: thisLast.getDate()
-        for(let i =1; i<thisLast.getDate();i++){
+        for(let i =1; i<this.thisLast.getDate();i++){
             dset.push(i);
         }///////////// for ///////////////////
         
@@ -89,12 +90,12 @@ function MakeDallyeok(){
         // 7일*6주 = 42개
         for(let i=0;i<42;i++){
             // 오늘 날짜 표시
-            if( // 년,월,일이 모두 일치하는 오늘만 표시(클래스 today)
-                today.getDate()===dset[i] &&
-                today.getMonth()===curr_date.getMonth() &&
-                today.getFullYear()===curr_date.getFullYear()){
+            if( // 년,월,일이 모두 일치하는 오늘만 표시(클래스 this.today)
+                this.today.getDate()===dset[i] &&
+                this.today.getMonth()===this.curr_date.getMonth() &&
+                this.today.getFullYear()===this.curr_date.getFullYear()){
                 hcode += `
-                    <div class = "date today">${dset[i]}</div>
+                    <div class = "date this.today">${dset[i]}</div>
                 `;
             }
             else{
@@ -106,16 +107,16 @@ function MakeDallyeok(){
 
         // 5. 코드화면에 넣기
         // 대상 : .dates -> dates변수
-        dates.innerHTML = hcode;
+        this.dates.innerHTML = hcode;
 
         // 각 날짜 .date 요소에 링크설정하기
         
         qsa(".date").forEach(
             ele=>ele.onclick=()=>{
                 // 년
-                let cyear = yearTit.innerText;
+                let cyear = this.yearTit.innerText;
                 // 월
-                let cmonth = monthTit.innerText;
+                let cmonth = this.monthTit.innerText;
                 // 일
                 let cdate = ele.innerText;
 
@@ -160,35 +161,80 @@ function MakeDallyeok(){
             } //////////// click /////////////
         );//////////////// forEach ///////////////////
 
-    }; ///////// initDallyeok ///////////
+    }; ///////// this.initDallyeok ///////////
 
     // 0자리 수 만들기
     const addZero = x=>x<10? "0"+x : x;
     // 보낸 숫자가 10보다 작으면 앞에 "0"을 더해서 리턴함!
     
-    initDallyeok(); // 최초호출
+    // this.initDallyeok(); // 최초호출
 
     // (2) 이전달력 출력하기 함수 ////////
-    const prevCal = ()=>{
+    this.prevCal = ()=>{
         // 이전월로 변경하여 initDallyeok()함수 호출
         // getMonth() 월가져오기 / setMonth() 월 셋팅하기
-        curr_date.setMonth(curr_date.getMonth() - 1);
-        initDallyeok();
+        this.curr_date.setMonth(this.curr_date.getMonth() - 1);
+        this.initDallyeok();
     };/////////// prevCal //////////////
 
     // 버튼에 클릭설정하기 //
-    qs(".btnL").onclick = prevCal;
+    qs(sel+" .btnL").onclick = this.prevCal;
 
     // (3) 다음달력 출력하기 함수 ////////
-    const nextCal = ()=>{
+    this.nextCal = ()=>{
         // 이전월로 변경하여 initDallyeok()함수 호출
         // getMonth() 월가져오기 / setMonth() 월 셋팅하기
-        curr_date.setMonth(curr_date.getMonth() + 1);
-        initDallyeok();
-    };/////////// prevCal //////////////
+        this.curr_date.setMonth(this.curr_date.getMonth() + 1);
+        this.initDallyeok();
+    };/////////// nextCal //////////////
+
+
+    // (4) 달력 HTML 코드 넣기 함수 ////
+    // 위쪽에서 최초 호출하므로 선언적함수로 만든다!
+    function insertHcode(){
+        // 달력 html코드를 리턴함
+        return `
+            <!-- 달력전체박스 -->
+            <div class="calender">
+                <!-- 달력상단:해당년/월표시 -->
+                <header class="header">
+                    <!-- 달력이동버튼:이전 -->
+                    <button class="mbtn btnL">〈</button>
+                    <div class="title">
+                    <div class="yearTit"></div>
+                    <div class="monthTit"></div>
+                    </div>
+                    <!-- 달력이동버튼:이전 -->
+                    <button class="mbtn btnR">〉</button>
+                </header>
+                <!-- 달력날짜표시박스 -->
+                <section class="main">
+                    <!-- 주단위 구분박스 -->
+                    <div class="week">
+                    <div class="day">Sun</div>
+                    <div class="day">Mon</div>
+                    <div class="day">Tue</div>
+                    <div class="day">Wed</div>
+                    <div class="day">Thu</div>
+                    <div class="day">Fri</div>
+                    <div class="day">Sat</div>
+                    </div>
+                    <!-- 해당월의 달력날짜 구성박스 -->
+                    <div class="dates"></div>
+                </section>
+            </div>
+        `;
+    }///////////// insertHcode 함수 ////////////
+
+
+
 
     // 버튼에 클릭설정하기 //
-    qs(".btnR").onclick = nextCal;
+    qs(sel+" .btnR").onclick = this.nextCal;
 
     
 } //////////// MakeDallyeok //////////////
+
+// 달력 생성자함수 내보내기 /////
+export default MakeDallyeok;
+// default는 이름 변경없는 단 하나의 모듈을 내보낼 때 사용함
