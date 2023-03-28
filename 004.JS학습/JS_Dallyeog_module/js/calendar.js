@@ -111,7 +111,7 @@ function MakeDallyeok(sel){ // sel - 달력넣을 요소 선택자
 
         // 각 날짜 .date 요소에 링크설정하기
         
-        qsa(".date").forEach(
+        qsa(sel+" .date").forEach(
             ele=>ele.onclick=()=>{
                 // 년
                 let cyear = this.yearTit.innerText;
@@ -158,6 +158,10 @@ function MakeDallyeok(sel){ // sel - 달력넣을 요소 선택자
                 // 최종날짜데이터
                 let comp = cyear +"-" + addZero(cmonth) +"-" + cdate
                 console.log(comp);
+
+                // 달력의 히든필드에 저장
+                qs(sel+" .dinfo").value = comp;
+
             } //////////// click /////////////
         );//////////////// forEach ///////////////////
 
@@ -222,6 +226,8 @@ function MakeDallyeok(sel){ // sel - 달력넣을 요소 선택자
                     <!-- 해당월의 달력날짜 구성박스 -->
                     <div class="dates"></div>
                 </section>
+                <!-- 달력날짜 저장용 히든필드 -->
+                <input type="hidden" class="dinfo">
             </div>
         `;
     }///////////// insertHcode 함수 ////////////
