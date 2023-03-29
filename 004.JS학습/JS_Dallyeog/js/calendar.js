@@ -68,7 +68,7 @@ function MakeDallyeok(){
         // 2. 현재월 삽입하기 //
         // 반복문 구성 : 현재월 1일부터 마지막날짜까지 반복 배열추가
         // 현재월 마지막 날짜: thisLast.getDate()
-        for(let i =1; i<thisLast.getDate();i++){
+        for(let i =1; i<=thisLast.getDate();i++){
             dset.push(i);
         }///////////// for ///////////////////
         

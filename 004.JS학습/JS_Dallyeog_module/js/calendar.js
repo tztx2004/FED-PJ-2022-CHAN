@@ -37,7 +37,7 @@ function MakeDallyeok(sel){ // sel - 달력넣을 요소 선택자
         this.thisFirst = new Date(this.curr_date.getFullYear(),this.curr_date.getMonth(),1);
         // cg(thisFirst);
         // 3. 현재달 마지막 날짜(옵션:0)
-        // -> 현재달려 날짜셋팅 위해!
+        // -> 현재달력 날짜셋팅 위해!
         this.thisLast = new Date(this.curr_date.getFullYear(),this.curr_date.getMonth()+1,0);
         // cg(thisLast);
 
@@ -69,7 +69,7 @@ function MakeDallyeok(sel){ // sel - 달력넣을 요소 선택자
         // 2. 현재월 삽입하기 //
         // 반복문 구성 : 현재월 1일부터 마지막날짜까지 반복 배열추가
         // 현재월 마지막 날짜: thisLast.getDate()
-        for(let i =1; i<this.thisLast.getDate();i++){
+        for(let i =1; i<=this.thisLast.getDate();i++){
             dset.push(i);
         }///////////// for ///////////////////
         
@@ -95,7 +95,7 @@ function MakeDallyeok(sel){ // sel - 달력넣을 요소 선택자
                 this.today.getMonth()===this.curr_date.getMonth() &&
                 this.today.getFullYear()===this.curr_date.getFullYear()){
                 hcode += `
-                    <div class = "date this.today">${dset[i]}</div>
+                    <div class = "date today">${dset[i]}</div>
                 `;
             }
             else{
@@ -232,7 +232,15 @@ function MakeDallyeok(sel){ // sel - 달력넣을 요소 선택자
         `;
     }///////////// insertHcode 함수 ////////////
 
-
+    // (5) 날짜기간계산하기
+    this.getDateDiff = (dt1, dt2) => {
+        const date1 = new Date(dt1);
+        const date2 = new Date(dt2);
+        
+        const diffDate = date1.getTime() - date2.getTime();
+        return Math.abs(diffDate / (1000 * 60 * 60 * 24)); 
+        // 밀리세컨 * 초 * 분 * 시 = 일
+    } ///////////// getDateDiff 함수 ///////////////
 
 
     // 버튼에 클릭설정하기 //
