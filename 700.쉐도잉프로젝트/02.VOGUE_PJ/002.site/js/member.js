@@ -30,9 +30,13 @@ $(()=>{
         // cid는 current ID 즉, 현재 아이디라는 뜻
 
         // 2. 블러가 발생한 요소의 입력값은?
-        let cv = $(this).val();
+        let cv = $(this).val().trim();
         // cv 는 current value 즉, 현재값의 뜻
         // val() 메서드 - input요소의 값(value)를 읽기/쓰기용
+        // trim() 메서드 - 앞뒤 공백 제거(공백만 있으면 공백제거)
+
+        // 서비스 차원으로 공백제거된 데이터를 다시 원래 입력창에 넣어주기
+        $(this).val(cv); // val(값)
 
         console.log(cid, cv);
         /************************************** 
