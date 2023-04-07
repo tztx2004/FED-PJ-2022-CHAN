@@ -7,7 +7,7 @@ window.addEventListener("DOMContentLoaded",linkFn);
 ////////////////////// 링크시스템 로드함수 ///////////////////////
 function linkFn(){
     
-    console.log("링크 로딩완료");
+    // console.log("링크 로딩완료");
 
     // 1. 링크 대상 선정 : 
     // (1) GNB : .gnb a
