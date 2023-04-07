@@ -31,14 +31,14 @@
 function AutoScroll(){
     
 /********************************************************** 
-    이벤트 변수할당하기
+    대상 변수할당하기
 **********************************************************/
 // 전체 페이지 번호
 let pno = 0;
 // 페이지 요소
 const pg = $(".page");
 // 전체 페이지 개수
-const pgcnt = $(".page").length;
+const pgcnt = pg.length;
 // console.log(pgcnt,pg);
 // 광실행금지변수
 let prot = [];
@@ -67,8 +67,8 @@ this.easing = "easeInOutQuint";
 *********************************************************/
 this.wheelFn = ()=>{
     // 광휠금지
-    if (prot[1] === 1) return;
-    chkCrazy(0);
+    if (prot[0]) return;
+    this.chkCrazy(0);
 
     // console.log("this.wheelFn");
 
@@ -108,7 +108,7 @@ this.chgMenu = ()=>{
     // this키워드는 생성자 함수의 객체를 가리킴
     // 따라서 이벤트 발생자신은 event.currentTarget
 
-    console.log(this.event.currentTarget, idx);
+    console.log(this,event.currentTarget, idx);
 
 
     // 2. 전역페이지번호에 순번 업데이트
