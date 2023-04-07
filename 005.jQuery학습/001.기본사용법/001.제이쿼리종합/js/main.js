@@ -81,6 +81,7 @@ $(() => {
     // 2. 버튼셋팅하기 ///////////////////
     // 대상: .btns buttons -> btns변수
     btns.hide().first().show();
+    // btns.hide().eq(8).show();
 
     // 3. 공통함수 : actMini() ///////////
     // 전달변수 3개
@@ -109,7 +110,7 @@ $(() => {
         // 제이쿼리 위치값 정보 메서드 : offset() -> 하위속성:top,left
         // 제이쿼리 가로,세로 크기정보 메서드 : width(),height()
 
-        console.log(room,pos);
+        // console.log(room,pos);
 
         // 4. 미니언즈 이동하기
         // 대상: .mi -> mi변수
@@ -289,6 +290,10 @@ $(() => {
     // 10. "3번방으로!" 버튼 클릭 시
     .next().click(function(){
         let fn = ()=>{// 콜백함수
+
+            // 메시지 보이기
+            msg.html(`어서 윗층으로 가자!`).fadeIn(300);
+
             // 다음버튼 보이기
             $(this).next().delay(500).slideDown(300);
         }; ////////////// fn /////////////
@@ -297,6 +302,11 @@ $(() => {
     // 11. "1번방으로!" 버튼 클릭 시
     .next().click(function(){
         let fn = ()=>{// 콜백함수
+
+            // 메시지 보이기
+            msg.html(`이제 곧 탈출이닷!`).fadeIn(300);
+
+
             // 다음버튼 보이기
             $(this).next().delay(500).slideDown(300);
         }; ////////////// fn /////////////
@@ -305,13 +315,98 @@ $(() => {
     // 12. "헬기를 호출!" 버튼 클릭 시
     .next().click(function(){
         let fn = ()=>{// 콜백함수
-            // 다음버튼 보이기
-            $(this).next().delay(500).slideDown(300);
+
+            // 메시지 보이기
+            msg.html(`도와줘요!!`).fadeIn(300);
+
+            // 1번방 단체좀비들 달려들기
+            bd.eq(1)
+            .find(".mz")
+            .fadeIn(300)
+            .animate({
+                right:bd.eq(1).width() + "px"
+            },3000,"easeInExpo")
+
+            // 헬기등장
+            $(".heli")
+            .animate({
+                left:"20%" // 미니언즈 위치까지 이동
+            },4000,"easeOutBack",
+            function(){// 헬기 이동 완료 후
+                // 헬기 이미지변경
+                $(this).attr("src","images/heli2.png");
+                // 원본 미니언즈는 사라짐!
+                mi.hide();
+            })
+            .delay(500) // .5초 쉬었다가
+            .animate({
+                left:"70%" // 다시 오른쪽 끝으로 이동
+            },4000,"easeInOutCirc",
+            function(){ // 애니 후 실행함수
+                // 끝쪽에서 조정사 좀비로!
+                $(this).attr("src","images/heli3.png")
+            })
+            .delay(300)
+            .animate({
+                left:"100%"//아주 천천히 바깥으로 나감!
+            },100,"linear",
+            ()=>{ // 헬기 나간 후
+                // 간판떨어뜨리기
+                // 1단계 : 중간까지 떨어짐
+                // -> 간판에 class "on"주기
+                let tit = $(".tit");
+                tit.addClass("on");
+
+                // 2단계 : 맨 아래까지 떨어짐
+                // -> 3초 후 간판에 class "on2" 추가
+                setTimeout(()=>{
+                    tit.addClass("on2");
+                },3000);
+
+                // 건물 무너뜨리기
+                // 간판 떨어진 후 실행(6초후)
+                setTimeout(()=>{
+                    bd.parent().addClass("on");
+                    // parent() -> 부모요소인 .building
+                },6000);
+
+                // 추가구현  : 시간(6초 + 건물기다리고 무너진 시간 8초)
+                // 건물 무너진 후 좀비 하나 올라와 오른쪽으로 사라짐
+                setTimeout(() => {
+                    // 건물을 다시 기울기 원복!
+                    bd.eq(9).css({
+                        transform:"rotate(20deg)"
+                    })
+                    // 9번방 좀비 선택
+                    bd.eq(9).find(".mz").animate({
+                        bottom:"550%" // 지표위로 올라오기
+                    },5000)
+                    .delay(3000) // 기다리기
+                    .animate({
+                        right:"-180%" // 오른쪽으로 나가기
+                    },5000)
+                }, 14000);
+            })
+            
         }; ////////////// fn /////////////
         actMini(this,0,fn);
-    })//////////// "헬기를 호출!" 버튼끝 ///////////////
+    })//////////// "헬기를 호출!" 버튼끝 - 모든 버튼 끝///////////////
     
 
+    // 간판에 마우스 오버시/아웃시 색상변경하기
+    // hover(함수1,함수2)
+
+    $(".tit").hover(function(){
+        $(this).css({
+            backgroundColor:"blue",
+            color:"cyan"
+        })
+    },function(){
+        $(this).css({
+            backgroundColor:"pink",
+            color:"yellow"
+        })
+    })
 
 
 
