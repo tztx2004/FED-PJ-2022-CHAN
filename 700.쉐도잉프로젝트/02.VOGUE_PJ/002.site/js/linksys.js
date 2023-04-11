@@ -12,7 +12,7 @@ function linkFn(){
     // 1. 링크 대상 선정 : 
     // (1) GNB : .gnb a
     // (2) logo : .logo a
-    const gnb = document.querySelectorAll(".gnb a");
+    const gnb = document.querySelectorAll(".gnb a, .mognb a");
     const logo = document.querySelector(".logo a");
     // console.log(logo);
 
