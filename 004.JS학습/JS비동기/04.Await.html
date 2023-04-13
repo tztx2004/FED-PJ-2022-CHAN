@@ -101,26 +101,26 @@
         // 2. 파일을 전송 받은 후 실행하는 약속객체 생성하기
         async function 파일받아(){
             let 파일약속 = new Promise(
-            function(success){
-                // 아작스(비동기통신) 서버파일요청하기
+                function(success){
+                    // 아작스(비동기통신) 서버파일요청하기
 
-                // (1) XMLHttpRequest 객체 인스턴스 만들기
-                let ajax = new XMLHttpRequest();
+                    // (1) XMLHttpRequest 객체 인스턴스 만들기
+                    let ajax = new XMLHttpRequest();
 
-                // (2) 비동기 파일요청 열기(전송기능 메모리생성)
-                ajax.open("GET","https://koreascience.kr/article/JAKO201812055796720.pdf");
+                    // (2) 비동기 파일요청 열기(전송기능 메모리생성)
+                    ajax.open("GET","https://koreascience.kr/article/JAKO201812055796720.pdf");
 
-                // (3) 결과를 리턴받는 onload이벤트 함수구역만들기
-                ajax.onload = function(){
-                    console.log(ajax.status);
-                    if(ajax.status === 200){
-                        success(ajax.responseURL);
-                        // 성공 시 전송받은 파일 URL을 받는다!
-                    }
-                };/////////////// onload ///////////////
+                    // (3) 결과를 리턴받는 onload이벤트 함수구역만들기
+                    ajax.onload = function(){
+                        console.log(ajax.status);
+                        if(ajax.status === 200){
+                            success(ajax.responseURL);
+                            // 성공 시 전송받은 파일 URL을 받는다!
+                        }
+                    };/////////////// onload ///////////////
 
-                // (4) 비동기 요청보내기 : send()
-                ajax.send();
+                    // (4) 비동기 요청보내기 : send()
+                    ajax.send();
 
             }); ////////////// 파일약속 Promise //////////////////
 
