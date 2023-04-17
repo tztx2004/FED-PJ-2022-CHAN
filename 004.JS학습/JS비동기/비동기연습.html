@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비동기</title>
+</head>
+<script>
+    window.addEventListener("load",()=>{
+        async function as(){
+
+        
+            const prom = new Promise((resolve,reject)=>{
+
+                // (1) 객체인스턴스
+                let ajax = new XMLHttpRequest();
+
+                // (2) 비동기 파일요청(제이슨)
+                ajax.open("GET","./defaultSettings.json");
+                ajax.responseType ="json";
+
+                // (3) 결과리턴 onload 이벤트
+                ajax.onload = function(){
+                    console.log(ajax.status);
+                    if(ajax.status = 200){
+                        resolve(ajax.response);
+                    }
+                    else{
+                        console.log(ajax.statusText);
+                    }
+                }
+
+                // (4) 비동기 요청보내기
+                ajax.send();
+                
+            });///////////// prom ////////////////
+
+            await prom;
+            
+        }//////////// async ////////////
+        
+        as();
+
+    });//////////////// load /////////////////////
+</script>
+<body>
+    
+</body>
+</html>

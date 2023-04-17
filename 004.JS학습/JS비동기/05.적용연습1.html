@@ -14,7 +14,7 @@
             ////// 로드구역 //////
             window.addEventListener("load",()=>{
 
-                // 제인슨 데이터를 로딩하여 읽은 후 데이터를 활용하도록 Promise를 적용한다!
+                // 제이슨 데이터를 로딩하여 읽은 후 데이터를 활용하도록 Promise를 적용한다!
 
                 /***************************************************** 
                     [ 제이슨 파일 내부형식에 관하여... ]
@@ -25,7 +25,7 @@
 
                     2. 제이슨 파일 내부에 JS주석문은 쓸 수 없다
                     (vscode의 settings.json에서 주석문은 vscode에서
-                    별도의 처리르 하므로 사용했던 것임...)
+                    별도의 처리를 하므로 사용했던 것임...)
 
                     3. 제이슨은 최상위 형식으로 객체/배열로써 하나만 존재할 수 있다
                         예) {속성명:값,...} / [{속성명:값,...},{속성명:값,...}]
@@ -35,12 +35,12 @@
                 *****************************************************/
 
                 // 1. 변수  = new Promise((성공함수)=>{변수})
-                // 프라미스 코드에 XMLHttpRequest() 객체로 제인슨 로딩함!
+                // 프라미스 코드에 XMLHttpRequest() 객체로 제이슨 로딩함!
                 const myProm = new Promise((prFn)=>{ // prFn-성공함수
                     // (1) XMLHttpRequest() 객체 인스턴스 생성하기
                     let ajax = new XMLHttpRequest();
 
-                    // (2) 비동기 파일요청하기(제인슨파일)
+                    // (2) 비동기 파일요청하기(제이슨파일)
                     ajax.open("GET","./defaultSettings.json");
                     // -> 제이슨파일은 응답형식(responseType)을 "json"설정필수!
                     ajax.responseType = "json";
@@ -50,7 +50,7 @@
                     // (3) 결과리턴 onload 이벤트 함수구역만들기
                     ajax.onload = function(){
                         console.log(ajax.status);
-                        if(ajax,status = 200){
+                        if(ajax.status = 200){
                             // 프라미스 성공함수로 제이슨 데이터전달하기!
                             prFn(ajax.response);
                             // responseType을 "json"으로 설정했으므로
