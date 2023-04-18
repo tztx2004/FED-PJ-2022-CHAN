@@ -43,7 +43,7 @@ $("html,body").animate({ scrollTop: "0px" });
 *********************************************************/
 function wheelFn() {
     // 광휠금지
-    if (prot[1] === 1) return;
+    if (prot[0] === 1) return;
     chkCrazy(0);
 
     // console.log("wheelFn");
