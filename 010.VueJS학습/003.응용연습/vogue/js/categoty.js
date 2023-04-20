@@ -32,7 +32,6 @@ $(()=>{
             // 파라미터로 넘어온 값을 경로값과 비교하기 위해
             // 뷰 JS 데이터 변수로 셋팅한다!
             catName: pm.replace(" & ","-")
-
         },
         mounted:function(){
             // 엑시오스로 제이슨연결하여 데이터 가져오기
@@ -65,7 +64,6 @@ $(()=>{
                 // a요소 문자열 변경하기
                 let txt = 
                 event.target.innerText.replace(" & ","-").toLowerCase();
-                console.log(txt)
                 
                 // 뷰데이터에 반영하기
                 vmCont.catName = txt;
@@ -74,7 +72,7 @@ $(()=>{
                 $("title").text(vmCont.catName + " | 2023보그 코리아(Vogue Korea)");
             }
         },/////// methods 구역 ///////
-
+        
     }); /////////// GNB Vue ///////////////
 
 
