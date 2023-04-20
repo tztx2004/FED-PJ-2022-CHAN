@@ -7,7 +7,7 @@
             name="description"
             content="컬렉션부터 스타일, 쇼핑, 뷰티, 라이프스타일, 셀러브리티까지 지금 가장 핫한 트렌드 소개"
         />
-        <title> | 2023보그 코리아(Vogue Korea)</title>
+        <title>| 2023보그 코리아(Vogue Korea)</title>
         <!-- 파비콘 넣기 -->
         <link rel="shortcut icon" href="./images/icon.jpg" type="image/x-icon" />
         <!-- 아이콘CDN -->
@@ -27,8 +27,14 @@
         <script src="./js/common.js"></script>
         <!-- 링크시스템 JS -->
         <script src="./js/linksys.js"></script>
+
+        <!-- 뷰JS 프레임워크 스텐드얼론 버전 가져오기 -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <!-- 엑시오스 라이브러리 스텐드얼론 버전 가져오기(제이슨불러오기) -->
+        <script src="https://cdn.jsdelivr.net/npm/axios@0.17.1/dist/axios.min.js"></script>
+
         <!-- 메뉴data JS -->
-        <script src="./js/mdata.js"></script>
+        <script src="./js/mdata.json"></script>
         <!-- 외부JS넣기 -->
         <script src="./js/categoty.js"></script>
     </head>
@@ -127,11 +133,19 @@
 
         <!-- 2.메인영역 -->
         <div id="cont" class="bgc">
-            <main class="ibx cont">
+            <main class="ibx cont" v-for="(v,i) in items.data" v-if="v.경로===catName" v-bind:class="catName">
+                <!-- 
+                    v-bind:class="catName"
+                    클래스명을 뷰JS 데이터 변수 catName에 할당된
+                    값이 class명으로 들어감!
+                    -> 미리셋팅된 배경이미지가 모두 나온다!
+                -->
                 <!-- 2-1. 카테고리 페이지 상단영역 -->
                 <header class="ctop">
                     <!-- 2-1-1.서브타이틀 -->
-                    <h2 class="stit"></h2>
+                    <h2 class="stit">
+                        {{v.제목}}
+                    </h2>
                     <!-- 2-1-2.서브메뉴(LNB:Local Navigation Bar) -->
                     <nav class="lnb"></nav>
                 </header>
@@ -168,11 +182,12 @@
             <footer class="ibx info">
                 <!-- 3-1. 하단로고 -->
                 <div class="blogo">
-                    <img src="./images/footer_logo.png" alt="하단로고">
+                    <img src="./images/footer_logo.png" alt="하단로고" />
                 </div>
                 <!-- 3-2. 회사주소 -->
                 <address class="addr">
-                    WWW.VOGUE.COM Ⓒ CONDÉNAST ASIA PACIFIC. INC. ALL RIGHTS RESERVED. VOGUE.COM KOREA IS OPERATED BY DOOSAN MAGAZINE.
+                    WWW.VOGUE.COM Ⓒ CONDÉNAST ASIA PACIFIC. INC. ALL RIGHTS RESERVED. VOGUE.COM KOREA IS OPERATED BY
+                    DOOSAN MAGAZINE.
                 </address>
                 <!-- 3-3. 하단링크 -->
                 <ul class="blink">
