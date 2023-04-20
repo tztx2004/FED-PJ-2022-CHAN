@@ -7,7 +7,7 @@
             name="description"
             content="컬렉션부터 스타일, 쇼핑, 뷰티, 라이프스타일, 셀러브리티까지 지금 가장 핫한 트렌드 소개"
         />
-        <title>| 2023보그 코리아(Vogue Korea)</title>
+        <title> | 2023보그 코리아(Vogue Korea)</title>
         <!-- 파비콘 넣기 -->
         <link rel="shortcut icon" href="./images/icon.jpg" type="image/x-icon" />
         <!-- 아이콘CDN -->
@@ -34,7 +34,7 @@
         <script src="https://cdn.jsdelivr.net/npm/axios@0.17.1/dist/axios.min.js"></script>
 
         <!-- 메뉴data JS -->
-        <script src="./js/mdata.json"></script>
+        <script src="./js/linksys.js"></script>
         <!-- 외부JS넣기 -->
         <script src="./js/categoty.js"></script>
     </head>
@@ -94,31 +94,52 @@
                     </a>
                 </h1>
                 <!-- 1-3.GNB박스 -->
-                <nav class="gnb">
+                <nav class="gnb" id="gnb">
                     <ul>
                         <li>
-                            <a href="#">FASHION</a>
+                            <a href="#" @click.prevent="chgMenu">FASHION</a>
+                            <!-- 
+                                [ v-on 이벤트 디렉티브 ]
+                                1. 기본형
+                                    v-on:이벤트명=값
+
+                                2. 축약형
+                                    @이벤트명=값
+
+                                3. 추가옵션(장식자)
+                                    (1) @이벤트명.prevent=값
+                                    -> event.preventDefault() 설정
+                                    -> 기본기능막기
+
+                                    (2) @이벤트명.stop=값
+                                    -> event.stopPropagation() 설정
+                                    -> 이벤트버블링막기
+
+                                    (3) @이벤트명.once=값
+                                    -> 이벤트가 한번만 적용되게함
+                                    
+                            -->
                         </li>
                         <li>
-                            <a href="#">BEAUTY</a>
+                            <a href="#" @click.prevent="chgMenu">BEAUTY</a>
                         </li>
                         <li>
-                            <a href="#">LIVING</a>
+                            <a href="#" @click.prevent="chgMenu">LIVING</a>
                         </li>
                         <li>
-                            <a href="#">PEOPLE</a>
+                            <a href="#" @click.prevent="chgMenu">PEOPLE</a>
                         </li>
                         <li>
-                            <a href="#">VIDEO</a>
+                            <a href="#" @click.prevent="chgMenu">VIDEO</a>
                         </li>
                         <li>
-                            <a href="#">RUNWAY</a>
+                            <a href="#" @click.prevent="chgMenu">RUNWAY</a>
                         </li>
                         <li>
-                            <a href="#">TIME & GEM</a>
+                            <a href="#" @click.prevent="chgMenu">TIME & GEM</a>
                         </li>
                         <li>
-                            <a href="#">SHOPPING</a>
+                            <a href="#" @click.prevent="chgMenu">SHOPPING</a>
                         </li>
                         <li>
                             <!-- 돋보기 검색버튼 -->
@@ -147,30 +168,40 @@
                         {{v.제목}}
                     </h2>
                     <!-- 2-1-2.서브메뉴(LNB:Local Navigation Bar) -->
-                    <nav class="lnb"></nav>
+                    <nav class="lnb" v-if="v.메뉴!=='없음'">
+                        <ul>
+                            <li v-for="(m,i) in v.메뉴">
+                                <a href="#">{{m}}</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </header>
                 <!-- 2-2. 카테고리 페이지 컨텐츠영역 -->
                 <div class="icont">
                     <section class="pt2">
                         <div class="cbx bgi bg1-1">
-                            <h2></h2>
+                            <!--
+                                v-html은 html코드 디렉티브
+                                v-text은 문자데이터 디렉티브
+                            -->
+                            <h2 v-html="v.타이틀[0]"></h2>
                         </div>
                         <div class="cbx bgi bg1-2">
-                            <h2></h2>
+                            <h2 v-html="v.타이틀[1]"></h2>
                         </div>
                         <div class="cbx bgi bg1-3">
-                            <h2></h2>
+                            <h2 v-html="v.타이틀[2]"></h2>
                         </div>
                     </section>
                     <section class="pt2">
                         <div class="cbx bgi bg2-1">
-                            <h2></h2>
+                            <h2 v-html="v.타이틀[3]"></h2>
                         </div>
                         <div class="cbx bgi bg2-2">
-                            <h2></h2>
+                            <h2 v-html="v.타이틀[4]"></h2>
                         </div>
                         <div class="cbx bgi bg2-3">
-                            <h2></h2>
+                            <h2 v-html="v.타이틀[5]"></h2>
                         </div>
                     </section>
                 </div>
