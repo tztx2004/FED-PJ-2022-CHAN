@@ -3,17 +3,50 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Parallax PJ</title>
+        <title>Parallax PJ -Test</title>
         <link rel="stylesheet" href="./css/main.css" />
+
+
+        <script src="./js/smoothScroll20.js"></script>
 
         <!-- 제이쿼리 라이브러리 CDN -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
         <!-- 제이쿼리 UI CDN -->
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-        
-        <script src="./js/smoothScroll20.js"></script>
-        <script src="./js/main.js" type="module"></script>
+
+        <script>
+            // startSS();
+
+            $(()=>{////////////////// jQB ////////////////////////
+
+                const qsa = (x) => document.querySelectorAll(x);
+                const retVal = (x) => x.getBoundingClientRect().top;
+                const tg2 = qsa(".icon");
+
+                // 대상위치값 : offset().top
+                const jqtg = $(".icon").eq(2).offset().top;
+                console.log("jq대상위치",jqtg)
+
+
+                ///////////// 제이쿼리 스크롤 이벤트 구역 //////////
+                $(window).scroll(()=>{
+                    // 제이쿼리 스크롤 위치값 : 현재스크롤 위치
+                    let scTop = $(window).scrollTop();
+                    // console.log("scr",scTop);
+
+                    // 제이쿼리에서 getBoundingClientRect().top
+                    // 구하기 -> 요소 위치값빼기 - 현재스크롤위치값
+                    let jQRect = jqtg - scTop;
+
+                    console.log("jQ:",jQRect);
+                    
+                    console.log("JS:",retVal(tg2[2]));
+                });///////////// scroll ////////////////////
+
+
+            });//////////////////////// jQB //////////////////////
+        </script>
     </head>
     <body>
         <div class="page">
