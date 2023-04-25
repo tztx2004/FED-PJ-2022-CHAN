@@ -121,7 +121,7 @@ function movePg() {
         },
         800,
         "easeInOutQuint",
-        showEle //이동후 콜백함수호출!
+        actPage //이동후 콜백함수호출!
     );
 
     // 대상: GNB메뉴, 인디케이터 메뉴
@@ -129,34 +129,86 @@ function movePg() {
     indic.eq(pno).addClass("on").siblings().removeClass("on");
 } /////////////// movePg ///////////////////
 
-// 등장할 요소 초기화
-minfo.css({
-    opacity: 0,
-    transform: "translateY(-50%,50%)",
-    transition: ".6s ease-out"
-}); //////////// css ////////////////
 
-/******************************************* 
-    함수명: showEle
-    기능: 페이지이동 후 요소 등장하기
-*******************************************/
-function showEle() {
-    // .minfo 페이지별 등장하기!
-    pg.eq(pno).find(".minfo").css({
-        opacity: 1,
-        transform: "translateY(-50%,50%)",
-    }) //////////// css ////////////////
-    .parent(".page").siblings().find(".minfo").css({
-        opacity: 0,
-        transform: "translateY(-50%,50%)",
-        transition: ".6s ease-out"
-    });
-} ///////// showEle /////////////
 
-// 등장액션함수 최초호출
-setTimeout(showEle,1000);
+/************************************************************ 
+    [ 페이지 등장액션 요소 적용하기 ]
+    1. 이벤트 적용시점 : 페이지도착 후(애니 후 콜백)
+    2. 이벤트 대상 : 각 페이지 동일
+        (1) .page .imgc - 이미지파트
+        (2) .page .txtc h2 a - 타이틀파트
+        (3) 변경내용 : 
+            스타일시트 아래 항목변경
+            ((변경값))
+            transform: rotate(45deg);
+            opacity: 0;
+            transition: 1s 1s; -> 타이틀만 지연시간
+            ((고정값))
+            transform-origin: left top;
+            display: inline-block; -> a요소만
+
+************************************************************/
+
+/************************************ 
+    함수명 : initSet
+    기능 : 등장요소 처음상태 셋팅
+************************************/
+function initSet(){
+    // 1. 초기화하기 /////////////////
+    // 대상 : .imgc
+    $(".imgc").css({
+        transform: "rotate(35deg)",
+        transformOrigin: "-5% -5%",
+        opacity: "0",
+        transition: "1s"
+    });//////////////// css //////////////////
+
+    // 대상 : .txtc a
+    $(".txtc a").css({
+        transform: "rotate(35deg)",
+        transformOrigin: "-5% -5%",
+        opacity: "0",
+        transition: "1s .5s",
+        display: "inline-block"
+    });///////////////// css ////////////////////
+
+}//////////////// initSet /////////////////////
+
+// 초기화 함수 호출
+initSet();
+
+/****************************************** 
+    함수명 : actPage
+    기능 : 페이지 도착 후 등장 애니메이션
+******************************************/
+function actPage(ele){// ele - 해당페이지요소
+    // 이동 후 확인
+    console.log("액션",pno);
+
+    // pno가 0 또는 4가 아니면 액션 작동!
+    if(pno!==0 || pno!==4){
+        // 대상: 해당순번의 .page 아래 .imgc와 .txtc a
+        $(`.page:eq(${pno}) .imgc,
+        .page:eq(${pno}) .txtc a`)
+        .css({
+            transform: "rotate(0deg)",
+            opacity: "1",
+        });//////////////// css //////////////////
+    }/////////////// if ///////////////
+
+    // 첫페이지 일때 초기화
+    if(pno===0) initSet();
+
+}//////////////// actPage /////////////////
+
 
 }/////////////// autoScroll ///////////////
 
 // 전제함수 내보내기 //
 export default autoScroll;
+
+
+
+
+
+
