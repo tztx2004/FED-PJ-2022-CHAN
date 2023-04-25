@@ -254,14 +254,19 @@
                 data:function(){
                     return{
                         gsrc:`img_gallery/${this.haha}.jpg`,
-                        gname:`Sophia23` + this.haha + this.endlet +( this.myseq%2?"🍕":"🍳"),
-                        gprice:this.insComma(Math.floor(4567*this.haha/2))+`원`
+                        gname:
+                        `Sophia23` +
+                        this.haha + 
+                        this.endlet +
+                        (this.myseq%2?"🍕":"🍳"),
+                        gprice:
+                        this.insComma(Math.floor(4567*this.haha/2))+`원`
                     }
                 },
                 // 컴포넌트 내부 메서드셋팅
                 methods:{
                     // 부모이벤트호출 전달하기 : $emit()메서드 사용
-                    goPaPa(){
+                    goPapa(){
                         // $emit(부모가만든이벤트명)
                         this.$emit("hull");
                     },
