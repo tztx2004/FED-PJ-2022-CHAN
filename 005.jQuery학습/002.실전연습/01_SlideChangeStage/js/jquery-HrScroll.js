@@ -1,4 +1,4 @@
-// jQuery로 구현한 자동 페이지 휠 JS : jQuery-autoScroll_Hr.js
+// jQuery로 구현한 가로방향 스크롤 JS : jQuery-HrScroll.js
 
 // 로딩구역없이 함수로 구현함! //
 
@@ -6,7 +6,18 @@
     이벤트 변수할당하기
 **********************************************************/
 // 전체 페이지 번호
-let pno = 0;
+// let pno = 0;
+
+// 페이지번호 대신 스크롤횟수!
+let cnt_sc = 0;
+
+// 이동단위
+const unit_sc = 200;
+
+// 스크롤 횟수 한계값 : 화면가로폭*페이지수
+let limit_sc = $(window).width()*7;
+console.log("limit_sc:",limit_sc);
+
 // 페이지 요소
 const pg = $(".page");
 // 전체 페이지 개수
@@ -61,8 +72,8 @@ $("html,body").animate({ scrollLeft: "0px" });
 *********************************************************/
 function wheelFn() {
     // 광휠금지
-    if (prot[0] === 1) return;
-    chkCrazy(0);
+    // if (prot[0] === 1) return;
+    // chkCrazy(0);
 
     // console.log("wheelFn");
 
@@ -71,17 +82,17 @@ function wheelFn() {
 
     // 2. 방향에 다른 페이지 번호 증감
     if (delta < 0) {
-        pno++;
-        if (pno === pgcnt) pno = pgcnt - 1;
-        // 마지막 페이지번호에 고정!
+        // 스크롤 횟수 * 단위이동값 크기가
+        // 전체크기보다 작을때만 ++처리함!
+        if(cnt_sc*unit_sc < limit_sc){cnt_sc++};
     } //// if /////
     else {
-        pno--;
-        if (pno === -1) pno = 0;
-        // 첫페이지번호에 고정!
+        // 스크롤 횟수 * 단위이동값 크기가
+        // 0보다 클때만 --처리함!
+        if(cnt_sc*unit_sc > 0){cnt_sc--};
     } //// else /////
 
-    console.log(pno);
+    console.log(cnt_sc);
 
     // 3. 스크롤 이동하기
     movePg();
@@ -126,22 +137,25 @@ function chkCrazy(seq) {
     기능: 페이지이동 애니메이션
 *******************************************/
 function movePg() {
+    // 이동할 위치 -> 이동단위*스크롤횟수
+    let mpos = unit_sc * cnt_sc;
+
     // 대상: html,body -> 두개를 모두 잡아야 공통적으로 적용됨!
     $("html,body")
     .stop()
     .animate({
         // 가로스크롤이동이므로 scrollLeft로 적용함!
         // 가로스크롤 이동 기준은 윈도우 width임!    
-        scrollLeft: $(window).width() * pno + "px",
+        scrollLeft: mpos + "px",
         },
-        800,
-        "easeInOutQuint",
-        showEle //이동후 콜백함수호출!
+        2000,
+        "easeOutQuint",
+        // showEle //이동후 콜백함수호출!
     );
 
     // 대상: GNB메뉴, 인디케이터 메뉴
-    gnb.eq(pno).addClass("on").siblings().removeClass("on");
-    indic.eq(pno).addClass("on").siblings().removeClass("on");
+    // gnb.eq(pno).addClass("on").siblings().removeClass("on");
+    // indic.eq(pno).addClass("on").siblings().removeClass("on");
 } /////////////// movePg ///////////////////
 
 // 등장할 요소 초기화
@@ -169,4 +183,4 @@ function showEle() {
 } ///////// showEle /////////////
 
 // 등장액션함수 최초호출
-setTimeout(showEle,1000);
+// setTimeout(showEle,1000);
