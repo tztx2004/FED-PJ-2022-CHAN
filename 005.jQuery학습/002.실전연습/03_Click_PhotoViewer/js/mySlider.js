@@ -1,7 +1,6 @@
-// 무한이동 드래그&클릭형 배너 JS - drag.js
+// 슬라이드 공통기능함수
 
-// 제이쿼리 코드 블록 /////////////////////
-$(() => {
+function mySlider(ele){
     
     // 호출확인
     console.log("로딩완료!");
@@ -30,7 +29,7 @@ $(() => {
     // 양쪽버튼 구분 : .lb(왼쪽버튼) / .rb(오른쪽버튼)
     // 변경대상: #viewer ul
     // 변경내용: 슬라이드의 left값을 이동하여 애니메이션함!
-    let slide = $("#viewer ul");
+    let slide = $(ele).find(".viewer ul");
 
     
 
@@ -38,7 +37,7 @@ $(() => {
     // animate({CSS속성},시간,이징,함수)
 
     // 변경대상: 블릿 - #indic li
-    let indic = $("#indic li");
+    let indic = $(ele).find(".indic li");
 
     // 광클 금지상태변수
     let prot = 0; // 1-불허용, 0-허용
@@ -49,8 +48,9 @@ $(() => {
     // 애니메이션 이징 변수
     const aniE = "easeOutQuint";
 
-    $(".abtn").click(function () {
+    $(ele).find(".abtn").click(function (e) {
 
+        e.preventDefault();
         // console.log("진입:",prot);
 
         /// 광클금지 ////////
@@ -218,7 +218,7 @@ $(() => {
             let sseq =
                 slide.find("li").eq(1).attr("data-seq");
 
-            indic.eq(sseq).addClass("on")
+            $(indic).eq(sseq).addClass("on")
                 .siblings().removeClass("on");
 
 
@@ -258,6 +258,7 @@ $(() => {
     ****************************************/
     indic.click(function () {
 
+        event.preventDefault();
         /// 광클금지 ////////
         if (prot) return;
         prot = 1; //잠금!
@@ -416,14 +417,14 @@ $(() => {
         ### 슬라이드 드래그 기능넣기 ###
     ************************************************/
     // 0. 커버
-    const cover = $(".cover");
+    const cover = $(ele).find(".cover");
 
 
     // 1. 드래그설정하기 : x축 고정
     slide.draggable({axis:"x"});
 
     // 2. 가로크기 기준값 설정하기
-    const sldW = $("#viewer").width();
+    const sldW = $(".viewer").width();
     console.log("슬라이드width",sldW);
     
     // 왼쪽으로 드래그 시 튐현상방지 위해 위치보정값 공유하기!
@@ -449,13 +450,16 @@ $(() => {
         }, aniT);
 
         // (1) 왼쪽방향일 때 -> 오른쪽버튼 클릭 시
-        if(spos < -50) $(".rb").trigger("click")
+        if(spos < -50) $(ele).find(".rb").trigger("click")
         // (2) 오른쪽방향일 때 -> 왼쪽버튼 클릭 시
-        else if(spos > 50) $(".lb").trigger("click");
+        else if(spos > 50) $(ele).find(".lb").trigger("click");
         // (3) 제자리
         else slide.animate({left:"0"},300)
-    })
+    });///////////////// dragstop ///////////////////
 
 
 
-}); //////////////// jQB ////////////////////
+}; ////////////// mySlider ///////////////////
+
+// 함수 내보내기
+export default mySlider;
