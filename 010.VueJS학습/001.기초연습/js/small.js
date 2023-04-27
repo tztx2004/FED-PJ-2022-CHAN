@@ -41,14 +41,20 @@ Vue.component("list-comp",{
     // 컴포넌트 내부 변수셋팅
     data:function(){
         return{
+            // 1. 상품이미지 경로
             gsrc:`img_gallery/${this.haha}.jpg`,
+            // 2. 상품명
             gname:
             `Sophia23` +
             this.haha + 
             this.endlet +
             (this.myseq%2?"🍕":"🍳"),
-            gprice:
-            this.insComma(Math.floor(4567*this.haha/2))+`원`
+            // 3. 단위가격(원가격)
+            gprice: this.insComma(Math.floor(123000*this.haha/2))+`원`,
+            // 4. 할인가격 : 30% 할인된 가격(원가격 * 0.7)
+            // - 반올림 Math.round()
+            sale:
+            this.insComma(Math.round(123000*this.haha/2 * .7))+`원`
         }
     },
     // 컴포넌트 내부 메서드셋팅
@@ -66,6 +72,15 @@ Vue.component("list-comp",{
         //정규식함수(숫자 세자리마다 콤마해주는 기능)
         insComma(x){
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        },
+        // 세일표시 여부 리턴 메서드
+        condiRet(){
+            return this.haha==3||
+            this.haha==5||
+            this.haha==14||
+            this.haha==26|
+            this.haha==38||
+            this.haha==45;
         }
     }
 });///////////////// 뷰JS 컴포넌트 ///////////////////////
