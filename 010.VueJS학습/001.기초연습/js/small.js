@@ -2,6 +2,7 @@
 
 // 템플릿 html코드 객체 JS 가져오기
 import hcode from "./hcode.js";
+// import haha from "./jQFn.js";
 
 
 // 뷰JS 인스턴스 생성용 함수!
@@ -122,11 +123,20 @@ new Vue({
         let nowNum = 1;
         // 공유가격변수
         let orgprice = 0;
+        // 공유전체수량변수
+        let tot = 1;
+        // 공유전체수/입력창 초기화
+        const initTot = ()=>{
+            tot = 1;
+            $("#sum").val(1);
+        };/////////////// initTot /////////////////
         
         // 1. 갤러리 리스트 클릭 시 큰이미지 박스 보이기 
         $(".grid>div").click(function(){
 
             event.preventDefault();
+            // 0. 전체수량초기화
+            initTot();
 
             // 1. 속성읽어오기
             let isrc = $(this).find("img").attr("src");
@@ -157,26 +167,33 @@ new Vue({
             // 1. [가격계산을 위한 원가격 셋팅]
             orgprice = tg.find("h3>span:first").attr("data-price");
 
-            // 세일적용일 경우 세일 가격으로 업뎃!
-            if(tg.find("h3>span:first").is(".del")){
+            // 2. 세일적용여부
+            let isSale = tg.find("h3>span:first").is(".del");
+
+            // 3. 세일적용일 경우 세일 가격으로 업뎃!
+            if(isSale){
                 orgprice = Math.round(orgprice*.7);
             } ///////////////// if /////////////////
 
-            console.log(orgprice)
+            console.log("원가격",orgprice)
 
-            // 상품명/가격 큰박스에 넣기
+            // 4. 상품명/가격 큰박스에 넣기
             $("#gtit, #gcode").text(tg.find("h2").text())
-            // 상품가격 큰박스에 넣기
-            // 세일일 경우와 아닌경우 나누기
-            if(tg.find("h3 span").first().is(".del")){ // 세일일때
-                $("#gprice, #total").html(
-                    `<small>30% 세일가</small>`+insComma(orgprice) +"원")
-                    // tg.find("h3 span").last().text())
+            
+            // 5. 상품가격 큰박스에 넣기
+            // (1) 원가격에 표시
+            $("#gprice").html(
+                insComma(orgprice) +"원"
+            );
+            // (2) 토탈가격에 표시 : 원가 * 개수
+            $("#total").html(
+                insComma(orgprice * tot) +"원"
+            );
+
+            // 6. 세일일때 추가문구넣기
+            if(isSale){ 
+                $("#gprice").prepend(`<small>30% 세일가</small>`)
             }/////// if ////////
-            else{ // 세일아닐때
-                $("#gprice, #total").html(
-                    insComma(orgprice)+"원")
-            }
         }////////////////// setVal ///////////////////
 
         //정규식함수(숫자 세자리마다 콤마해주는 기능)
@@ -192,6 +209,10 @@ new Vue({
 
         // 3. 이전/다음버튼 클릭 시 이미지변경하기
         $(".abtn").click(function(e){
+
+            // 0. 전체수량초기화
+            initTot();
+
             // 기본이동막기
             event.preventDefault();
 
@@ -244,10 +265,53 @@ new Vue({
             } ////// else //////
 
             // 4. 가격표시하기
-
+            // 수량을 전역변수에 할당하여 setVal()에 반영함!
+            tot = isV;
+            
+            setVal();
             
 
         });////////////////// click //////////////////////
+
+        /********************************* 
+            수량직접 입력 기능구현
+            1. 숫자만 입력 (0이상)
+            2. 입력즉시 합계 출력
+            3. 빈값금지
+        *********************************/
+        // 대상 : #sum
+        // 이벤트 : keyup(입력즉시반응)
+        $("#sum").keyup(function(){
+            // 0. 요소 자신
+            let ele = $(this);
+            // 1. 입력된 값 : input요소는 val()메서드로!
+            let txt = ele.val();
+            // 2. 숫자가 아닌경우 : isNaN() - 숫자가 아니면 true
+            // -> 소수점방지: txt.indexOf(".")!==1
+            if(isNaN(txt) ||
+            txt < 1 || 
+            txt==="" || 
+            txt.indexOf(".")!==-1){                
+                initTot(); // 초기화함수
+            }///// if //////
+            // 3. 숫자인경우 tot업뎃+setVal()호출
+            else{
+                tot = txt;
+                if(txt>=100){
+                    alert("100개이상인 경우\n 쇼핑몰에 직접전화주세요\n Tel: To.02-0000-0000")
+                    initTot(); // 초기화
+                }
+                // 숫자앞에 0을 넣으면 없애기!
+                // 문자형숫자를 숫자형으로 변환하면 된다!
+                ele.val(Number(txt))
+            }////// else //////
+
+            // 4. 계산수행
+            setVal();
+            console.log("직접입력:",txt);
+            
+        })///////////// keyup //////////////////
+
 
 
     },///////////////////////// mounted ////////////////////////////
