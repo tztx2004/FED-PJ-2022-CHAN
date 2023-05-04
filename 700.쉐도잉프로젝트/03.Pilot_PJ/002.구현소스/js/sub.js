@@ -7,6 +7,9 @@ import comData from "./tempData/data-common.js";
 // 신상정보
 import sinsang from "./gdsData/sinsang.js";
 
+
+let swiper;
+
 // ####### 상단영역 메뉴 뷰템플릿 셋팅 ########//
 // Vue.component(내가지은요소명,{옵션})
 Vue.component("top-comp", {
@@ -42,6 +45,14 @@ new Vue({
 
         // 신상품기능함수 호출
         sinsangFn();
+
+        // 페럴렉스 적용함수 호출
+        setParallax(".c2",.6);
+        // setParallax(적용할요소,속도)
+        // 속도는 0.1~0.9
+
+        // 스크롤리빌 플러그인 적용호출!
+        $.fn.scrollReveal();
     },
 }); ///////////// 상단영역 뷰 인스턴스 //////////////////
 
@@ -56,7 +67,7 @@ new Vue({
 // 스와이퍼 플러그인 인스턴스 생성하기
 // 스와이퍼 생성함수
 function makeSwiper() {
-    let swiper = new Swiper(".mySwiper", {
+    swiper = new Swiper(".mySwiper", {
         slidesPerView: 1,
         spaceBetween: 0,
         loop: true,
@@ -198,14 +209,14 @@ function sinsangFn() {
             moveList();
             call_sts =1
             sc_sts =1; // 한번만실행
-            console.log("범위1")
+            // console.log("범위1")
         }/////////////////// if //////////////////
         // (2) 기타경우 멈춤
         // (조건: 윈도우 높이보다 크거나 0보다 작고 sc_sts===1일때)
         else if((gBCR > winH || gBCR < 0) && sc_sts===1){
             sc_sts=0 // 콜백중단
             call_sts=0;
-            console.log("범위2")
+            // console.log("범위2")
         }//////////////////// else ////////////////
         
         ///////////////////////////////////
@@ -224,10 +235,15 @@ function sinsangFn() {
         else{
             swiper.autoplay.start();
         }
-
-
-
-
-
     });////////////////// scroll //////////////////
 }//////////////////// sinsangFn //////////////////////
+
+
+// 패럴렉스 플러그인 적용함수
+function setParallax(ele,speed){
+    // 대상: .c2
+    // parallax(배경위치, 속도)
+    $(ele).parallax("50%",speed)
+}////////////// setParallax //////////////
+
+
