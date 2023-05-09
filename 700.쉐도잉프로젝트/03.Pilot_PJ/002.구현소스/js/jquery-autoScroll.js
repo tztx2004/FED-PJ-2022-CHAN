@@ -12,7 +12,7 @@ function autoScroll(){
     const updateW = ()=>{
         if($(window).width()<=800) mob =1;
         else mob =0;
-        console.log("mob",mob)
+        // console.log("mob",mob)
     };///////////// updateW //////////////
 
     // 로딩 시 실행!
