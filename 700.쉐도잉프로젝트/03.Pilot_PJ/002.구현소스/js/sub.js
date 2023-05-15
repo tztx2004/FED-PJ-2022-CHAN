@@ -28,6 +28,11 @@ Vue.component("cont1-comp", {
     template: subData.cont1,
 }); ////////////////// 서브영역 Vue component /////////////////
 
+// 3. 컨텐츠2 영역 컴포넌트
+Vue.component("cont2-comp", {
+    template: subData.cont2,
+}); ////////////////// 서브영역 Vue component /////////////////
+
 // ####### 서브영역 뷰 인스턴스 셋팅 ########//
 new Vue({
     el:"#cont",
@@ -81,7 +86,11 @@ new Vue({
         $.fn.scrollReveal();
 
         // 전체메뉴클릭 시 전체 메뉴창 닫기 트리거
-        $(".mlist a").click(()=>$(".ham").trigger("click"));
+        $(".mlist a").click(()=>{
+            $(".ham").trigger("click")
+            // 부드러운 스크롤 위치값 업데이트
+            sc_pos = 0
+        });
         // 선택요소.trigger(이벤트명)
         // -> 선택요소의 이벤트 강제발생함!
         // 참고) JS 클릭이벤트 강제발생
@@ -194,7 +203,11 @@ function sinsangFn() {
         let clsnm = $(this).attr("class")
         
         // 2. 클래스 이름으로 셋팅된 신상정보 객체 데이터 가져오기
-        let gd_info = sinsang[clsnm]
+        // 중간 객체속성명 상위부모박스 #c1의 data-cat속성값
+        // 읽어와서 sinsang[요기][] -> 요기에 넣기!
+        let cat = $(this).parents("#c1").attr("data-cat");
+        let gd_info = sinsang[cat][clsnm]
+
 
         // 3. 상품정보박스 만들고 보이게하기
         // 마우스 오버된 li자신 (this)에 넣는다!

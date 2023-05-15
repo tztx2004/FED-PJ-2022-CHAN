@@ -27,58 +27,28 @@ const subData = {
     // 컨텐츠영역1 : new arrival
     cont1: `
         <section :class="
-            'cont c1 ' +
-            $store.state.cat
-        " id="c1">
+            'cont c1 ' + $store.state.cat
+        " id="c1"
+        :data-cat="$store.state.cat">
+        <!-- 
+            class = "cont c1 카테고리명"
+            -> 해당 배경이미지가 나오도록 카테고리명 클래스넣기
+
+            data-cat 속성: data-로 시작하는 사용자 정의 속성
+            -> jQuery에서 DOM셋팅 속성을 읽어서
+            sinsang 객체의 하위속성 카테고리명을 사용하기 위해 셋팅함!
+        -->
             <!-- 2-1-1. 신상품 타이틀 -->
-            <h2 class="c1tit js-reveal">New Apporval</h2>
+            <h2 class="c1tit js-reveal">
+                {{ $store.state.menu[0] }}
+            </h2>
             <!-- 2-1-2.신상품박스 -->
             <div class="flowbx js-reveal">
                 <!-- 리스트박스 -->
                 <ul class="flist">
-                    <li class="m1">
+                    <li v-for="v in 9" :class="'m'+v">
                         <a href="#">
-                            <img src="images/m1.png" alt="신상품" />
-                        </a>
-                    </li>
-                    <li class="m2">
-                        <a href="#">
-                            <img src="images/m2.png" alt="신상품" />
-                        </a>
-                    </li>
-                    <li class="m3">
-                        <a href="#">
-                            <img src="images/m3.png" alt="신상품" />
-                        </a>
-                    </li>
-                    <li class="m4">
-                        <a href="#">
-                            <img src="images/m4.png" alt="신상품" />
-                        </a>
-                    </li>
-                    <li class="m5">
-                        <a href="#">
-                            <img src="images/m5.png" alt="신상품" />
-                        </a>
-                    </li>
-                    <li class="m6">
-                        <a href="#">
-                            <img src="images/m6.png" alt="신상품" />
-                        </a>
-                    </li>
-                    <li class="m7">
-                        <a href="#">
-                            <img src="images/m7.png" alt="신상품" />
-                        </a>
-                    </li>
-                    <li class="m8">
-                        <a href="#">
-                            <img src="images/m8.png" alt="신상품" />
-                        </a>
-                    </li>
-                    <li class="m9">
-                        <a href="#">
-                            <img src="images/m9.png" alt="신상품" />
+                            <img :src="'images/goods/'+$store.state.cat+'/m'+v+'.png'" alt="신상품" />
                         </a>
                     </li>
                 </ul>
@@ -86,7 +56,13 @@ const subData = {
         </section>
     `,
     // 컨텐츠영역2 : special
-    cont2: ``,
+    cont2: `
+        <section :class="
+        'cont c2 ' + $store.state.cat
+        " id="c2">
+            <h2 class="c2tit js-reveal">2023 {{$store.state.menu[1]}}</h2>
+        </section>
+    `,
     // 컨텐츠영역3 : 일반소개1
     cont3: ``,
     // 컨텐츠영역4 : 일반소개2
