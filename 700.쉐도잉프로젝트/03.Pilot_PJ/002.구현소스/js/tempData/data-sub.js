@@ -64,9 +64,43 @@ const subData = {
         </section>
     `,
     // 컨텐츠영역3 : 일반소개1
-    cont3: ``,
+    cont3: `
+        <section class="cont c3" id="c3">
+            <ul class="pgc">
+                <li class="txtc js-reveal">
+                    <h2>
+                        <a href="#">
+                        {{$store.state.cat.toUpperCase()}}'S<br />
+                        {{$store.state.menu[2]}} </a>
+                    </h2>
+                </li>
+                <li class="imgc">
+                    <img class="js-reveal" :src="'./images/sub/'+$store.state.cat+'/03.disc.png'" alt="이미지" />
+                </li>
+            </ul>
+        </section>
+    `,
     // 컨텐츠영역4 : 일반소개2
-    cont4: ``,
+    cont4: `
+        <section class="cont c4" id="c4">
+            <ul class="pgc">
+                <li class="imgc">
+                    <img class="js-reveal" :src="'./images/sub/'+$store.state.cat+'/04.disc.png'" alt="가방공유" />
+                </li>
+                <li class="txtc">
+                    <h2 class="tm">
+                        <a class="js-reveal" href="#"> {{$store.state.cat.toUpperCase()}}'S<br />SPORT STYLE </a>
+                    </h2>
+                    <h2 class="tw">
+                        <a class="js-reveal" href="#"> {{$store.state.cat.toUpperCase()}}'S<br />LIFE STYLE </a>
+                    </h2>
+                </li>
+                <li class="imgc js-reveal">
+                    <img class="js-reveal" :src="'./images/sub/'+$store.state.cat+'/05.disc.png'" alt="의자공유" />
+                </li>
+            </ul>
+        </section>
+    `,
 }; ////////////// subData ////////////////
 
 export default subData;

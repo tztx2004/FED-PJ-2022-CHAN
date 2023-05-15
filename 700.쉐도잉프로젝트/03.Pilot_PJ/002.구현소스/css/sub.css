@@ -188,11 +188,11 @@ body{
     /* 등분할 영역까지가 0%이고 양수는 영역침범 */
 }
 /* 컨텐츠영역4 이미지 */
-.c4 img{
+/* .c4 img{
     object-fit: fill;
-    /* width: auto; */
-    /* right: -26%; */
-}
+    width: auto;
+    right: -26%;
+} */
 
 /* 컨텐츠영역 4 글자 */
 .c4 .txtc .tm{/* 오른쪽글자 */
