@@ -175,7 +175,8 @@ new Vue({
                 history.pushState(null,null,"my.html?hi=bye") 
             *****************************************************/
 
-
+            // 6. 상세보기 박스가 열려있을 수 있으므로 닫기!
+            $("#bgbx").hide();
 
         });
         // 선택요소.trigger(이벤트명)
@@ -214,23 +215,35 @@ new Vue({
         $(".flist a").click(function(e){
             // 0. 기본이동막기
             e.preventDefault();
-            $("#bgbx").show()
+            
             // 1. 클릭된 요소의 부모(li)의 클래스 읽어오기
             let cls = $(this).parent().attr("class")
-            console.log(cls)
 
             // 2. 클릭된 요소의 다음 형제요소의 정보값 읽어오기
             // split("<br>") br태그로 잘라서 배열에 담음!
             let ginfo = $(this).next(".ibox").html().split("<br>")
-            console.log(ginfo)
 
             // 3. 뷰엑스 스토어 업데이트(리액티브 데이터 반영!)
             store.state.cls = cls;
             store.state.gname = ginfo[0]
             store.state.gcode = ginfo[1]
             store.state.gprice = ginfo[2]
-            
+
+            // 4. 슬라이드 애니메이션 하여 나타나기
+            $("#bgbx").slideDown(400);
         }); ///////////// click /////////////////
+
+        // 상세보기 박스닫기
+        $(".cbtn").click(function(e){
+            e.preventDefault();
+            $("#bgbx").slideUp(400);
+        })//////////// click ///////////////
+
+        // 상세보기 썸네일 링크 셋팅
+        $(".small a").click(function(e){
+            e.preventDefault();
+            // 추가기능코드 구현...
+        })//////////// click ///////////////
 
     },/////////// mounted ///////////////
 
