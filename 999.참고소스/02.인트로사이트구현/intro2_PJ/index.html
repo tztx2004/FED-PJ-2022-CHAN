@@ -42,7 +42,7 @@
 		width: 100%;
 		/*background: #333;*/
 		z-index:9;
-        color: 
+        color: #fff;
 	}
 		#header::before{/*검은색 반투명 배경*/
 			content: "";
@@ -485,7 +485,7 @@
 		},500,"easeInExpo");
 		txtnum++;//순번증가
 		if(txtnum<26){//li 총 개수 보다 작을 동안 실행
-		   setTimeout(aniTxt,40);//0.25초 간격으로 재귀호출
+			setTimeout(aniTxt,40);//0.25초 간격으로 재귀호출
 		}//if///
 		else{//큰타이틀 등장 후 작은 타이틀 등장
 			$("#stit").delay(600)
