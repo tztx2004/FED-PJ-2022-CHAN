@@ -1,7 +1,5 @@
 // 03. JSX 특성 알아보기
 
-const { Fragment } = require("react");
-
 /************************************************************* 
     [ JSX란 무엇인가? ]
     - Javascript XML을 나타냄
@@ -13,11 +11,9 @@ const { Fragment } = require("react");
 // 1. JSX를 사용한 것과 JSX를 사용하지않은 것을 비교
 // (1) JSX를 사용한 예 //////
 // 넣을 요소
-const myele1 = <h1>나는 JSX를 사용하고 있어!</h1>
+const myele1 = <h1>나는 JSX를 사용하고 있어!</h1>;
 // 리액트 루트 생성하기 : createRoot() 메서드 사용!
-const root1 =
-ReactDOM
-.createRoot(document.querySelectorAll("#root>div")[0]);
+const root1 = ReactDOM.createRoot(document.querySelectorAll("#root>div")[0]);
 // 적용하기 : 생성된 루트에 render() 메서드를 붙여서 사용함!
 root1.render(myele1);
 
