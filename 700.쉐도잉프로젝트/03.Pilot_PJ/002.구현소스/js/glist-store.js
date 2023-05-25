@@ -243,7 +243,6 @@ const store = new Vuex.Store({
                         <!-- 합계 -->
                         <td>${v.ginfo[3]}</td>
                         <!-- 삭제 -->
-                        <td></td>
                         <td>
                             <button class="cfn" 
                             data-idx="${v.idx}">

@@ -7,7 +7,7 @@ import comData from "./tempData/data-glist.js";
 // 신상정보
 import sinsang from "./gdsData/sinsang.js";
 // 전체 리스트용 뷰엑스 스토어 JS 가져오기
-import store from "./glist-store.js";
+import store from "./glist-store copy.js";
 // 전체 리스트용 뷰 라우터 JS 가져오기
 import router from "./glist-router.js"
 

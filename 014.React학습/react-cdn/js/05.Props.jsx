@@ -81,7 +81,7 @@ function Brand2(props){
 
     return(
         <React.Fragment>
-            <h1>더 자세히 말슴해주세요?</h1>
+            <h1>더 자세히 말씀해주시겠어요?</h1>
             <Car2  brand={carInfo[props.num]} />
         </React.Fragment>
     )
