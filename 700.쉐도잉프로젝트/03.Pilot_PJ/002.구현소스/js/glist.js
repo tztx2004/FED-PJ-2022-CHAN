@@ -30,11 +30,6 @@ new Vue({
     store,// 스토어 등록
     router,// 라우터 등록
     mounted(){
-        // 첫번째 라우터 강제실행
-        this.$router.push('/glist');
-        // push(실행할 뷰라우터경로)
-        // $router - 전체 라우터객체
-        // 비교) $route -개별경로정보 객체
         
         // 메뉴기능실행
         menuFn();
@@ -59,9 +54,17 @@ new Vue({
             // opt값 - 0 (오른쪽 위 작은 것) / 1 (정중앙 큰 것)
         }///// if : null 체크 /////
         
-
+    }, ////// mounted //////
+    //////// 뷰 인스턴스 생성 직후 셋팅구역 ////////
+    created(){// 뷰데이터 프리셋팅 / 라우트 셋팅 미리하는 구역
+        // 첫번째 라우터 강제실행!
+        this.$router.push("/glist");
+        // push(실행할 뷰라우터경로)
+        // $router - 전체 라우터객체
+        // 비교)  $route - 개별경로정보객체
 
         // 최초 체크박스체크 메서드 실행해야 리스트나옴!
-        store.commit('resCheck')
-    }, ////// mounted //////
+        store.commit("resCheck");
+
+    },
 })
