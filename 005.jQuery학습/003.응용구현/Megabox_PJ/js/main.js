@@ -286,7 +286,7 @@ $(function () { //// jQB2 //////////////////////////
         // 동영상 멈춤상태 알아내기 - paused 속성으로 알아냄
         // 결과: true- 멈춤, false - 재생중(멈춤아님)
         let paused_sts = mv.get(0).paused
-        console.log("비디오가 멈췄니?", paused_sts)
+        // console.log("비디오가 멈췄니?", paused_sts)
 
         // 1. 멈춤아니면(false) 동영상 멈추기
         if(!paused_sts){ // false일 때 들어오려면 NOT(!)연산자사용
@@ -304,6 +304,28 @@ $(function () { //// jQB2 //////////////////////////
 
     }); ///// click /////
 
+
+    // 2-2. 소리남/안남 기능 //
+    // 대상 : .btnsnd img
+    // 원리 : 소리가 나는 지 안나는 지 속성 -> muted 사용해서 반대로 전환
+    // 핵심 : 현재 소리가 안나는 지 상태를 확인함!
+    $(".btnsnd img").click(function(){
+        // 1. 현재 소리가 안나는 지 상태 알아오기
+        // 동영상 소리 안남여무 속성 =>muted
+        let sound = mv.get(0).muted
+        console.log("소리 안나나?",sound);
+
+        // 2. 만약 소리가 안나면 나게 / 나면 아나게
+        // muted 속성은 현재소리가 안남 상태값을 불린으로 읽기/쓰기 가능 
+        mv.get(0).mute = !sound
+        // !sound는 true,false 전환코드임!
+
+        // 3. 아이콘을 현재 소리 상태로 넣기
+        // sound가 true이면 반대로 했으므로 소리남 아이콘!
+        sound?$(this).attr("src","./images/speaker_blue.png"):$(this).attr("src","./images/speaker-mute_blue.png")
+
+
+    });///////////// click /////////////
 
 
 
