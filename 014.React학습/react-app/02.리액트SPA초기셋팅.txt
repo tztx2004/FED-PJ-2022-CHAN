@@ -40,4 +40,4 @@ npx create-react-app my-react-app
 
 4. 이미 만들고 깃허브에서 연결하였다면...
 해당 소스까지 들어와서 react와 react-dom을 설치한다!
-npm i react react-dom
+npm i react react-dom 
