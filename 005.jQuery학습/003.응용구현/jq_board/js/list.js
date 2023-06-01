@@ -14,8 +14,6 @@ localStorage.setItem("bdata",jsn);
 let bdata = JSON.parse(localStorage.getItem("bdata"));
 console.log("로컬스파싱",bdata,"/개수",bdata.length);
 
-// 3-2. 게시판 리스트 생성하기
-let blist = "";
 
 // 페이지번호 : 페이지단위별 순서번호
 let pgnum = 1;
@@ -33,39 +31,84 @@ let pgblock = 9;
     함수명: bindList
     기능: 페이지별 리스트를 생성하여 바인딩함
 *******************************************************/
-function bindList(num){
-    pgnum =num
+function bindList(pgnum){// pgnum - 페이지번호
+    // 0. 게시판 리스트 생성하기
+    let blist = "";
+
+    // 전체 레코드 개수
+    let totnum = bdata.length
+
     // 1. 일반형 for문으로 특정대상 배열 데이터 가져오기
     // 데이터 순서 : 번호, 글제목, 글쓴이, 등록일자, 조회수
     for(let i = (pgnum-1)*pgblock; i<pgnum*pgblock; i++){
-        blist += `
-            <tr>
-                <td>${bdata[i]["idx"]}</td>
-                <td>${bdata[i]["tit"]}</td>
-                <td>${bdata[i]["writer"]}</td>
-                <td>${bdata[i]["date"]}</td>
-                <td>${bdata[i]["cnt"]}</td>
-            <tr>
-        `;
+        // 마지막 번호한계값 조건으로 마지막 페이지 데이터 
+        // 존재하는 데이터까지만 바인딩하기
+        if(i<totnum){
+            blist += `
+                <tr>
+                    <td>${bdata[i]["idx"]}</td>
+                    <td>
+                        <a href="view.html?idx=${bdata[i]["idx"]}">
+                            ${bdata[i]["tit"]}
+                        </a>
+                    </td>
+                    <td>${bdata[i]["writer"]}</td>
+                    <td>${bdata[i]["date"]}</td>
+                    <td>${bdata[i]["cnt"]}</td>
+                <tr>
+            `;
+        }
     }/////// for ///////
 
     // 2. 리스트 코드 테이블에 넣기
     $("#board tbody").html(blist);
 
     // 3. 페이징 블록 만들기
-    // 전체 페이지 번호수 계산하기
-    // 전체레코드 수 / 페이지단위 수 (나머지 있으면 +1)
-    // 전체레코드 수 : bdata.length
-    let pgtotal = Math.floor(bdata.length / pgblock);
-    let pgadd = bdata.length % pgblock;
-    console.log("페이징 전체수:", pgtotal)
-    console.log("페이징 나머지",pgadd)
+    // 3-1. 전체 페이지 번호수 계산하기
+    // 전체레코드 수 / 페이지단위수 (나머지 있으면 +1)
+    // 전체레코드 수 : totnum 변수에 이미 할당
+    let pgtotal = Math.floor(totnum / pgblock);
+    let pgadd = totnum % pgblock;
+    // console.log("페이징 전체수:", pgtotal)
+    // console.log("페이징 나머지",pgadd)
+
+    // 페이징코드변수
+    let pgcode = "";
+
+    // 3-2. 페이징코드 만들기
+    // 나머지가 있으면 1을 더함
+    if(pgadd!==0) pgtotal++;
+    
+    // 코드만들기 for문
+    for(let i = 1; i<=pgtotal; i++){
+        pgcode += 
+        // 페이지번호와 i가 같으면 a링크를 만들지 않는다!
+        Number(pgnum) === i?
+        `<b>${i}</b>` : `<a href="#">${i}</a>`;
+
+        // 사이구분자(마지막번호 뒤는 제외)
+        if(i!== pgtotal){
+            pgcode += " | "
+        }
+    }/////// for ////////
+
+    // 3-3. 페이징코드 넣기
+    $(".paging").html(pgcode);
+
+    // 3-4. 이벤트 링크 생성하기
+    $(".paging a").click(function(e){
+        // 기본이동막기
+        e.preventDefault();
+        // 바인딩함수 호출!(페이지번호 보냄)
+        bindList($(this).text());
+        
+    })////////// click ///////////
 
 }///////// bindList //////////
 
 
 
-console.log("코드:",blist);
+// console.log("코드:",blist);
 
 ////////// 로드구역 ///////////
 $(()=>{
