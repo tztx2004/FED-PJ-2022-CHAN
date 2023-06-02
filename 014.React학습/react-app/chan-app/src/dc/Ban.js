@@ -53,7 +53,7 @@ $(()=>{//// jQB ////
     })
     $(".indic li").click(function(){
         $(this).addClass("on").siblings().removeClass("on")
-        
+        $(".rb").trigger("click")
     })
 }); /////// jQB ////////
 
