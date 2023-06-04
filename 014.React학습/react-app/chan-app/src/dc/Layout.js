@@ -24,6 +24,9 @@ const Layout = () => {
                             <Logo/>
                         </li>
                         <li>
+                            <Link to="/">HOME</Link>
+                        </li>
+                        <li>
                             <Link to="/ct">CHARACTERS</Link>
                         </li>
                         <li>
