@@ -1,3 +1,47 @@
 @charset "utg-8";
 /* MenuBtn 모듈용 CSS - menubtn.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 
+.MenuBtn{
+    font-family: 'Roboto Condensed';
+    display: flex;
+    margin: 30px auto;
+    width: 1320px;
+}
+.wrap{
+    padding:0 12px;
+}
+.wrapper{
+    box-shadow:0 0 5px gray;
+    height:550px;
+}
+.imbx img{
+    clip-path: polygon(0 0,100% 0,100% 88%,0 99%);
+}
+.titbx h3{
+    font-size:12px;
+    color:gray;
+    letter-spacing: 2px;
+    padding: 0.375rem 0;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+.titbx h2{
+    font-size:24px;
+    max-width: 88%;
+    margin: 0 auto;
+    font-weight: bold;
+}
+.btnbx button{
+    padding:12px;
+    border-radius:20px;
+    margin-top:50px;
+    border: 1px solid #000;
+    font-weight: bold;
+}
+.btnbx button:hover{
+    background-color: #0074e8;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+}
