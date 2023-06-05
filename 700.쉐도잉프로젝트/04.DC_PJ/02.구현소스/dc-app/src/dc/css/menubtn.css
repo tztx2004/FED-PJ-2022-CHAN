@@ -6,7 +6,7 @@
     font-family: 'Roboto Condensed';
     display: flex;
     margin: 30px auto;
-    width: 1320px;
+    max-width: 1320px;
 }
 .wrap{
     padding:0 12px;
