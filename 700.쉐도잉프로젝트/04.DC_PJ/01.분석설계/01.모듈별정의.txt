@@ -3,6 +3,7 @@
 [1] 배너모듈
 
 [2] 메뉴버튼모듈
+    - 모듈명 : MenuBtn (JS/CSS)
     (1) 구조정의 :
         Root>img Box + title Box + button Box
 
