@@ -2,12 +2,29 @@
 /* vidintro 모듈용 CSS - vidintro.css */
 
 .vidbox{
-    display: flex;
-    width: 78%;
+    position: relative;
     max-width: 1320px;
     margin: 0 auto;
+    margin-top: 30px;
+    padding: 24px;
+    display: flex;
     font-family: 'Roboto Condensed';
 }
+
+/* 클래스 "on"적용 시 배경색, 글자색 변경적용 */
+.vidbox.on{
+    background-color: #0074E8;
+    color: #fff;
+}
+.vidbox.on a{
+    color: #fff;
+}
+/* 비디오파트 박스 */
+.vd1{
+    width: 55%;
+    aspect-ratio: 4/3;
+}
+
 .vidbox iframe{
     padding: 10px;
     border: none;
@@ -22,7 +39,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-
 }
 .vidTit h3{
     line-height: 1.7;
@@ -50,5 +66,8 @@
 @media (max-width:1000px) {
     .vidbox{
         flex-direction: column;
+    }
+    .vidbox>div{
+        width: 80%;
     }
 }

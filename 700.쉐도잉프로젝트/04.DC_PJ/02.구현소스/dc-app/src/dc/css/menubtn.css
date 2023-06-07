@@ -16,6 +16,7 @@
     height:550px;
 }
 .imbx img{
+    max-width: 100%;
     clip-path: polygon(0 0,100% 0,100% 88%,0 99%);
 }
 .titbx h3{
