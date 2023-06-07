@@ -11,7 +11,24 @@ function jqFn(){
     }); //// jQB ////
 }//////// jqFn ////////
 
-function VidIntro(){
+function VidIntro(props){
+    // props.pg 페이지 데이터
+    
+    // 데이터 선택하기
+    const sdt = vidintro_data[props.pg]
+
+    // 링크코드 생성하기 함수 : desc 데이터 / sum 데이터에서 처리
+    const lcode = (data)=>{ // data - desc/sum 둘중에 전달됨
+        return(
+            <>
+                {data.split("^")[0]}
+                <a href={sdt.link} target="_blank">
+                    {data.split("^")[1] + '\n'}
+                </a>
+                {data.split("^")[2]}
+            </>
+        )
+    }
     return(
         <>
             {/* 모듈코드 */}
@@ -26,11 +43,13 @@ function VidIntro(){
                     <h2>{vidintro_data.main.btit}</h2>
                     <p className="vidsum">{vidintro_data.main.sum}</p>
                     <p>
-                        {vidintro_data.main.desc.split("^")[0]}
-                        <a href={vidintro_data.main.link}>
-                            {vidintro_data.main.desc.split("^")[1] + '\n'}
-                        </a>
-                        {vidintro_data.main.desc.split("^")[2]}
+                        {/* 특수문자(*)여부에 따라 처리 
+                        indexOf(문자열) -> 없으면 -1리턴 */}
+                        {
+                            sdt.desc.indexOf("*") ===-1?
+                            sdt.desc : lcode(sdt.desc)
+                        }
+                        
                     </p>
                     
 
