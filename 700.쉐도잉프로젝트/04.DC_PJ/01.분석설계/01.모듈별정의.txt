@@ -24,7 +24,7 @@
             (click) + location(라우트이동)
 
 [3] 비디오 소개 모듈
-    - 모듈명 : VidIntro
+    - 모듈명 : VidIntro (JS/CSS/data)
     (1) 구조정의 :
         Root > video box(>video + img)
         + title box(>heading+p tag)
