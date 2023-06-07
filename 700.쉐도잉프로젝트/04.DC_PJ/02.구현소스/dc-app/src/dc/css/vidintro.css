@@ -1,0 +1,54 @@
+@charset "utg-8";
+/* vidintro 모듈용 CSS - vidintro.css */
+
+.vidbox{
+    display: flex;
+    width: 78%;
+    max-width: 1320px;
+    margin: 0 auto;
+    font-family: 'Roboto Condensed';
+}
+.vidbox iframe{
+    padding: 10px;
+    border: none;
+
+}
+.vidTit{
+    
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.vidTit h3{
+    line-height: 1.7;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+.vidTit h2{
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+.vidTit p{
+    opacity: .87;
+    font-size: 16px;
+}
+.vidTit p a{
+    color: #000;
+}
+.vidTit p a:hover{
+    color: #0074e8;
+}
+.vidsum{
+    margin-bottom: 16px;
+}
+
+@media (max-width:1000px) {
+    .vidbox{
+        flex-direction: column;
+    }
+}
