@@ -11,10 +11,24 @@ import "./SwiperVid.css";
 // import required modules
 import { Pagination,Navigation } from "swiper";
 import swipervid_data from "../data/swipervid";
+import $ from 'jquery';
 
 export default function SwiperVid(props) {
 
-    
+    // 데이터 셋팅
+    const sdt = swipervid_data
+
+    // 비디오보이기 함수
+    const showVid = (src,tit)=>{
+        // src - 비디오경로, tit - 비디오제목
+        console.log(src,tit)
+        // 1. 아이프레임 src 넣기
+        $(".playvid iframe")
+        .attr("src",src + "?autoplay=1");
+
+        // 2. 비디오 타이틀 넣기
+        $(".ifrtit").text(tit)
+    }////// showVid //////
     
 
     return (
@@ -29,7 +43,7 @@ export default function SwiperVid(props) {
                 {
                     swipervid_data.map((v,i)=>
                         <SwiperSlide key={i}>
-                            <div className="swi_wrapper"><img className="swi" src={v.isrc}/></div>
+                            <div className="swi_wrapper" onClick={()=>showVid(v.vsrc,v.tit)}><img className="swi" src={v.isrc}/></div>
                             <h3 className="swc">{v.cat}</h3>
                             <h2 className="swt">{v.tit}</h2>
                         </SwiperSlide>

@@ -29,12 +29,11 @@
 
 
 /* 기본 스와이퍼 디자인 변경 */
-.swiper-button-prev, .swiper-rtl .swiper-button-next{
-    background-color: red;
-}
+
 .swiper-slide{
     flex-direction: column;
     justify-content: flex-end;
+    cursor: pointer;
 }
 .swi{
     width: 100%;

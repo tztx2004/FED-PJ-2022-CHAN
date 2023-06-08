@@ -10,8 +10,12 @@ function jqFn(){
         const ss = $(".swiper-slide");
         ss.on("click",function(){
             console.log(this)
-            $(".playvid").toggle();
+            $(".vidbx").fadeIn();
 
+        })
+        $(".cbtn").on("click",function(){
+            $(".vidbx").fadeOut()
+            $(".playvid iframe").attr("src","")
         })
         
     }); //// jQB ////
@@ -29,13 +33,15 @@ function VidSwipe(props){
                 <SwiperVid name="나는" />
 
                 {/* 3. 비디오 재생창 */}
-                <section className="playvid">
-                    {
-                        swipervid_data.map((v,i)=>
-                            <iframe key={i} className="vidF" src={v.vsrc}></iframe>
-                        )
-                    }
-                    <button className="cbtn">×</button>
+                <section className="vidbx">
+                    <div className="playvid">
+                        {/* 비디오타이틀 */}
+                        <h2 className="ifrtit"></h2>
+                        {/* 아이프레임 */}
+                        <iframe src="" allow="autoplay"></iframe>
+                        {/* 닫기버튼 */}
+                        <button className="cbtn">×</button>
+                    </div>
                 </section>
             </section>
             {/* 빈루트를 만들고 JS로드함수포함 */}
