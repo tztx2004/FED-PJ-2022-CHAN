@@ -2,11 +2,18 @@
 import $ from "jquery";
 import SwiperVid from "../plugin/SwiperVid";
 import "../css/vidswipe.css"
+import swipervid_data from "../data/swipervid";
 
 // 제이쿼리 로드구역 함수
 function jqFn(){
     $(()=>{
+        const ss = $(".swiper-slide");
+        ss.on("click",function(){
+            console.log(this)
+            $(".playvid").toggle();
 
+        })
+        
     }); //// jQB ////
 }//////// jqFn ////////
 
@@ -23,7 +30,11 @@ function VidSwipe(props){
 
                 {/* 3. 비디오 재생창 */}
                 <section className="playvid">
-                    <iframe src=""></iframe>
+                    {
+                        swipervid_data.map((v,i)=>
+                            <iframe key={i} className="vidF" src={v.vsrc}></iframe>
+                        )
+                    }
                     <button className="cbtn">×</button>
                 </section>
             </section>

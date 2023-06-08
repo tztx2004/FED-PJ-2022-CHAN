@@ -1,2 +1,20 @@
 @charset "utf-8";
 /* VidSwipe 모듈용 CSS - VidSwipe.css */
+
+.playvid{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    /* display: none; */
+}
+.vidF{
+    position: absolute;
+    transform: translate(-50%,-50%);
+}
+.cbtn{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}

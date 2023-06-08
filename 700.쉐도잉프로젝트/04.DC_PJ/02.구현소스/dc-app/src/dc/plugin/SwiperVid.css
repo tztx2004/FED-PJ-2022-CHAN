@@ -32,3 +32,33 @@
 .swiper-button-prev, .swiper-rtl .swiper-button-next{
     background-color: red;
 }
+.swiper-slide{
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.swi{
+    width: 100%;
+    
+}
+.swiper{
+    width: 80vw;
+    height: 330px;
+}
+.swi_wrapper{
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+.swc{
+    font-size: 12px;
+    margin-top: 30%;
+}
+.swt{
+    font-size: 20px;
+    margin-bottom: 20%;
+}
+.swiper-slide:nth-child(5) .swt,
+.swiper-slide:nth-child(9) .swt
+{
+    margin-bottom: 3%;
+}

@@ -10,17 +10,11 @@ import "./SwiperVid.css";
 
 // import required modules
 import { Pagination,Navigation } from "swiper";
+import swipervid_data from "../data/swipervid";
 
 export default function SwiperVid(props) {
 
-    const data = [
-        {
-            isrc : "",
-            vsrc : "",
-            cat : "",
-            tit : "",
-        },
-    ];
+    
     
 
     return (
@@ -33,8 +27,12 @@ export default function SwiperVid(props) {
                 className="mySwiper"
             >
                 {
-                    data.map((v,i)=>
-                        <SwiperSlide key={i}>{props.name}{v}</SwiperSlide>
+                    swipervid_data.map((v,i)=>
+                        <SwiperSlide key={i}>
+                            <div className="swi_wrapper"><img className="swi" src={v.isrc}/></div>
+                            <h3 className="swc">{v.cat}</h3>
+                            <h2 className="swt">{v.tit}</h2>
+                        </SwiperSlide>
                     )
                 }
             </Swiper>
