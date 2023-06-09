@@ -6,6 +6,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 
+/* 폰트어썸 임포트 */
+import { faPlayCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import "./SwiperVid.css";
 
 // import required modules
@@ -43,7 +47,17 @@ export default function SwiperVid(props) {
                 {
                     swipervid_data.map((v,i)=>
                         <SwiperSlide key={i}>
-                            <div className="swi_wrapper" onClick={()=>showVid(v.vsrc,v.tit)}><img className="swi" src={v.isrc}/></div>
+                            <div className="swi_wrapper" onClick={()=>showVid(v.vsrc,v.tit)}>
+                                <img className="swi" src={v.isrc}/>
+                            </div>
+                            <FontAwesomeIcon icon={faPlayCircle} 
+                                style={{
+                                    position:"absolute",
+                                    bottom:"55%",
+                                    left:"10%",
+                                    color:"#fff",
+                                    fontSize:"50px"
+                                    }} />
                             <h3 className="swc">{v.cat}</h3>
                             <h2 className="swt">{v.tit}</h2>
                         </SwiperSlide>

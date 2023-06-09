@@ -49,7 +49,7 @@ function VidIntro(props){
                         indexOf(문자열) -> 없으면 -1리턴 */}
                         {
                             sdt.desc.indexOf("^") ===-1?
-                            sdt.desc : lcode(sdt.desc)
+                            "" : lcode(sdt.desc)
                         }
                         
                     </p>
