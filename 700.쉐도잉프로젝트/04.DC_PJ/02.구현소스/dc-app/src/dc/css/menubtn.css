@@ -5,7 +5,7 @@
 .MenuBtn{
     font-family: 'Roboto Condensed';
     display: flex;
-    margin: 30px auto;
+    margin: 100px auto;
     max-width: 1320px;
 }
 .wrap{

@@ -3,10 +3,20 @@
 #app {
     height: 100%;
 }
-
+.tit{
+    margin: 0 auto;
+    max-width: 1320px;
+    text-align: left;
+    font-size: 48px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
 .swiper {
     width: 100%;
     height: 400px;
+}
+.vidswbox{
+    margin-bottom: 200px;
 }
 
 .swiper-slide {

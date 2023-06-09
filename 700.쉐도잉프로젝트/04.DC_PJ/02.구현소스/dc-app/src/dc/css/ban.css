@@ -4,6 +4,7 @@
     position: relative;
     overflow: hidden;
     /* 넘치는 배너 숨기기 */
+    margin-top: 64px;
 }
 .bantit{
     position: absolute;

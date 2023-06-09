@@ -1,7 +1,7 @@
 // 메인 레이아웃 컴포넌트
 import Logo from "./Logo";
 import "./css/layout.css";
-import {Link,Outlet} from "react-router-dom"
+import { Link, Outlet } from "react-router-dom";
 
 /******************************************************** 
     [ 리액트 라우터와 연결하여 사용되는 라우터 컴포넌트 ]
@@ -13,7 +13,74 @@ import {Link,Outlet} from "react-router-dom"
 ********************************************************/
 
 const Layout = () => {
-    return(
+    /* 
+        sub:[{
+                txt:"",
+                link:"",
+            }]
+    */
+
+    /* GNB메뉴 데이터 구성하기 */
+    const gnb_data = [
+        {
+            txt: "HOME",
+            link: "/",
+        },
+        {
+            txt: "CHARACTERS",
+            link: "/ct",
+        },
+        {
+            txt: "COMICS",
+            link: "/co",
+            sub: [
+                {
+                    txt: "LATEST COMICS",
+                    link: "/lc",
+                },
+                {
+                    txt: "DC UNIVERSE INFINITE",
+                    link: "/dui",
+                },
+                {
+                    txt: "ALL COMICS SERIES",
+                    link: "/acs",
+                },
+            ],
+        },
+        {
+            txt: "MOVIES & TV",
+            link: "/mv",
+            sub: [
+                {
+                    txt: "DC MOVIES",
+                    link: "/dm",
+                },
+                {
+                    txt: "DC SERIES",
+                    link: "/ds",
+                },
+                {
+                    txt: "DC ON HBO MSX",
+                    link: "/hbo",
+                },
+            ],
+        },
+        {
+            txt: "GAMES",
+            link: "/gm",
+        },
+        {
+            txt: "NEWS",
+            link: "/nw",
+        },
+        {
+            txt: "VIDEO",
+            link: "/vd",
+        },
+    ];
+
+    return (
         <>
             {/* 1. 상단영역 */}
             <header className="top">
@@ -21,29 +88,34 @@ const Layout = () => {
                 <nav className="gnb">
                     <ul>
                         <li>
-                            <Logo/>
+                            <Logo />
                         </li>
-                        <li>
-                            <Link to="/">HOME</Link>
-                        </li>
-                        <li>
-                            <Link to="/ct">CHARACTERS</Link>
-                        </li>
-                        <li>
-                            <Link to="/co">COMICS</Link>
-                        </li>
-                        <li>
-                            <Link to="/mv">MOVIES & TV</Link>
-                        </li>
-                        <li>
-                            <Link to="/gm">GAMES</Link>
-                        </li>
-                        <li>
-                            <Link to="/nw">NEWS</Link>
-                        </li>
-                        <li>
-                            <Link to="/vd">VIDEO</Link>
-                        </li>
+                        {gnb_data.map((v, i) => (
+                            <li key={i}>
+                                <Link to={v.link}>{v.txt}</Link>
+                                {/* {console.log(v.sub)} */}
+                                {/* v.sub가 없으면 undefined */}
+                                {
+                                    // 조건식 && 출력코드
+                                    // 조건: sub데이터가 없지않으면
+                                    // undefined - 정의되지 않은값
+                                    // null - 빈값
+                                    // 위의 두가지는 데이터가 없다는 값임!
+                                    v.sub != undefined && (
+                                        <div className="smenu">
+                                            <ol>
+                                                {v.sub.map((v, i) => (
+                                                    <li key={i}>
+                                                        <Link to={v.link}>  {v.txt}
+                                                        </Link>
+                                                    </li>
+                                                ))}
+                                            </ol>
+                                        </div>
+                                    )
+                                }
+                            </li>
+                        ))}
                     </ul>
                 </nav>
             </header>
@@ -55,8 +127,8 @@ const Layout = () => {
             {/* 3.하단영역 */}
             <footer className="info">
                 All Site Content © &amp; TM DC, unless otherwise noted here.
-                <br /> 
-                All rights reserved. 
+                <br />
+                All rights reserved.
             </footer>
         </>
     );
