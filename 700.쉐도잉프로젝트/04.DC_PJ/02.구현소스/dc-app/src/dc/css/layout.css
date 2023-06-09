@@ -1,7 +1,6 @@
 @charset "utf-8";
 .top{
-    background-color: #fff;
-    border: 4px double #000;
+    background-color: #e5e5e5;
 
     position: fixed;
     top: 0;
@@ -51,7 +50,7 @@
 .smenu{
     position: absolute;
     left: 50%;
-    top: 56px;
+    top: 40px;
     transform: translateX(-50%);
     background-color: #fff;
     padding: 20px;
@@ -116,4 +115,9 @@ iframe{
     padding: 30px;
     background-image: linear-gradient(to bottom, #CCC, #777);
     color: #fff;
+    text-align: center;
+}
+.info ul{
+    margin: 0 auto;
+    text-align: center;
 }

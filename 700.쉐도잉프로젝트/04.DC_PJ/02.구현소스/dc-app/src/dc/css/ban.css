@@ -4,7 +4,6 @@
     position: relative;
     overflow: hidden;
     /* 넘치는 배너 숨기기 */
-    margin-top: 64px;
 }
 .bantit{
     position: absolute;
@@ -13,6 +12,12 @@
     padding: 25px;
     color: #fff;
     text-shadow: 0 0 3px #000;
+    width: 30vw;
+    margin-left: 100px;
+    text-align: left;
+}
+.bantit p{
+    margin: 15px 0;
 }
 /* 배너슬라이드 */
 .slider{

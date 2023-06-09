@@ -7,6 +7,7 @@ const Logo = ()=>{
     const mystyle={
         width:"56px",
         height:"56px",
+        marginRight:"80px",
         borderRadius:"50%"
         // outline:"3px solid lime"
     };
