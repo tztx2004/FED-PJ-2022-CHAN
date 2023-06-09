@@ -40,7 +40,7 @@
     
 }
 .swiper{
-    width: 80vw;
+    max-width: 1320px;
     height: 330px;
 }
 .swi_wrapper{
