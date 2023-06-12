@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 /* 폰트어썸 임포트 */
-import { faPlayCircle } from "@fortawesome/free-solid-svg-icons";
+import { faChessBishop, faPlayCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./SwiperVid.css";
@@ -38,10 +38,26 @@ export default function SwiperVid(props) {
     return (
         <>
             <Swiper
+                // 한화면당 개수를 Hook변수사용
                 slidesPerView={4}
                 spaceBetween={10}
                 navigation={true}
                 modules={[Navigation]}
+                // 스와이퍼 사이즈 별 슬라이드 수 변경
+                breakpoints={{
+                    200: {
+                        slidesPerView:2
+                    },
+                    700: {
+                        slidesPerView:2
+                    },
+                    1000: {
+                        slidesPerView:3
+                    },
+                    1200: {
+                        slidesPerView:4
+                    },
+                }}
                 className="mySwiper"
             >
                 {
@@ -64,6 +80,8 @@ export default function SwiperVid(props) {
                     )
                 }
             </Swiper>
+            {/* 스와이퍼 모듈에 이벤트 입히기 */}
+            {/* {evtFn()} */}
         </>
     );
 }

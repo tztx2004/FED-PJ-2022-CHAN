@@ -150,8 +150,8 @@ const Layout = () => {
                             <FontAwesomeIcon icon={faSearch}/>
                         </li>
                         <li>
-                            <Link to="/signup">
-                                SIGN UP
+                            <Link to="/mem">
+                                JOIN US
                             </Link>
                         </li>
                         <li>
