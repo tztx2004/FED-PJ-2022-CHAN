@@ -1,43 +1,90 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>화살표함수</title>
-
-    <script>
-        /************ 
-            [ 함수 축약법 ]
-            3. 기본형 :
-                function(){}
-            4. 축약형 :
-                ()=>{}
-            5. 확장형 :
-                ()=>{코드}
-                    매개변수가 없을 때
-                x=>{코드}
-                    매개변수(여기선x)가 하나일 경우 소괄호생략
-                (x,y)=>{코드}
-                    매개변수가 여러개일 경우 소괄호 필수!
-                ________________________________
-
-            
-        
-        ************/
-    </script>
+    <title>Document</title>
     <style>
-        .btn{
-            font-size: 40px;
+        *{
+            outline: 1px dashed #000;
+        }
+        .pa{
+            position: relative;
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .main{
+            /* position: absolute;
+            top: 0; */
+        }
+        .main img{
+            width: 100%;
+            position: absolute;
+            top: 0;
+        }
+        .i1{
+            left: -100%;
+        }
+        .i2{
+            left: 0;
+        }
+        .i3{
+            left: 100%;
+        }
+        .bg{
+            position: absolute;
+            top: 0;
+            z-index: -1;
+            width: 100%;
+            height: 500px;
+            background-color: lightblue;
+            /* transition: .4s; */
         }
     </style>
+
+    <!-- 제이쿼리 라이브러리 CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <!-- 제이쿼리 UI CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
 </head>
 <body>
-    
-    <button class="btn btn1">
-        너는 누구니? 클릭해봐
-    </button><br><br>
-    <button class="btn btn2">
-        너는 누구니? 클릭해봐
-    </button>
+    <div class="pa">
+        <div class="main">
+            <img class="i1" src="./imgs/001.jpg" alt="이미지">
+            <img class="i2" src="./imgs/002.jpg" alt="이미지">
+            <img class="i3" src="./imgs/005.jpg" alt="이미지">
+        </div>
+        <div class="bg"></div>
+        <div></div>
+    </div>
+    <button class="btn">여기야!!</button>
+
+    <script>
+            $(".i1")
+            .fadeOut(400)
+            .delay(800)
+            .animate({
+                left:"0%"
+            })
+            .delay(1000)
+            .fadeIn(400);
+
+            $(".i2").fadeOut(400)
+
+            setTimeout(()=>{ //배경
+                $(".bg").delay(400).animate({
+                    left:"100%"
+                },600).fadeOut().animate({
+                    left:"-100%"
+                }).fadeIn().animate({
+                    left:"0%"
+                })
+            })
+
+
+    </script>
 </body>
 </html>

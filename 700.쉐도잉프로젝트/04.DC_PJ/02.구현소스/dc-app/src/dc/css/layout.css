@@ -1,4 +1,9 @@
 @charset "utf-8";
+main.cont{
+    /* 최소높이 상단, 하단제외 채우기
+    - 하단영역에 여백이 생기는 일이 없어짐 */
+    min-height: calc(100vh - 40px - 210px);
+}
 .top{
     background-color: #e5e5e5;
 
