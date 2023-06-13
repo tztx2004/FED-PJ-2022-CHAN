@@ -116,6 +116,7 @@ const Layout = () => {
                 <nav className="gnb">
                     <ul>
                         <li>
+                            
                             <Link to="/main">
                                 <Logo gb="top"/>
                             </Link>
@@ -171,7 +172,7 @@ const Layout = () => {
             <footer className="info">
                 <ul>
                     <li>
-                        <Logo/>
+                        <Logo gb="bottom"/>
                     </li>
                     <ol style={{display:"flex"}}>
                     {

@@ -103,6 +103,8 @@ function MakeList(props){
     )
 } //////////// MakeList ////////////////
 
+jqFn();
+
 // 배너출력용 컴포넌트 /////
 function Ban(props){ // props.cat은 배너데이터 구분속성명
     const sel_data = ban_data[props.cat];
@@ -135,7 +137,7 @@ function Ban(props){ // props.cat은 배너데이터 구분속성명
                 </>
             }
             {/* JS/jQuery 호출 */}
-            {jqFn()}
+            {/* {jqFn()} */}
         </div>
     );
 }///// Ban ///////
