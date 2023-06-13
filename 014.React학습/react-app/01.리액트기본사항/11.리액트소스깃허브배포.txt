@@ -36,3 +36,13 @@ basename={process.env.PUBLIC_URL}
 ->>>> 추가수정하기!
 루트로 돌아올때 슬래쉬만으로 돌아오면 루트에 슬래쉬없는 주소가 리턴되어
 이미지 경로가 깨진다! 확인바람!!!
+
+로고를 클릭하여 첫페이지 띄울때 슬래쉬 없는 루트 페이지를 로딩함으로 인해 이미지 경로가 깨짐
+따라서 첫 페이지는 첫페이지용 라우트를 따로 만들고 이것을 연결해준다!
+
+(1) index.js
+<Route path="main" element={<Main/>} />
+(2) Layout.js : to 속성값으로 main라우트를 연결함!
+<Link to="/main">
+    <Logo gb="top"/>
+</Link>

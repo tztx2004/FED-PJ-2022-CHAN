@@ -41,8 +41,8 @@ import Video from './dc/Video';
 // 출력해야하기 때문에 스스로 내보내기를 셋팅하는 것임!
 export default function App(){
     return(
-        // <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        {/* <BrowserRouter> */}
             <Routes>
                 {/* 중요!!! : 레이아웃 컴포넌트를 루트로 잡아준다!! */}
                 <Route path="/" element={<Layout/>}>
@@ -50,6 +50,7 @@ export default function App(){
                     {/* path대신 index만 쓰면 첫페이지임!
                     -> Layout의 Link to="/"에 해당하는 셋팅 필수! */}
                     <Route index element={<Main/>} />
+                    <Route path='main' element={<Main/>} />
                     <Route path='ct' element={<Characters/>} />
                     <Route path='co' element={<Comics/>} />
                     <Route path='mv' element={<Movies/>} />
