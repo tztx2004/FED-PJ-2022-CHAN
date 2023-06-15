@@ -4,8 +4,12 @@
 import { useState } from "react";
 import "./css/member.css";
 import { clearData, initData } from './fns/fnMem'
+import $ from 'jquery'
+import { useNavigate } from "react-router-dom";
 
 export default function LogIn() {
+    // 라우트 이동메서드
+    let goRoute = useNavigate()
     // [ 후크 useState 메서드 셋팅하기 ]
     // [ 1. 입력요소 후크변수 ]
     // 1. 아이디변수
@@ -36,7 +40,10 @@ export default function LogIn() {
     const changeUserId = (e) => {
         // 1. 빈값 체크
         if (e.target.value !== "") setUserIdError(false);
-        else setUserIdError(true);
+        else {
+            setIdMsg(msgTxt[0])
+            setUserIdError(true);
+        }
 
         // 2. 입력값 반영하기
         setUserId(e.target.value);
@@ -46,7 +53,10 @@ export default function LogIn() {
     const changePwd = (e) => {
         // 1. 빈값 체크
         if (e.target.value !== "") setPwdError(false);
-        else setPwdError(true);
+        else {
+            setPwdMsg(msgTxt[2])
+            setPwdError(true);
+        }
 
         // 2. 입력값 반영하기
         setPwd(e.target.value);
@@ -94,14 +104,37 @@ export default function LogIn() {
                 // 같은 아이디가 있는가?
                 if(v['uid']===userId){
                     console.log('같아요~')
+                    // 아이디에러 상태 업데이트
+                    setUserIdError(false);
+                    
+
+
                     // 같은 아이디 검사 상태변수 변경
                     isOK = false
                     // 비밀번호가 일치하는가?
                     if(v['pwd']===pwd){
                         console.log("비번 같아요~")
+                        // 비번에러 상태 업데이트
+                        setPwdError(false);
+                        
+                        $(".sbtn").text("로그인된거야!")
+
+                        // [ 로그인 후 셋팅작업 ]
+                        // 1. 로그인된 회원정보를 로컬쓰에 셋팅(세션대신사용)
+                        // -> 실제 로그인을 하면 서버의 세션변수가 셋팅됨
+                        localStorage.setItem("minfo",JSON.stringify(v));
+                        console.log("로그인!!!",localStorage.getItem("minfo"))
+                        // 2. 라우팅 페이지 이동하기(useNavigate)
+                        setTimeout(()=>{
+                            goRoute('/')// 첫페이지로 이동
+                        },1500)
                     }
                     else{
                         console.log("비번 달라요")
+                        // 아이디가 다를때 메시지 변경
+                        setPwdMsg(msgTxt[2])
+                        // 아이디에러 상태 업데이트
+                        setPwdError(true);
                     }
 
                 }//// if ////
@@ -109,6 +142,11 @@ export default function LogIn() {
             // 아이디가 불일치할 경우
             if(isOK){
                 console.log("아이디가 달라요!")
+                // 아이디가 다를때 메시지 변경
+                setIdMsg(msgTxt[1])
+                // 아이디에러 상태 업데이트
+                setUserIdError(true);
+
             }
         }
         // 불통과 시 

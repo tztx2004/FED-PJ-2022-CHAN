@@ -22,6 +22,8 @@ export default function ScrollTop(){
             left:0,
             behavior:"smooth"
         });
+        // 로그인 상태를 확인! : "minfo"
+        console.log("로그인확인",localStorage.getItem("minfo"));
     },[pathname]);
 
     // 이 컴포넌트 실행은 다른 부가적인 코드를
