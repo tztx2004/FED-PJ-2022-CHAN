@@ -2,7 +2,9 @@
 import React, { useState } from "react";
 import $ from "jquery";
 import "./css/member.css";
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
+import { clearData, initData } from './fns/fnMem'
+
 
 /* 
     [ 후크 : Hook - 왜 필요한가? ]
@@ -36,6 +38,17 @@ function jqFn() {
 function Member() {
     // 요구사항 : 각 입력항목에 맞는 유효성검사를 입력하는 순간!
     // 실시간으로 체크하여 결과를 화면에 리턴한다!
+    
+    // [ 리책트 라우터 이동 시 이동 메서드 이용하기 : useNavigate ]
+    // 1. Link를 사용한 셋팅으로 라우터를 이동하였다!
+    // -> 코드적으로 이동할때는? 바로 useNavigate
+    // 2. import하기 : import { useNavigate } from 'react-router-dom'
+    // 3. 사용법 :
+    // 변수 = useNavigate()
+    // -> 변수(라우터경로)
+
+    const goRoute = useNavigate();
+
 
     // [ 후크 useState 메서드 셋팅하기 ]
     // [ 1. 입력요소 후크변수 ]
@@ -73,6 +86,36 @@ function Member() {
     // 후크변수 메서드
     const [idMsg,setIdMsg] = useState(msgId[0]);
 
+    // // [로컬쓰 클리어]
+    // const clearData = ()=> {
+    //     localStorage.clear();
+    //     console.log("로컬쓰 클리어")
+    // }//// clearData ////
+    clearData();
+
+    // localStorage.clear();
+
+    // [ 로컬쓰 초기체크셋팅! ]// -> fnMem.js 로 보냄
+    initData();
+    // const initData = ()=>{
+
+    //     // alert("처리페이지로 이동!")
+    //         // 만약 로컬스 "mem-data"가 null이면 만들어준다!
+    //         if(localStorage.getItem("mem-data")===null){
+    //             localStorage.setItem("mem-data",`
+    //                 [
+    //                     {
+    //                         "idx":"1",
+    //                         "uid":"tomtom",
+    //                         "pwd":"1111",
+    //                         "unm":"Tom",
+    //                         "eml":"tom@gmail.com"
+    //                     }
+    //                 ]
+    //             `)
+    //         }
+    // };//// initData ////
+
     // [ 3. 유효성 검사 메서드 ]
     // 1. 아이디 유효성 검사
     const changeUserId = (e) => {
@@ -88,6 +131,9 @@ function Member() {
         // 정규식.test() -> 정규식 검사결과 리턴 메서드
         // 결과: true이면 에러상태값 false / false이면 에러상태값 true
         if (valid.test(e.target.value)) {
+            // 로컬쓰 데이터 체크 함수호출
+            initData();
+
             // 아이디 형식에는 맞지만 아이디가 사용중인 아이디인지 검사
             let memData = localStorage.getItem("mem-data");
             console.log("로컬쓰",memData)
@@ -210,25 +256,12 @@ function Member() {
         // 기본 서브밋기능 막기
         e.preventDefault();
         console.log("서브밋")
+        
 
         // 유효성검사 전체 통과 시
         if(totalVaild()){
             
-            // alert("처리페이지로 이동!")
-            // 만약 로컬스 "mem-data"가 null이면 만들어준다!
-            if(localStorage.getItem("mem-data")===null){
-                localStorage.setItem("mem-data",`
-                    [
-                        {
-                            "idx":"1",
-                            "uid":"tomtom",
-                            "pwd":"1111",
-                            "unm":"Tom",
-                            "eml":"tom@gmail.com"
-                        }
-                    ]
-                `)
-            }
+            
 
             // 로컬스 변수할당
             let memData = localStorage.getItem("mem-data")
@@ -256,8 +289,13 @@ function Member() {
             // 로컬스에 반영하기
             localStorage.setItem("mem-data",JSON.stringify(memData))
 
-            // 로컬쓰 확인
-            console.log(localStorage.getItem("mem-data"))
+            // 로그인 페이지로 이동(라우터이동하기!)
+            // useNavigate 사용
+            $(".sbtn").text("넌 이제 회원인거야")
+            setTimeout(()=>{
+                goRoute('/login')
+            },1500)
+
         }
         // 불통과 시 
         else{
@@ -265,15 +303,15 @@ function Member() {
         }
         
         
-        
+
     } //// onSubmit ////
 
 
     return (
-        <>
+        <div className="outbx">
             {/* 모듈코드 */}
             <section className="membx">
-                <h2>JOIN US</h2>
+                <h2 onClick={clearData}>JOIN US</h2>
                 <form method="post" action="process.php">
                     <ul>
                         <li>
@@ -304,7 +342,7 @@ function Member() {
                                 // 아이디에러가 false일때 출력!
                                 !userIdError && userId && (
                                     <div className="msg">
-                                        <small style={{ color: "red", fontSize: "10px" }}>
+                                        <small style={{ color: "green", fontSize: "10px" }}>
                                             {msgId[2]}
                                         </small>
                                     </div>
@@ -406,7 +444,7 @@ function Member() {
             </section>
             {/* 빈루트를 만들고 JS로드함수포함 */}
             {jqFn()}
-        </>
+        </div>
     );
 }
 

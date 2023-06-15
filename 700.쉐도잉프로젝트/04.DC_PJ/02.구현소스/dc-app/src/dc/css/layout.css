@@ -118,7 +118,7 @@ iframe{
 .info{
     text-align: center;
     padding: 30px;
-    background-image: linear-gradient(to bottom, #CCC, #777);
+    background-color: #000;
     color: #fff;
     text-align: center;
 }

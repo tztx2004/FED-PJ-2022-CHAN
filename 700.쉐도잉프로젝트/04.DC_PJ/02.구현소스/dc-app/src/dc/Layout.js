@@ -5,6 +5,7 @@ import { Link, Outlet } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import isrc from "./imgSrc";
 
 /******************************************************** 
     [ 리액트 라우터와 연결하여 사용되는 라우터 컴포넌트 ]
@@ -172,12 +173,14 @@ const Layout = () => {
             <footer className="info">
                 <ul>
                     <li>
-                        <Logo gb="bottom"/>
+                        <h1>
+                            <img src={isrc.logo} style={{width:"56px"}}/>
+                        </h1>
                     </li>
-                    <ol style={{display:"flex"}}>
+                    <ol style={{display:"flex",justifyContent: "center"}}>
                     {
                         bmenu.map((x,i)=>
-                        <li key={i}>
+                        <li key={i} style={{marginRight:"20px", marginBottom:"20px"}}>
                             {x.txt}
                         </li>
                         )

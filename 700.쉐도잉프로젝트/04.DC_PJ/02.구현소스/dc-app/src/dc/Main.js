@@ -11,7 +11,7 @@ const Main = ()=>{
     return(
         <>
             {/* 1. 배너모듈 */}
-            <Ban cat={"main"+Math.ceil(Math.random()*2)}/>
+            <Ban cat={"main"+Math.ceil(Math.random()*3)}/>
             {/* 2. 메뉴버튼모듈 */}
             <MenuBtn/>
             {/* 3. 비디오소개모듈 */}
