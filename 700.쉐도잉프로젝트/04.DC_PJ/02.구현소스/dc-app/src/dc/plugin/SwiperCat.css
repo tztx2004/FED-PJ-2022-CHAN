@@ -1,22 +1,14 @@
 @charset "utf-8";
-
+/* 스와이퍼 캐릭터 컴포넌트 CSS */
 #app {
     height: 100%;
 }
-.tit{
-    margin: 0 auto;
-    max-width: 1320px;
-    text-align: left;
-    font-size: 48px;
-    margin-top: 30px;
-    margin-bottom: 20px;
-}
+
 .swiper {
     width: 100%;
-    height: 400px;
-}
-.vidswbox{
-    margin-bottom: 200px;
+    padding: 10px;
+    margin: 20px 0;
+    box-sizing: border-box;
 }
 
 .swiper-slide {
@@ -28,9 +20,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0px 0px 5px #bbb;
 }
-
+a{
+    text-decoration: none;
+    color: #000;
+}
 .swiper-slide img {
     display: block;
     width: 100%;
@@ -38,37 +32,77 @@
     object-fit: cover;
 }
 
+/* 타이틀박스 */
+.tit {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 40px;
+    /* background: url(../../../public/images/dcm1.jpg); */
+}
 
-/* 기본 스와이퍼 디자인 변경 */
-
-.swiper-slide{
-    flex-direction: column;
-    justify-content: flex-end;
+/* 컨텐츠 박스 */
+.swinbx {
+    width: 100%;
+    aspect-ratio: 1 / 1.1;
     cursor: pointer;
+    user-select: none;
+    /* outline: 1px solid red; */
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.553);
 }
-.swi{
+
+/* 비디오이미지박스 */
+.catimg {
+    vertical-align: top;
+}
+.catimg img {
     width: 100%;
-    
+    height: 100%;
+    object-fit: cover;
 }
-.swiper{
-    max-width: 1320px;
-    height: 330px;
+
+/* 타이틀박스 */
+.cattit {
+    font-family: "Roboto Condensed", sans-serif;
+    padding: 15px;
+    aspect-ratio: 2/1;
 }
-.swi_wrapper{
-    width: 100%;
-    position: absolute;
-    top: 0;
+/* 동영상타이틀 */
+.cattit h3 {
+    font-size: 22px;
+    margin-top: 15px;
+
+    text-decoration: none;
+    color: #000;
 }
-.swc{
-    font-size: 12px;
-    margin-top: 30%;
+
+/* 기존 스와이퍼 디자인 변경 */
+
+.swiper-button-prev,
+.swiper-button-next {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    box-shadow: 0 0 10px #000;
 }
-.swt{
-    font-size: 20px;
-    margin-bottom: 20%;
+
+.swiper-button-next {
+    transform: scale(0.8) translateX(15px);
 }
-.swiper-slide:nth-child(5) .swt,
-.swiper-slide:nth-child(9) .swt
-{
-    margin-bottom: 3%;
+
+.swiper-button-prev {
+    transform: scale(0.8) translateX(-15px);
+}
+
+/* 슬라이드 끝에서 버튼 숨김 */
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+    display: none;
+}
+
+@media screen and (max-width: 1200px) {
+    /* 동영상타이틀 */
+    .cattit h3 {
+        font-size: 20px;
+        margin-top: 10px;
+    }
 }

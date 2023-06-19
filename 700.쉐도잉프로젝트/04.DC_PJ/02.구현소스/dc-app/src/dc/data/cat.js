@@ -212,3 +212,5 @@ const cat_data = [
         type : "indiv",
     },
 ]
+
+export default cat_data
