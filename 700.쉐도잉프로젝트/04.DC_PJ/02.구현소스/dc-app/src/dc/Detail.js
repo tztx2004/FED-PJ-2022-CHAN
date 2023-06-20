@@ -2,6 +2,9 @@
 
 import { useLocation } from "react-router-dom"
 
+import "./css/detail.css"
+import Ban from "./modules/Ban";
+
 // 라우터 파라미터값 받아서 데이터 처리!
 
 function Detail(props){
@@ -14,21 +17,42 @@ function Detail(props){
     // 2. 캐릭터설명 - '^' 문자로 잘라 배열로 데이터 변경
     let cdesc = loc.state.cdesc;
     cdesc = cdesc.split("^")
-    // 3. 캐릭터명세
-    const facts = loc.state.facts;
+    // 3. 캐릭터명세 - '^' 문자로 잘라 배열로 데이터 변경
+    let facts = loc.state.facts;
+    facts = facts.split("^")
     return(
         <>
-            <h2>{cname}</h2>
-            <div className="cdesc">
-                {
-                    cdesc.map(v=>
-                        <p>{v}</p>
-                    )
-                }
-            </div>
-            <div className="facts">
-                <h3>CHARACTERS FACTS</h3>
-                {facts}
+            {/* 1. 배너 컴포넌트 */}
+            <Ban cat={cname} />
+            {/* 2. 상세정보 박스 */}
+            <div className="detail">
+                <div className="descbx">
+                    <h2>{cname}</h2>
+                    <div className="cdesc">
+                        {
+                            cdesc.map((v,i)=>
+                                <p key={i}>{v}</p>
+                            )
+                        }
+                    </div>
+                </div>
+                <div className="facts">
+                    <div>
+                        <h3>CHARACTERS FACTS</h3>
+                        <table>
+                            <tbody>
+                                {
+                                    facts.map((x,i)=>
+                                        <tr key={i}>
+                                            <td>{x.split(":")[0]}</td>
+                                            <td>{x.split(":")[1]}</td>
+                                        </tr>
+                                    )
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
         </>
