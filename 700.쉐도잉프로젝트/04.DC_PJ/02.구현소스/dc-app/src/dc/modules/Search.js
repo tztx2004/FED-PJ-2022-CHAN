@@ -5,6 +5,10 @@ import "../css/search.css"
 import cat_data from "../data/cat";
 import CatList from "./CatList";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
+
 // 제이쿼리 로드구역 함수
 function jqFn(){
     $(()=>{
@@ -16,7 +20,73 @@ function Search(){
 
     // 데이터 선택하기 : Hook 데이터 구성하기
     let [sdt,setSdt] = useState(cat_data);
+    // 데이터 건수 : Hook 데이터 구성하기
+    let [tot,setTot] = useState(cat_data.length);
 
+    // 데이터 검색 함수 ////
+    const schList = ()=>{
+        // 검색요소 대상 : #schin
+        let inp = document.querySelector("#schin")
+
+        // 1. 검색어 읽기
+        let keyword = inp.value;
+
+        // 2. 검색어 입력확인분기
+        if(keyword.trim()==""){
+            // 입력창으로 다시 보내기
+            inp.focus();
+            return;
+        }
+        console.log("검색어:", keyword);
+
+        // 3. 데이터 검색하기
+        // 배열값 다중검색 메서드 ->filter()
+        // 검색대상 ; 전체원본데이터 (cat_data)
+        let newList = cat_data.filter(v=>{
+            if(v.cname.toLocaleLowerCase().indexOf(keyword)) return true
+        }) // filter //
+
+        console.log(newList);
+
+        // 4. 검색결과 리스트 업데이트하기
+        // Hook변수인 데이터변수와 데이터건수 변수를 업데이트함!
+        setSdt(newList);
+        setTot(newList.length);
+
+
+    }; //// schList ////
+
+    // 입력창에서 엔터키를 누르면 검색함수 호출
+    const enterKey = (e)=>{
+        if(e.key ==='Enter') return schList()
+    }; //// enterKey ////
+
+    // 리스트 정렬 변경함수
+    const sortList = (e)=>{
+        // 1. 선택옵션값
+        let opt = e.target.value
+        console.log("선택옵션",opt  )
+
+        // 임시변수
+        let temp = sdt
+        console.log("정렬전",temp)
+        
+
+        //2. 옵션에 따른 정렬 반영 
+        temp.sort((x,y)=>{
+            if(opt){ // 내림차순
+                return x.cname==y.cname?0:x.cname>y.cname?1:-1
+            }
+            else{ // 오름차순
+                return x.cname==y.cname?0:x.cname>y.cname?-1:1
+            }
+        });
+        
+        console.log("정렬후",temp)
+        // 3. 데이터 정렬변경 반영하기
+        setSdt(temp);
+
+    }// sortList //
 
     return(
         <>
@@ -24,17 +94,27 @@ function Search(){
             <section className="schbx">
                 {/* 1. 옵션선택박스 */}
                 <div className="schopt">
-
+                    {/* 검색박스 */}
+                    <div className="searching">
+                        {/* 검색버튼 돋보기아이콘 */}
+                        <FontAwesomeIcon icon={faSearch} className="schbtn" title="Open Search" onClick={schList}/>
+                        {/* 입력창 */}
+                        <input id="schin" type='text' placeholder="Filter the Keyword" onKeyUp={enterKey}></input>
+                        
+                    </div>
                 </div>
                 {/* 2. 결과리스트박스 */}
                 <div className="listbx">
                     {/* 결과타이틀 */}
                     <h2 className="restit">
-                        BROWSE CHARACTERS
+                        BROWSE CHARACTERS ({tot})
                     </h2>
                     {/* 정렬선택박스 */}
                     <aside className="sortbx">
-
+                        <select className="sel" name="sel" id="sel" onChange={sortList}>
+                            <option value="0">A-Z</option>
+                            <option value="1">Z-A</option>
+                        </select>
                     </aside>
                     {/* 캐릭터 리스트 컴포넌트 
                     전달 속성 dt - 리스트 데이터 */}
