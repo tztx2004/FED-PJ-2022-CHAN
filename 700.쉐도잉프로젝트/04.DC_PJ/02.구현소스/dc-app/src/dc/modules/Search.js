@@ -6,7 +6,7 @@ import cat_data from "../data/cat";
 import CatList from "./CatList";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faSquareRootVariable } from "@fortawesome/free-solid-svg-icons";
 
 
 // 제이쿼리 로드구역 함수
@@ -15,6 +15,16 @@ function jqFn(){
 
     }); //// jQB ////
 }//////// jqFn ////////
+
+// 최초 원본데이터 정렬변경하기(오름차순)
+// 주의사항 : 컴포넌트에 포함시키지 말것!
+// 왜? 배열의 정렬정보가 컴포넌트에 포함될 경우
+// 정렬변경이 되지 않는다! 따라서 컴포넌트 바깥에서
+// 데이터 정렬이 변경된 원본배열을 만들어준 것을
+// 컴포넌트 내부에서 사용하도록 하면 기존 정렬이 반영됨!
+cat_data.sort((x,y)=>{
+    return x.cname === y.cname?0:x.cname>y.cname?1:-1;
+})
 
 function Search(){
 
@@ -96,6 +106,90 @@ function Search(){
 
     }// sortList //
 
+    // 체크박스요소
+    let chkele = document.querySelectorAll(".chkhdn")
+
+    // 체크박스 검색함수 //
+    const chkSearch = (e)=>{
+        // 1. 체크박스 아이디 : 검색항목의 값(alignment)
+        let cid = e.target.id;
+
+        // 2. 체크박스 체크여부: checked (true / false)
+        let chked = e.target.checked
+        console.log("아이디", cid,chked)
+        
+        // 임시변수 : 기존입력된 데이터 가져옴
+        let temp = sdt[0]
+        console.log("기존저장테이터:",temp)
+        // 결과집합변수
+        let newList = [];
+
+        // 체크박스 체크개수세기 : 1개초과 시 배열합치기할 것!
+        let num = 0;
+        chkele.forEach(v=>{if(v.checked)num++})
+        console.log("체크개수:",num)
+
+        // 3. 체크박스 체크여부에 따른 분기
+        // 체크여부가 true일 때 해당 검색어로 검색하기
+        if(chked){
+            // 현재데이터 변수에 담기
+            let nowdt = cat_data.filter(v=>{
+                if(v.alignment === cid) return true;
+            })/// filter ///
+
+            // 체크개수가 1초과일 때 배열합치기
+            if(num > 1){ // 스프레드 연산자(...)사용!
+                // 기존데이터(temp)+새데이터(nowdt)
+                newList = [...temp, ...nowdt]
+
+            }///// if /////
+            // 체크개수 1일 때
+            else{
+                newList = nowdt;
+            }///// else /////
+
+            
+        }///// if : 체크박스 true /////
+
+        // (2) 체크박스가 false일 때 데이터지우기
+        else{
+            console.log("지울데이터",cid)
+            // splice삭제 시 일반 for문으로 --처리해야함!
+            for(let i=0; i<temp.length; i++){
+                // 조건은 체크박스 풀린 값
+                if(temp[i].alignment === cid){
+                    // 배열지우기 메서드 :splice(순번,개수)
+                    temp.splice(i,1);
+                    
+                    // 중요!! splice로 지우면 배열항목자체가
+                    // 삭제되므로 for문 돌 때 개수가 줄어듦
+                    // 따라서 다음번호를 지울 때 ++을 --처리필수!!
+                    i--;
+
+                    // delete temp[i]
+                    // -> delete 배열지우기는 배열의 값만 지우고
+                    // 그 값은 undefined처리된다
+                    // 따라서 리스트처리 시 에러가 날 수 있음
+                    // 이 경우에 꼭 배열주소 전체를 삭제하는
+                    // splice를 사용하도록 한다!!
+                }/// if ///
+
+            }//// for ////
+            console.log("삭제처리배열",temp)
+            
+            // 결과처리하기 : 삭제처리된 temp를 결과에 넣기!
+            newList = temp;
+
+        }/// else: 체크박스 false ///
+
+        // 4. 검색결과 리스트 업데이트 하기
+        // Hook 데이터변수 + 데이터건수
+        setSdt([newList],2)
+        setTot(newList.length);
+
+
+    }//// chkSearch ////
+
     return(
         <>
             {/* 모듈코드 */}
@@ -109,6 +203,37 @@ function Search(){
                         {/* 입력창 */}
                         <input id="schin" type='text' placeholder="Filter the Keyword" onKeyUp={enterKey}></input>
                         
+                    </div>
+                    {/* 체크박스구역 */}
+                    <div className="chkbx">
+                        <ul>
+                            <li>
+                                <h2>
+                                    ALIGNMENT
+                                    <span className="spbtn">
+                                        ＋
+                                    </span>
+                                </h2>
+                                {/* 체크박스리스트 */}
+                                <ol>
+                                    <li>
+                                        Heroes
+                                        <input type="checkbox" id="hero" className="chkhdn" onChange={chkSearch}/>
+                                        <label htmlFor="hero" className="chklb"></label>
+                                    </li>
+                                    <li>
+                                        It's Complicated
+                                        <input type="checkbox" id="comp" className="chkhdn" onChange={chkSearch}/>
+                                        <label htmlFor="comp" className="chklb"></label>
+                                    </li>
+                                    <li>
+                                        Villains
+                                        <input type="checkbox" id="villain" className="chkhdn" onChange={chkSearch}/>
+                                        <label htmlFor="villain" className="chklb"></label>
+                                    </li>
+                                </ol>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 {/* 2. 결과리스트박스 */}
