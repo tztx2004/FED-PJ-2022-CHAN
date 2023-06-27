@@ -47,6 +47,9 @@ export default function SwiperCat(props) {
                 className="mySwiper">
                 {
                     sdt.map((v, i) => (
+                        
+                        /* 저스티스리그 idx 1~7 */
+                        Number(v.idx) <=7 &&
                         <SwiperSlide key={i}>
                             {/* /det 라우터 컴포넌트 페이지 호출 시 state 속성값으로 객체를 보내어 값을 전달함!
                             도착페이지인 Detail.js 컴포넌트에 페이지 나타내야할 데이터 항목을 데이터 속성명과 같은 이름으로 셋팅하여 라우터 전달 state객체에 담아서 보낸다!

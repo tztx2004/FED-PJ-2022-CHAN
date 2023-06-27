@@ -100,6 +100,38 @@ h1{
     text-align: center;
 }
 
+/* 검색입력창 박스 */
+.searchingGnb{
+    position: absolute;
+    left: -263px;
+    top: -4px;
+    line-height: 41px;
+
+    width: 250px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #efefef;
+    box-sizing: border-box;
+    padding: 0 5px;
+    display: none;
+}
+.searchingGnb input{
+    font-size: 15px;
+    width: 77%;
+    margin-top: 5px;
+    margin-left: 10px;
+    background-color: transparent;
+    border: none;
+    line-height: 2;
+}
+input:focus{
+    outline: none;
+}
+.schbtnGnb{
+    cursor: pointer;
+    margin-top: 9px;
+    margin-left: 10px;
+}
 
 /* 메인영역 */
 .cont{
