@@ -11,6 +11,8 @@ import isrc from "./imgSrc";
 import { gnb_data, bmenu } from "./data/common";
 import { useState } from "react";
 import ScrollTop from "./common/ScrollTop";
+import $ from 'jquery'
+
 
 /******************************************************** 
     [ 리액트 라우터와 연결하여 사용되는 라우터 컴포넌트 ]
@@ -90,6 +92,15 @@ const Layout = () => {
         goNav('/res',{state:{keyword:kw}})
     }; //// goSearch ////
 
+    // 상단메뉴 변경 함수 //
+    const chgMenu = ()=>$(".top").toggleClass('on')
+
+    // 메뉴클릭 시 닫기 부가기능 함수
+    const rmCls = ()=>{
+        $(".top").removeClass('on')
+    }
+
+
 
 
     return (
@@ -115,7 +126,7 @@ const Layout = () => {
                             </Link>
                         </li>
                         {gnb_data.map((v, i) => (
-                            <li key={i}>
+                            <li key={i} onClick={chgMenu}>
                                 <Link to={v.link}>{v.txt}</Link>
                                 {/* {console.log(v.sub)} */}
                                 {/* v.sub가 없으면 undefined */}
@@ -178,7 +189,7 @@ const Layout = () => {
                         {
                             /* 로그아웃버튼은 로그인 상태일때만 */
                             logSts !== null && (
-                                <li>
+                                <li onClick={chgMenu}>
                                     <a href="#" onClick={logout}>
                                         LOGOUT
                                     </a>
@@ -186,6 +197,8 @@ const Layout = () => {
                             )
                         }
                     </ul>
+                    {/* 햄버거버튼 */}
+                    <button className="hambtn" onClick={chgMenu}></button>
                 </nav>
             </header>
             {/* 2. 메인영역 */}
